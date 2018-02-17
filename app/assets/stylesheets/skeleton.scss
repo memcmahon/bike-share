@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed');
+
+html {
+  height: 100%;
+}
+
+body {
+  font: {
+    family: 'Roboto Condensed', sans-serif;
+  }
+  background: {
+    image: url("minimal_bike.jpeg");
+    size: cover;
+    repeat: no-repeat;
+    position: center;
+  }
+}
+
+.sorry {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+}

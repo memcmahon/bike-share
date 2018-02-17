@@ -6,9 +6,39 @@
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
   </head>
 
   <body>
+    <!-- <nav class="navbar navbar-inverse navbar-static-top">
+      <div class="navbar-nav container">
+        <div class="col-md-6">
+          <i class="fa fa-bicycle"><a href="/"></a></i>
+          <ul>
+            <li class="nav-item">
+              <%= link_to "Trips", root_path %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "Stations", root_path %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "Conditions", root_path %>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'Bike Shop', root_path %>
+            </li>
+          </ul>
+        </div>
+        <ul class="navbar-nav col-md-6">
+          <li class="nav-item">
+            <%= link_to 'Login', login_path %>
+          </li>
+          <li>
+            <%= link_to 'Sign Up', new_user_path %>
+          </li>
+        </ul>
+      </div>
+    </nav> -->
     <%= yield %>
   </body>
 </html>
