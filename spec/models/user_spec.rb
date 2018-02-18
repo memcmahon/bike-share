@@ -1,0 +1,40 @@
+require 'rails_helper'
+
+describe User, type: :model do
+  describe "Validations" do
+    it { should have_secure_password }
+    it { should validate_presence_of :first_name }
+    it { should validate_presence_of :last_name }
+    it { should validate_presence_of :email }
+    it { should validate_presence_of :password }
+    it { should validate_uniqueness_of :email }
+  end
+
+  describe "Relationships" do
+    it { should have_many(:orders) }
+    it { should have_many(:accessories).through(:carts) }
+  end
+
+  describe "Roles" do
+    it "can be created as an admin" do
+      admin = User.create!(first_name: "Jane", last_name: "Doe", email: "jane@fakemail.com", password: "test", role: 1)
+
+      expect(admin.role).to eq("admin")
+      expect(admin.admin?).to be_truthy
+    end
+
+    it "can be created as a regular user" do
+      user = User.create!(first_name: "Jane", last_name: "Doe", email: "jane@fakemail.com", password: "test", role: 0)
+
+      expect(user.role).to eq("default")
+      expect(user.default?).to be_truthy
+    end
+
+    it "can be defaulted to a regular user" do
+      user = User.create!(first_name: "Jane", last_name: "Doe", email: "jane@fakemail.com", password: "test")
+
+      expect(user.role).to eq("default")
+      expect(user.default?).to be_truthy
+    end
+  end
+end

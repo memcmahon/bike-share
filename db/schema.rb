@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180217215755) do
+ActiveRecord::Schema.define(version: 20180218004003) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,12 +58,12 @@ ActiveRecord::Schema.define(version: 20180217215755) do
 
   create_table "orders", force: :cascade do |t|
     t.bigint "cart_id"
-    t.bigint "users_id"
+    t.bigint "user_id"
     t.integer "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["cart_id"], name: "index_orders_on_cart_id"
-    t.index ["users_id"], name: "index_orders_on_users_id"
+    t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   create_table "stations", force: :cascade do |t|
@@ -103,13 +103,13 @@ ActiveRecord::Schema.define(version: 20180217215755) do
     t.string "first_name"
     t.string "last_name"
     t.string "password_digest"
-    t.integer "role"
+    t.integer "role", default: 0
   end
 
   add_foreign_key "carts", "accessories"
   add_foreign_key "carts", "users"
   add_foreign_key "orders", "carts"
-  add_foreign_key "orders", "users", column: "users_id"
+  add_foreign_key "orders", "users"
   add_foreign_key "statuses", "stations"
   add_foreign_key "trips", "conditions"
 end
