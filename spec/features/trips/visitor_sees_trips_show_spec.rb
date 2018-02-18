@@ -3,8 +3,8 @@ require 'rails_helper'
 describe "As a visitor" do
   describe "they visit trips show" do
     it "they can see the trip details" do
-      condition = Condition.create!(date: )
-      trip = Trip.create!(duration: 174, start_date: "8/29/2013 9:08", start_station_name: "2nd at South Park", start_station_id: 64, end_date: "8/29/2013 9:11", end_station_name: "2nd at South Park", end_station_id: 64, bike_id: 288, subscription_type: "Subscriber", zip_code: 94114)
+      condition = create(:condition)
+      trip = create(:trip, condition: condition)
 
       visit trip_path(trip)
 
@@ -16,7 +16,6 @@ describe "As a visitor" do
       expect(page).to have_content(trip.bike_id)
       expect(page).to have_content(trip.subscription_type)
       expect(page).to have_content(trip.zip_code)
-
     end
   end
 end
