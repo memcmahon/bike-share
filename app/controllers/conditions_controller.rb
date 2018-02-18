@@ -11,7 +11,7 @@ class ConditionsController < ApplicationController
   private
 
     def set_condition
-      @category = Condition.find(params[:id])
+      @condition = Condition.find(params[:id])
     end
 
 end
