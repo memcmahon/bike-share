@@ -1,0 +1,28 @@
+<h1>Conditions</h1>
+
+<% @conditions.each do |cond| %>
+  <h2>
+    ]<strong><%= cond.date %></strong>
+  </h2>
+  <p>
+    Max Temp: <%= cond.max_temp_f %>
+  </p>
+  <p>
+    Mean Temp<%= cond.mean_temp_f %>
+  </p>
+  <p>
+    <%= cond.min_temp_f %>
+  </p>
+  <p>
+    <%= cond.mean_humidity %>
+  </p>
+  <p>
+    <%= cond.mean_visibility_miles %>
+  </p>
+  <p>
+    <%= cond.mean_wind_speed_mph %>
+  </p>
+  <p>
+    <%= cond.precipitation_inches %>
+  </p>
+<% end %>
