@@ -17,14 +17,29 @@ FactoryBot.define do
   end
 
   factory :condition do
+    date '10/1/1990'
     sequence(:max_temp_f) { |n| n }
     sequence(:mean_temp_f) { |n| n }
     sequence(:min_temp_f) { |n| n }
+    sequence(:max_dew_point_f) { |n| n }
+    sequence(:mean_dew_point_f) { |n| n }
+    sequence(:max_humidity) { |n| n }
     sequence(:mean_humidity) { |n| n }
+    sequence(:min_humidity) { |n| n }
+    sequence(:max_sea_level_pressure_inches) { |n| n }
+    sequence(:mean_sea_level_pressure_inches) { |n| n }
+    sequence(:min_sea_level_pressure_inches) { |n| n }
+    sequence(:max_visibility_miles) { |n| n }
     sequence(:mean_visibility_miles) { |n| n }
+    sequence(:min_visibility_miles) { |n| n }
+    sequence(:max_wind_speed_mph) { |n| n }
     sequence(:mean_wind_speed_mph) { |n| n }
+    sequence(:max_gust_speed_mph) { |n| n }
     sequence(:precipitation_inches) { |n| n }
-    sequence(:date) { |n| "10/#{n}/1990" }
+    sequence(:cloud_cover) { |n| n }
+    sequence(:events) { |n| "#{n}" }
+    sequence(:wind_dir_degrees) { |n| n }
+    sequence(:zip_code) { |n| n }
   end
 
   factory :trip do

@@ -1,8 +1,8 @@
 <h1>Conditions</h1>
 
 <% @conditions.each do |cond| %>
-  <h2>
-    ]<strong><%= cond.date %></strong>
+  <h2 class="condition-<%= cond.id %>">
+    <strong><%= link_to cond.date, condition_path(cond) %></strong>
   </h2>
   <p>
     Max Temp: <%= cond.max_temp_f %>
