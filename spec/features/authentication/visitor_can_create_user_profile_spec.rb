@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe "As a visitor they can create a user profile" do
-  scenario "when they visit root" do
+  describe "when they visit root" do
     it "they can link to the login page" do
       visit root_path
 
@@ -11,7 +11,7 @@ describe "As a visitor they can create a user profile" do
     end
   end
 
-  scenario "when they visit login page" do
+  describe "when they visit login page" do
     it "they can create a user profile" do
       visit login_path
 
