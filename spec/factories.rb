@@ -46,9 +46,11 @@ FactoryBot.define do
     sequence(:duration) { |n| n }
     sequence(:start_date) { |n| "10/#{n}/1990" }
     sequence(:end_date) { |n| "10/#{n + 1}/1990" }
-    start_station "Willow Creek"
+    start_station_name "Willow Creek"
+    start_station_id 1
     sequence(:bike_id) { |n| n }
-    end_station "Jumping Rabbit Creek"
+    end_station_name "Jumping Rabbit Creek"
+    end_station_id 2
     subscription_type "Subscriber"
     sequence(:zip_code) { |n| "#{n}#{n}#{n}000"}
     condition
