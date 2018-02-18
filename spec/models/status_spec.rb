@@ -2,12 +2,9 @@ require 'rails_helper'
 
 describe Status, type: :model do
   describe "validations" do
-    it {should validate_presence_of(:name)}
-    it {should validate_presence_of(:lat)}
-    it {should validate_presence_of(:long)}
-    it {should validate_presence_of(:dock_count)}
-    it {should validate_presence_of(:city)}
-    it {should validate_presence_of(:installation_date)}
+    it {should validate_presence_of(:bikes_available)}
+    it {should validate_presence_of(:docks_available)}
+    it {should validate_presence_of(:time)}
   end
   describe "relationships" do
     it {should belong_to(:station)}
