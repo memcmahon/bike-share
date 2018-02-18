@@ -21,6 +21,7 @@ describe "As a visitor they can create a user profile" do
       fill_in("user[last_name]", with: "User")
       fill_in("user[email]", with: "demo@fakemail.com")
       fill_in("user[password]", with: "Test")
+      fill_in("user[password_confirmation]", with: "Test")
       click_on("Submit")
 
       expect(current_path).to eq('/dashboard')
