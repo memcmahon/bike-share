@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
-      flash[:notice] = "logged in as #{current_user.email}"
+      flash[:notice] = "Logged in as #{current_user.email}."
       redirect_to "/dashboard"
     else
       render :new
