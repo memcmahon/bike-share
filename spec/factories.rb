@@ -40,7 +40,6 @@ FactoryBot.define do
     sequence(:events) { |n| "#{n}" }
     sequence(:wind_dir_degrees) { |n| n }
     sequence(:zip_code) { |n| n }
-    date "10/1/1990"
   end
 
   factory :trip do
