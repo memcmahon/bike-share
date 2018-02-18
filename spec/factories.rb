@@ -17,7 +17,7 @@ FactoryBot.define do
   end
 
   factory :condition do
-    sequence(:date) { |n| "10/#{n}/1990" }
+    date '10/1/1990'
     sequence(:max_temp_f) { |n| n }
     sequence(:mean_temp_f) { |n| n }
     sequence(:min_temp_f) { |n| n }
