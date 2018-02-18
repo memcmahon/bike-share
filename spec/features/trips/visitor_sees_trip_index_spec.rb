@@ -39,5 +39,20 @@ describe "As a visitor" do
       expect(page).to have_content(trip[29].duration)
       expect(page).to_not have_content(trip[31].duration)
     end
+
+    it "they can click through to next page of trips" do
+      trip = create_list(:trip, 35)
+
+      visit trips_path
+
+      click_on("Next", match: :first)
+
+      expect(page).to_not have_content(trip[29].duration)
+      expect(page).to have_content(trip[30].duration)
+      expect(page).to have_content(trip[31].duration)
+      expect(page).to have_content(trip[32].duration)
+      expect(page).to have_content(trip[33].duration)
+      expect(page).to have_content(trip[34].duration)
+    end
   end
 end
