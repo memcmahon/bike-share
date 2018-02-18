@@ -1,0 +1,58 @@
+FactoryBot.define do
+
+  factory :user do
+    sequence(:email) { |n| "maryDavenportNo#{n}@gmail.com"}
+    sequence(:first_name) { |n| "Mary#{n}"}
+    sequence(:last_name) { |n| "Davenport#{n}"}
+    sequence(:password) { |n| "password#{n}"}
+    role 0
+  end
+
+  factory :admin, class: User do
+    sequence(:email) { |n| "maryDavenportNo#{n}@gmail.com"}
+    sequence(:first_name) { |n| "Mary#{n}"}
+    sequence(:last_name) { |n| "Davenport#{n}"}
+    sequence(:password) { |n| "password#{n}"}
+    role 1
+  end
+
+  factory :condition do
+    sequence(:max_temp_f) { |n| n }
+    sequence(:mean_temp_f) { |n| n }
+    sequence(:min_temp_f) { |n| n }
+    sequence(:mean_humidity) { |n| n }
+    sequence(:mean_visibility_miles) { |n| n }
+    sequence(:mean_wind_speed_mph) { |n| n }
+    sequence(:precipitation_inches) { |n| n }
+    sequence(:date) { |n| "10/#{n}/1990" }
+  end
+
+  factory :trip do
+    sequence(:duration) { |n| n }
+    sequence(:start_date) { |n| "10/#{n}/1990" }
+    sequence(:end_date) { |n| "10/#{n + 1}/1990" }
+    start_station "Willow Creek"
+    sequence(:bike_id) { |n| n }
+    end_station "Jumping Rabbit Creek"
+    subscription_type "Subscriber"
+    sequence(:zip_code) { |n| "#{n}#{n}#{n}000"}
+    condition
+  end
+
+  factory :station do
+    sequence(:name) { |n| "#{n} Street"}
+    sequence(:lat) { |n| n }
+    sequence(:lat) { |n| n }
+    sequence(:dock_count) { |n| n }
+    city "San Francisco"
+    date "12/12/1991"
+  end
+
+  factory :status do
+    sequence(:bikes_available) { |n| n }
+    sequence(:docks_available) { |n| n }
+    sequence(:time) { |n| "2013/#{n}/29 12:13:01" }
+    station
+  end
+
+end
