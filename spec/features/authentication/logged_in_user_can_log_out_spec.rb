@@ -10,7 +10,6 @@ describe "As a logged in user" do
 
     click_on("Log Out")
 
-    expect(page).to have_content("Log In")
-    expect(page).to_not have_content("Log Out")
+    expect(current_path).to eq(root_path)
   end
 end
