@@ -11,4 +11,10 @@ class Station < ApplicationRecord
   def generate_slug
     self.slug = name.parameterize if name
   end
+
+  def self.total_count_of_stations
+    count
+  end
+
+  
 end

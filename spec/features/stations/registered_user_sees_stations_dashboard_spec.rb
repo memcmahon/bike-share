@@ -3,6 +3,7 @@ require 'rails_helper'
 describe "As a registered user and admin" do
   describe "when I visit the stations-dashboard" do
     it "I see station analytics" do
+    create_list(:station, 84)
 
       visit '/stations-dashboard'
 

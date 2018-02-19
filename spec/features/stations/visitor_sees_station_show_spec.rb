@@ -6,7 +6,7 @@ describe "As a visitor" do
       station = create(:station, lat: 2, long:3)
 
       visit station_path(station.slug)
-      
+
       expect(current_path).to eq("/stations/1-street")
       expect(page).to have_content("Name: 1 Street")
       expect(page).to have_content("Dock Count: 1")
