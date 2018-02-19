@@ -12,7 +12,6 @@ describe "As a registered user and admin" do
       trips_4 = create_list(:trip, 3, condition_id: conditions[3].id)
       trips_5 = create_list(:trip, 3, condition_id: conditions[4].id)
 
-      binding.pry
       visit '/weather-dashboard'
 
       expect(page).to have_content("Weather Dashboard")
