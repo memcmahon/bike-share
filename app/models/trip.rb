@@ -18,14 +18,10 @@ class Trip < ApplicationRecord
   end
 
   def self.station_with_most_starts
-    group(:start_station_name).count.sort_by { |key, value|
-      value
-    }[-1][0]
+    group(:start_station_name).order('count(id) DESC').count.first.first
   end
 
   def self.station_with_most_ends
-    group(:end_station_name).count.sort_by { |key, value|
-      value
-    }[-1][0]
+    group(:end_station_name).order('count(id) DESC').count.first.first
   end
 end
