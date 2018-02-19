@@ -25,11 +25,14 @@ describe "As a user" do
     it "they see the average duration of a ride" do
       expect(page).to have_content("Average Duration: 250")
     end
+
+    it "they see the longest and shortest rides" do
+      expect(page).to have_content("Longest Ride: 300")
+      expect(page).to have_content("Shortest Ride: 200")
+    end
   end
 end
 
-#
-# I see the Average duration of a ride,
 # I see the Longest ride,
 # I see the Shortest ride,
 # I see the Station with the most rides as a starting place,
