@@ -49,7 +49,7 @@ CSV.foreach('db/csv/trip.csv', OPTIONS) do |row|
                bike_id: row[:bike_id],
                subscription_type: row[:subscription_type],
                zip_code: row[:zip_code],
-               condition_id: Condition.find_by(date: row[:start_date]).id)
+               condition_id: Condition.find_by(date: row[:start_date]).id) if Condition.find_by(date: row[:start_date])
 end
 
 CSV.foreach('db/csv/station.csv', OPTIONS) do |row|
