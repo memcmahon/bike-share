@@ -1,3 +1,6 @@
 <h1>Trip Dashboard</h1>
 
 <p>Average Duration: <%= @trips.average_duration %></p>
+
+<p>Longest Ride: <%= @trips.sort_by_duration.last.duration %></p>
+<p>Shortest Ride: <%= @trips.sort_by_duration.first.duration %></p>
