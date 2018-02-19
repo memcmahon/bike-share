@@ -7,3 +7,12 @@
 
 <p>Station with most started rides: <%= @trips.station_with_most_starts %></p>
 <p>Station with most ended rides: <%= @trips.station_with_most_ends %></p>
+
+<p>Rides by Year:</p>
+  <% @trips.rides_by_year.each do |key, value| %>
+    <%= key.year %>: <%= value %>
+  <% end %>
+<p>Rides by Month: </p>
+  <% @trips.rides_by_month.each do |key, value| %>
+    <%= key.strftime("%B") %>: <%= value %>
+  <% end %>

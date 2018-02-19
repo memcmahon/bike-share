@@ -24,4 +24,12 @@ class Trip < ApplicationRecord
   def self.station_with_most_ends
     group(:end_station_name).order('count(id) DESC').count.first.first
   end
+
+  def self.rides_by_month
+    group("DATE_TRUNC('month', start_date)").count
+  end
+
+  def self.rides_by_year
+    group("DATE_TRUNC('month', start_date)").count
+  end
 end
