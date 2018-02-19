@@ -16,5 +16,4 @@ class Station < ApplicationRecord
     count
   end
 
-  
 end
