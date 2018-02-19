@@ -9,4 +9,8 @@ class Trip < ApplicationRecord
                         :end_station_id,
                         :bike_id,
                         :subscription_type
+
+  def self.average_duration
+    average(:duration)
+  end
 end
