@@ -1,0 +1,3 @@
+class StationsDashboardController < ApplicationController
+
+end
