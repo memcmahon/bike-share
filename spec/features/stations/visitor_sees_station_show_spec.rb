@@ -7,7 +7,7 @@ describe "As a visitor" do
 
       visit station_path(station.slug)
 
-      expect(current_path).to eq("/stations/1-street")
+      expect(current_path).to eq("/stations/1-street  ")
       expect(page).to have_content("1 Street")
       expect(page).to have_content("1")
       expect(page).to have_content("2")
