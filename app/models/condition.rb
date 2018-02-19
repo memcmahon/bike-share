@@ -1,5 +1,6 @@
 class Condition < ApplicationRecord
   has_many :trips
+
   validates_presence_of :date,
                         :max_temp_f,
                         :mean_temp_f,
