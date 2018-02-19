@@ -7,8 +7,8 @@ describe "As a visitor" do
 
       visit station_path(station)
 
-      expect(current_path).to eq("/sattions/1street")
-      expect(page).to have_content("1 Street  ")
+      expect(current_path).to eq("/stations/1street")
+      expect(page).to have_content("1Street")
       expect(page).to have_content("1")
       expect(page).to have_content("San Francisco")
       expect(page).to have_content("1991-12-12")    
