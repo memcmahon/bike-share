@@ -1,28 +1,14 @@
-<h1>Conditions</h1>
+<div class="container conditions">
+  <h1>Conditions</h1>
 
-<% @conditions.each do |cond| %>
-  <h2 class="condition-<%= cond.id %>">
-    <strong><%= link_to cond.date, condition_path(cond) %></strong>
-  </h2>
-  <p>
-    Max Temp: <%= cond.max_temp_f %>
-  </p>
-  <p>
-    Mean Temp<%= cond.mean_temp_f %>
-  </p>
-  <p>
-    <%= cond.min_temp_f %>
-  </p>
-  <p>
-    <%= cond.mean_humidity %>
-  </p>
-  <p>
-    <%= cond.mean_visibility_miles %>
-  </p>
-  <p>
-    <%= cond.mean_wind_speed_mph %>
-  </p>
-  <p>
-    <%= cond.precipitation_inches %>
-  </p>
-<% end %>
+  <% @conditions.each do |cond| %>
+    <div class="col-lg-3 col-md-4">
+      <div class="panel panel-default text-center">
+        <h3 class="panel condition-<%= cond.id %>">
+          <strong><%= link_to cond.month_day_converter, condition_path(cond) %></strong>
+        </h3>
+      </div>
+    </div>
+  <% end %>
+</div>
+<%= will_paginate @condtions %>

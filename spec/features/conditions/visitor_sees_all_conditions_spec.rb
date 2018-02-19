@@ -10,21 +10,8 @@ describe "visitor sees all conditions" do
       click_on "Conditions"
 
       expect(current_path).to eq(conditions_path)
-      expect(page).to have_content(condition[0].max_temp_f)
-      expect(page).to have_content(condition[0].mean_temp_f)
-      expect(page).to have_content(condition[0].min_temp_f)
-      expect(page).to have_content(condition[0].mean_visibility_miles)
-      expect(page).to have_content(condition[0].mean_wind_speed_mph)
-      expect(page).to have_content(condition[0].precipitation_inches)
-      expect(page).to have_content(condition[0].date)
-
-      expect(page).to have_content(condition[1].max_temp_f)
-      expect(page).to have_content(condition[1].mean_temp_f)
-      expect(page).to have_content(condition[1].min_temp_f)
-      expect(page).to have_content(condition[1].mean_visibility_miles)
-      expect(page).to have_content(condition[1].mean_wind_speed_mph)
-      expect(page).to have_content(condition[1].precipitation_inches)
-      expect(page).to have_content(condition[1].date)
+      expect(page).to have_content(condition[0].month_day_converter)
+      expect(page).to have_content(condition[1].month_day_converter)
     end
   end
 end
