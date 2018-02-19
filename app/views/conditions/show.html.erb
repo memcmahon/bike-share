@@ -1,26 +1,28 @@
 <h1>Conditions on <%= @condition.date %></h1>
 
-<ul>
-  <li>Max Temperature: <%= @condition.max_temp_f %></li>
-  <li>Mean Temperature: <%= @condition.mean_temp_f %></li>
-  <li>Minimum Temperature: <%= @condition.min_temp_f %></li>
-  <li>Max Dew Point: <%= @condition.max_dew_point_f %></li>
-  <li>Mean Dew Point: <%= @condition.mean_dew_point_f %></li>
-  <li>Max Humidity: <%= @condition.max_humidity %></li>
-  <li>Mean Humidity: <%= @condition.mean_humidity %></li>
-  <li>Minimum Humidity<%= @condition.min_humidity %></li>
-  <li>Max Sea Level Pressure: <%= @condition.max_sea_level_pressure_inches %></li>
-  <li>Mean Sea Level Pressure: <%= @condition.mean_sea_level_pressure_inches %></li>
-  <li>Minimum Sea Level Pressure: <%= @condition.min_sea_level_pressure_inches %></li>
-  <li>Max Visibility Levels: <%= @condition.max_visibility_miles %></li>
-  <li>Mean Visibility Levels: <%= @condition.mean_visibility_miles %></li>
-  <li>Minimum Visibility Levels: <%= @condition.min_visibility_miles %></li>
-  <li>Max Wind Speed: <%= @condition.max_wind_speed_mph %></li>
-  <li>Mean Wind Speed: <%= @condition.mean_wind_speed_mph %></li>
-  <li>Max Gust Speed: <%= @condition.max_gust_speed_mph %></li>
-  <li>Precipitation Levels: <%= @condition.precipitation_inches %></li>
-  <li>Cloud Coverage: <%= @condition.cloud_cover %></li>
-  <li>Possible Events: <%= @condition.events %></li>
-  <li>Wind Direction: <%= @condition.wind_dir_degrees %></li>
-  <li>Zipcode: <%= @condition.zip_code %></li>
-</ul>
+<div class="container">
+  <ul>
+    <li>Max Temperature: <%= @condition.max_temp_f %></li>
+    <li>Mean Temperature: <%= @condition.mean_temp_f %></li>
+    <li>Minimum Temperature: <%= @condition.min_temp_f %></li>
+    <li>Max Dew Point: <%= @condition.max_dew_point_f %></li>
+    <li>Mean Dew Point: <%= @condition.mean_dew_point_f %></li>
+    <li>Max Humidity: <%= @condition.max_humidity %></li>
+    <li>Mean Humidity: <%= @condition.mean_humidity %></li>
+    <li>Minimum Humidity<%= @condition.min_humidity %></li>
+    <li>Max Sea Level Pressure: <%= @condition.max_sea_level_pressure_inches %></li>
+    <li>Mean Sea Level Pressure: <%= @condition.mean_sea_level_pressure_inches %></li>
+    <li>Minimum Sea Level Pressure: <%= @condition.min_sea_level_pressure_inches %></li>
+    <li>Max Visibility Levels: <%= @condition.max_visibility_miles %></li>
+    <li>Mean Visibility Levels: <%= @condition.mean_visibility_miles %></li>
+    <li>Minimum Visibility Levels: <%= @condition.min_visibility_miles %></li>
+    <li>Max Wind Speed: <%= @condition.max_wind_speed_mph %></li>
+    <li>Mean Wind Speed: <%= @condition.mean_wind_speed_mph %></li>
+    <li>Max Gust Speed: <%= @condition.max_gust_speed_mph %></li>
+    <li>Precipitation Levels: <%= @condition.precipitation_inches %></li>
+    <li>Cloud Coverage: <%= @condition.cloud_cover %></li>
+    <li>Possible Events: <%= @condition.events %></li>
+    <li>Wind Direction: <%= @condition.wind_dir_degrees %></li>
+    <li>Zipcode: <%= @condition.zip_code %></li>
+  </ul>
+</div>
