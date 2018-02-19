@@ -7,4 +7,5 @@ class StationsController < ApplicationController
   def show
     @station = Station.find_by(slug: params[:name])
    end
+
 end
