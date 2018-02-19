@@ -30,6 +30,6 @@ class Trip < ApplicationRecord
   end
 
   def self.rides_by_year
-    group("DATE_TRUNC('month', start_date)").count
+    group("DATE_TRUNC('year', start_date)").count
   end
 end
