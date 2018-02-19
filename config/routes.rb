@@ -25,7 +25,7 @@ Rails.application.routes.draw do
 
   get '/admin/dashboard', to: 'admin/users#show'
   get '/dashboard', to: 'users#show'
-  get '/stations-dashboard', to: 'stations#dashboard'
+  get '/stations-dashboard', to: 'stations_dashboard#index'
   get '/trips-dashboard', to: 'trips#dashboard'
   get '/weather-dashboard', to: 'conditions#dashboard'
 
