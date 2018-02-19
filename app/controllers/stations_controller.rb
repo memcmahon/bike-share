@@ -4,4 +4,7 @@ class StationsController < ApplicationController
     @stations = Station.all.paginate(page: params[:page], per_page: 30)
   end
 
+  def show
+    @station = Station.find_by(name: params[:name])
+  end
 end
