@@ -17,7 +17,7 @@ describe "As a user" do
       @condition = create(:condition)
       @trip_1 = Trip.create!(duration: 200, start_date: Date.strptime("10/3/2017", "%m/%e/%Y"), start_station_name: "Little Man", start_station_id: 3, end_date: Date.strptime("10/3/2017", "%m/%e/%Y"), end_station_name: "Diebolt", end_station_id: 2, bike_id: 13, subscription_type: "Subscriber", zip_code: 55555, condition: @condition)
       @trip_2 = Trip.create!(duration: 250, start_date: Date.strptime("10/3/2017", "%m/%e/%Y"), start_station_name: "DBC", start_station_id: 1, end_date: Date.strptime("10/3/2017", "%m/%e/%Y"), end_station_name: "Diebolt", end_station_id: 2, bike_id: 13, subscription_type: "Subscriber", zip_code: 55555, condition: @condition)
-      @trip_3 = Trip.create!(duration: 300, start_date: Date.strptime("11/3/2017", "%m/%e/%Y"), start_station_name: "DBC", start_station_id: 1, end_date: Date.strptime("11/3/2017", "%m/%e/%Y"), end_station_name: "Little Man", end_station_id: 3, bike_id: 13, subscription_type: "Subscriber", zip_code: 55555, condition: @condition)
+      @trip_3 = Trip.create!(duration: 300, start_date: Date.strptime("11/3/2016", "%m/%e/%Y"), start_station_name: "DBC", start_station_id: 1, end_date: Date.strptime("11/3/2016", "%m/%e/%Y"), end_station_name: "Little Man", end_station_id: 3, bike_id: 13, subscription_type: "Subscriber", zip_code: 55555, condition: @condition)
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(:user)
       visit "/trips-dashboard"
     end
@@ -36,9 +36,11 @@ describe "As a user" do
       expect(page).to have_content("Station with most ended rides: Diebolt")
     end
 
-    it "they see a breakdown of rides by month" do
+    it "they see a breakdown of rides by month and year" do
       expect(page).to have_content("October: 2")
       expect(page).to have_content("November: 1")
+      expect(page).to have_content("2017: 2")
+      expect(page).to have_content("2016: 1")
     end
   end
 end
