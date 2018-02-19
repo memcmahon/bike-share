@@ -1,9 +1,5 @@
 require 'rails_helper'
 
-# As a visitor,
-# When I visit the stations index,
-# I see all stations (name, dock count, city, installation date)
-
 describe "As a visitor" do
   describe "they can visit stations index" do
     it "they see all stations info" do
@@ -11,14 +7,12 @@ describe "As a visitor" do
 
       visit stations_path
 
-      expect(page).to have_content("San Jose Diridon Caltrain Station")
-      expect(page).to have_content("27")
-      expect(page).to have_content("San Jose")
-      expect(page).to have_content("8/6/2013")
-      expect(Station.all.count).to eq(72)
-    
+      expect(page).to have_content("1 Street  ")
+      expect(page).to have_content("1")
+      expect(page).to have_content("San Francisco")
+      expect(page).to have_content("1991-12-12")
+      expect(page).to have_css(".station-container", count: 30)
+      expect(Station.all.count).to eq(84)
     end
   end
 end
-
-
