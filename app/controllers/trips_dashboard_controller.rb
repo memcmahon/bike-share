@@ -1,0 +1,2 @@
+class TripsDashboardController < ApplicationController
+end
