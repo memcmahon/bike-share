@@ -15,4 +15,5 @@ class Station < ApplicationRecord
   def self.total_count_of_stations
     count
   end
+
 end
