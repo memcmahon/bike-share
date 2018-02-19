@@ -1,4 +1,4 @@
-require 'rails_helper'
+  require 'rails_helper'
 
 describe "As a visitor" do
   describe "when I visit the station show page" do
@@ -7,9 +7,9 @@ describe "As a visitor" do
 
       visit station_path(station.slug)
 
-      expect(current_path).to eq("/stations/81-street")
-      expect(page).to have_content("Name: 81 Street")
-      expect(page).to have_content("Dock Count: 81")
+      expect(current_path).to eq("/stations/1-street")
+      expect(page).to have_content("Name: 1 Street")
+      expect(page).to have_content("Dock Count: 1")
       expect(page).to have_content("Lat: 2")
       expect(page).to have_content("Long: 3")
       expect(page).to have_content("City: San Francisco")
