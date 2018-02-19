@@ -13,7 +13,7 @@ describe "As a visitor" do
       expect(page).to have_content("Lat: 2")
       expect(page).to have_content("Long: 3")
       expect(page).to have_content("City: San Francisco")
-      expect(page).to have_content("Installation Date: 1991-12-12")    
+      expect(page).to have_content("Installation Date: 1991-12-12")
     end
   end
 end
