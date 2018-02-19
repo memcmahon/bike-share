@@ -59,10 +59,10 @@ FactoryBot.define do
   factory :station do
     sequence(:name) { |n| "#{n} Street"}
     sequence(:lat) { |n| n }
-    sequence(:lat) { |n| n }
+    sequence(:long) { |n| n }
     sequence(:dock_count) { |n| n }
     city "San Francisco"
-    date "12/12/1991"
+    installation_date "12/12/1991"
   end
 
   factory :status do
