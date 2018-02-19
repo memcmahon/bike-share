@@ -6,4 +6,9 @@ class Station < ApplicationRecord
                         :city,
                         :installation_date
   has_many :statuses
+  before_save :generate_slug
+
+  def generate_slug
+    self.slug = name.parameterize if name
+  end
 end
