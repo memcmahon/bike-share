@@ -15,9 +15,9 @@ describe "As a user" do
     before(:each) do
       @user = create(:user)
       @condition = create(:condition)
-      @trip_1 = Trip.create!(duration: 200, start_date: Date.strptime("10/3/2017", "%m/%e/%Y"), start_station_name: "DBC", start_station_id: 1, end_date: Date.strptime("10/3/2017", "%m/%e/%Y"), end_station_name: "Diebolt", end_station_id: 2, bike_id: 13, subscription_type: "Subscriber", zip_code: 55555, condition: @condition)
+      @trip_1 = Trip.create!(duration: 200, start_date: Date.strptime("10/3/2017", "%m/%e/%Y"), start_station_name: "Little Man", start_station_id: 3, end_date: Date.strptime("10/3/2017", "%m/%e/%Y"), end_station_name: "Diebolt", end_station_id: 2, bike_id: 13, subscription_type: "Subscriber", zip_code: 55555, condition: @condition)
       @trip_2 = Trip.create!(duration: 250, start_date: Date.strptime("10/3/2017", "%m/%e/%Y"), start_station_name: "DBC", start_station_id: 1, end_date: Date.strptime("10/3/2017", "%m/%e/%Y"), end_station_name: "Diebolt", end_station_id: 2, bike_id: 13, subscription_type: "Subscriber", zip_code: 55555, condition: @condition)
-      @trip_3 = Trip.create!(duration: 300, start_date: Date.strptime("10/3/2017", "%m/%e/%Y"), start_station_name: "DBC", start_station_id: 1, end_date: Date.strptime("10/3/2017", "%m/%e/%Y"), end_station_name: "Diebolt", end_station_id: 2, bike_id: 13, subscription_type: "Subscriber", zip_code: 55555, condition: @condition)
+      @trip_3 = Trip.create!(duration: 300, start_date: Date.strptime("10/3/2017", "%m/%e/%Y"), start_station_name: "DBC", start_station_id: 1, end_date: Date.strptime("10/3/2017", "%m/%e/%Y"), end_station_name: "Little Man", end_station_id: 3, bike_id: 13, subscription_type: "Subscriber", zip_code: 55555, condition: @condition)
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(:user)
       visit "/trips-dashboard"
     end
@@ -30,11 +30,14 @@ describe "As a user" do
       expect(page).to have_content("Longest Ride: 300")
       expect(page).to have_content("Shortest Ride: 200")
     end
+
+    it "they see the stations with the most starting and most ending rides" do
+      expect(page).to have_content("Station with most started rides: DBC")
+      expect(page).to have_content("Station with most ended rides: Diebolt")
+    end
   end
 end
 
-# I see the Longest ride,
-# I see the Shortest ride,
 # I see the Station with the most rides as a starting place,
 # I see the Station with the most rides as an ending place,
 # I see Month by Month breakdown of number of rides with subtotals for each year,
