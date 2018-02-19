@@ -8,4 +8,7 @@ class Condition < ApplicationRecord
                         :mean_visibility_miles,
                         :mean_wind_speed_mph,
                         :precipitation_inches
+  def month_day_converter
+    date.strftime('%B %d, %Y')
+  end
 end
