@@ -68,7 +68,7 @@ FactoryBot.define do
   factory :status do
   sequence(:bikes_available) { |n| n }
   sequence(:docks_available) { |n| n }
-  sequence(:time) { |n| "2013/#{n}/29 12:13:01" }
+  time "2013/1/29 12:13:01"
   station
   end
 
