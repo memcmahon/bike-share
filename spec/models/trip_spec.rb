@@ -11,9 +11,8 @@ describe Trip, type: :model do
     it {should validate_presence_of(:end_station_name)}
     it {should validate_presence_of(:bike_id)}
     it {should validate_presence_of(:subscription_type)}
-    it {should validate_presence_of(:zip_code)}
   end
   describe "relationships" do
     it {should belong_to(:condition)}
   end
-end 
+end

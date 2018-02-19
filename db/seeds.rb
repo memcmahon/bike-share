@@ -7,9 +7,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'csv'
 OPTIONS = {headers: true, header_converters: :symbol }
-Trip.destroy_all
 Status.destroy_all
 Station.destroy_all
+Trip.destroy_all
 Condition.destroy_all
 
 CSV.foreach('db/csv/weather.csv', OPTIONS) do |row|
@@ -36,6 +36,7 @@ CSV.foreach('db/csv/weather.csv', OPTIONS) do |row|
                     events: row[:events],
                     wind_dir_degrees: row[:wind_dir_degrees],
                     zip_code: row[:zip_code])
+  puts "Created #{Condition.last}"
 end
 
 CSV.foreach('db/csv/trip.csv', OPTIONS) do |row|
@@ -49,7 +50,8 @@ CSV.foreach('db/csv/trip.csv', OPTIONS) do |row|
                bike_id: row[:bike_id],
                subscription_type: row[:subscription_type],
                zip_code: row[:zip_code],
-               condition_id: Condition.find_by(date: row[:start_date]).id)
+               condition_id: Condition.find_by(date: row[:start_date]).id) if Condition.find_by(date: row[:start_date])
+  puts "Created #{Trip.last}"
 end
 
 CSV.foreach('db/csv/station.csv', OPTIONS) do |row|
@@ -59,6 +61,7 @@ CSV.foreach('db/csv/station.csv', OPTIONS) do |row|
                   dock_count: row[:dock_count],
                   city: row[:city],
                   installation_date: Date.strptime(row[:installation_date], '%m/%e/%Y'))
+  puts "Created #{Station.last}"
 end
 
 CSV.foreach('db/csv/status.csv', OPTIONS) do |row|
@@ -66,4 +69,5 @@ CSV.foreach('db/csv/status.csv', OPTIONS) do |row|
                  docks_available: row[:docks_available],
                  time: row[:time],
                  station_id: row[:station_id])
+  puts "Created #{Status.last}"
 end
