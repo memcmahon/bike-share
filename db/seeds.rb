@@ -13,7 +13,7 @@ Station.destroy_all
 Condition.destroy_all
 
 CSV.foreach('db/csv/weather.csv', OPTIONS) do |row|
-  Condition.create!(date: row[:date],
+  Condition.create!(date: Date.strptime(row[:date], '%m/%e/%Y'),
                     max_temp_f: row[:max_temperature_f],
                     mean_temp_f: row[:mean_temperature_f],
                     min_temp_f: row[:min_temperature_f],
@@ -40,10 +40,10 @@ end
 
 CSV.foreach('db/csv/trip.csv', OPTIONS) do |row|
   Trip.create!(duration: row[:duration],
-               start_date: row[:start_date],
+               start_date: Date.strptime(row[:start_date], '%m/%e/%Y'),
                start_station_name: row[:start_station_name],
                start_station_id: row[:start_station_id],
-               end_date: row[:end_date],
+               end_date: Date.strptime(row[:end_date], '%m/%e/%Y'),
                end_station_name: row[:end_station_name],
                end_station_id: row[:end_station_id],
                bike_id: row[:bike_id],
@@ -58,7 +58,7 @@ CSV.foreach('db/csv/station.csv', OPTIONS) do |row|
                   long: row[:long],
                   dock_count: row[:dock_count],
                   city: row[:city],
-                  installation_date: row[:installation_date])
+                  installation_date: Date.strptime(row[:installation_date], '%m/%e/%Y'))
 end
 
 CSV.foreach('db/csv/status.csv', OPTIONS) do |row|
