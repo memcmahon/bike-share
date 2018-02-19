@@ -16,4 +16,16 @@ class Trip < ApplicationRecord
   def self.average_duration
     average(:duration)
   end
+
+  def self.station_with_most_starts
+    group(:start_station_name).count.sort_by { |key, value|
+      value
+    }[-1][0]
+  end
+
+  def self.station_with_most_ends
+    group(:end_station_name).count.sort_by { |key, value|
+      value
+    }[-1][0]
+  end
 end

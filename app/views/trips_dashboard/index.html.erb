@@ -4,3 +4,6 @@
 
 <p>Longest Ride: <%= @trips.sort_by_duration.last.duration %></p>
 <p>Shortest Ride: <%= @trips.sort_by_duration.first.duration %></p>
+
+<p>Station with most started rides: <%= @trips.station_with_most_starts %></p>
+<p>Station with most ended rides: <%= @trips.station_with_most_ends %></p>
