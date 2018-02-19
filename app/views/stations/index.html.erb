@@ -1,13 +1,15 @@
+<h1>Stations</h1>
+
 <%= will_paginate @stations %>
-  <ul>
-    <% @stations.each do |station| %>
-    <div class="station-container">
-      <li>Name:              <%= station.name %></li>
-      <li>Dock Count:        <%= station.dock_count %></li>
-      <li>City:              <%= station.city %></li>
-      <li>Installation Date: <%= station.installation_date %></li>
-      <br>
-      <br>
-    </div>  
-    <% end %>
-  </ul>
+<ul>
+  <% @stations.each do |station| %>
+  <div class="station-container">
+    <li>Name:              <%= station.name %></li>
+    <li>Dock Count:        <%= station.dock_count %></li>
+    <li>City:              <%= station.city %></li>
+    <li>Installation Date: <%= station.installation_date %></li>
+    <br>
+    <br>
+  </div>  
+  <% end %>
+</ul>
