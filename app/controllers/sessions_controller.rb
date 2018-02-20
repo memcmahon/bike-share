@@ -7,7 +7,11 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
       flash[:notice] = "Logged in as #{current_user.email}."
-      redirect_to '/dashboard'
+      if current_user.default?
+        redirect_to '/dashboard'
+      else
+        redirect_to '/admin/dashboard'
+      end
     else
       render :new
     end
