@@ -21,7 +21,7 @@ class Station < ApplicationRecord
   end
 
   def self.most_bikes_available_per_station 
-    group(:name).order("dock_count ASC")
+    group(:name).order("dock_count ASC").count
   end
 
   # def self.stations_with_most_bikes_available
