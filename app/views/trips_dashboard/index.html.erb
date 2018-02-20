@@ -21,4 +21,6 @@
 <p>Least ridden bike: <%= @trips.bike_with_least_rides.first %> - <%= @trips.bike_with_least_rides.last %> rides</p>
 
 <p>Rides by Subscription Type:</p>
-    <%= @trips.rides_by_subscription %>
+    <% @trips.rides_by_subscription.each do |key, value| %>
+      <%= key %>: <%= value %> - <%= ((value.to_f / @trips.count) * 100).round(2) %>%
+    <% end %>

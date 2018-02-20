@@ -49,8 +49,8 @@ describe "As a user" do
     end
 
     it "they see a breakdown of rides by subscription type" do
-      expect(page).to have_content("Customer: 1 - 33%")
-      expect(page).to have_content("Subscriber: 2 - 67%")
+      expect(page).to have_content("Customer: 1 - 33.33%")
+      expect(page).to have_content("Subscriber: 2 - 66.67%")
     end
   end
 end

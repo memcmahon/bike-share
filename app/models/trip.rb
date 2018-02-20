@@ -42,6 +42,6 @@ class Trip < ApplicationRecord
   end
 
   def self.rides_by_subscription
-    group(:subscription_type)
+    group(:subscription_type).count
   end
 end
