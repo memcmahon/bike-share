@@ -24,3 +24,6 @@
     <% @trips.rides_by_subscription.each do |key, value| %>
       <%= key %>: <%= value %> - <%= ((value.to_f / @trips.count) * 100).round(2) %>%
     <% end %>
+
+<p>Date with most rides: <%= @trips.date_with_most_rides.first.strftime("%m/%d/%Y") %> - <%= @trips.date_with_most_rides.last %> ride(s)</p>
+<p>Date with fewest rides: <%= @trips.date_with_fewest_rides.first.strftime("%m/%d/%Y") %> - <%= @trips.date_with_fewest_rides.last %> ride(s)</p>

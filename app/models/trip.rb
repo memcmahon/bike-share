@@ -44,4 +44,12 @@ class Trip < ApplicationRecord
   def self.rides_by_subscription
     group(:subscription_type).count
   end
+
+  def self.date_with_most_rides
+    group(:start_date).order("count(id) DESC").count.first
+  end
+
+  def self.date_with_fewest_rides
+    group(:start_date).order("count(id)").count.first
+  end
 end

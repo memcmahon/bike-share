@@ -54,8 +54,8 @@ describe "As a user" do
     end
 
     it "they see the date with highest and lowest number of rides" do
-      expect(page).to have_content("Date with most rides: 10/3/2017 - 2 ride(s)")
-      expect(page).to have_content("Date with fewest rides: 11/3/2017 - 1 ride(s)")
+      expect(page).to have_content("Date with most rides: 10/03/2017 - 2 ride(s)")
+      expect(page).to have_content("Date with fewest rides: 11/03/2016 - 1 ride(s)")
     end
   end
 end
