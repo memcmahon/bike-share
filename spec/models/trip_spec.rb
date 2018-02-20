@@ -31,8 +31,33 @@ describe Trip, type: :model do
     end
 
     it "returns longest and shortest rides" do
-      expect(Trip.sort_by_duration.last).to eq(300)
-      expect(Trip.sort_by_duration.first).to eq(200)
+      expect(Trip.sort_by_duration.last).to eq(@trip_3)
+      expect(Trip.sort_by_duration.first).to eq(@trip_1)
+    end
+
+    it "returns stations with most and fewest started rides" do
+      expect(Trip.station_with_most_starts).to eq("DBC")
+      expect(Trip.station_with_most_ends).to eq("Diebolt")
+    end
+
+    it "returns a breakdown of rides by month and by year" do
+      expect(Trip.rides_by_month.first.last).to eq(1)
+      expect(Trip.rides_by_year.first.last).to eq(1)
+    end
+
+    it "returns the most and least ridden bike" do
+      expect(Trip.bike_with_most_rides).to eq([13, 2])
+      expect(Trip.bike_with_least_rides).to eq([14, 1])
+    end
+
+    it "returns the date with highest and lowest number of rides" do
+      expect(Trip.date_with_most_rides.first.strftime("%m/%d/%Y")).to eq("10/03/2017")
+      expect(Trip.date_with_fewest_rides.first.strftime("%m/%d/%Y")).to eq("11/03/2016")
+    end
+
+    it "returns the conditions for the dates with highest and lowest rides" do
+      expect(Trip.weather_for_date_with_most_rides.max_temp_f).to eq(@condition_1.max_temp_f)
+      expect(Trip.weather_for_date_with_fewest_rides.max_temp_f).to eq(@condition_2.max_temp_f)
     end
   end
 end
