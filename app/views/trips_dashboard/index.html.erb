@@ -1,0 +1,32 @@
+<h1>Trip Dashboard</h1>
+
+<p>Average Duration: <%= @trips.average_duration %></p>
+
+<p>Longest Ride: <%= @trips.sort_by_duration.last.duration %></p>
+<p>Shortest Ride: <%= @trips.sort_by_duration.first.duration %></p>
+
+<p>Station with most started rides: <%= @trips.station_with_most_starts %></p>
+<p>Station with most ended rides: <%= @trips.station_with_most_ends %></p>
+
+<p>Rides by Year:</p>
+  <% @trips.rides_by_year.each do |key, value| %>
+    <%= key.year %>: <%= value %>
+  <% end %>
+<p>Rides by Month: </p>
+  <% @trips.rides_by_month.each do |key, value| %>
+    <%= key.strftime("%B") %>: <%= value %>
+  <% end %>
+
+<p>Most ridden bike: <%= @trips.bike_with_most_rides.first %> - <%= @trips.bike_with_most_rides.last %> rides</p>
+<p>Least ridden bike: <%= @trips.bike_with_least_rides.first %> - <%= @trips.bike_with_least_rides.last %> rides</p>
+
+<p>Rides by Subscription Type:</p>
+    <% @trips.rides_by_subscription.each do |key, value| %>
+      <%= key %>: <%= value %> - <%= ((value.to_f / @trips.count) * 100).round(2) %>%
+    <% end %>
+
+<p>Date with most rides: <%= @trips.date_with_most_rides.first.strftime("%m/%d/%Y") %> - <%= @trips.date_with_most_rides.last %> ride(s)</p>
+<p>Date with fewest rides: <%= @trips.date_with_fewest_rides.first.strftime("%m/%d/%Y") %> - <%= @trips.date_with_fewest_rides.last %> ride(s)</p>
+
+<p>Weather for date with most rides: High - <%= @trips.weather_for_date_with_most_rides.max_temp_f %>, Low - <%= @trips.weather_for_date_with_most_rides.min_temp_f %>, Precipitation - <%= @trips.weather_for_date_with_most_rides.precipitation_inches %></p>
+<p>Weather for date with fewest rides: High - <%= @trips.weather_for_date_with_fewest_rides.max_temp_f %>, Low - <%= @trips.weather_for_date_with_fewest_rides.min_temp_f %>, Precipitation - <%= @trips.weather_for_date_with_fewest_rides.precipitation_inches %></p>

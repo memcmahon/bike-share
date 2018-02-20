@@ -1,5 +1,6 @@
 class Trip < ApplicationRecord
   belongs_to :condition
+
   validates_presence_of :duration,
                         :start_date,
                         :start_station_name,
@@ -9,4 +10,54 @@ class Trip < ApplicationRecord
                         :end_station_id,
                         :bike_id,
                         :subscription_type
+
+  scope :sort_by_duration, -> { order(duration: :asc) }
+
+  def self.average_duration
+    average(:duration)
+  end
+
+  def self.station_with_most_starts
+    group(:start_station_name).order('count(id) DESC').count.first.first
+  end
+
+  def self.station_with_most_ends
+    group(:end_station_name).order('count(id) DESC').count.first.first
+  end
+
+  def self.rides_by_month
+    group("DATE_TRUNC('month', start_date)").count
+  end
+
+  def self.rides_by_year
+    group("DATE_TRUNC('year', start_date)").count
+  end
+
+  def self.bike_with_most_rides
+    group(:bike_id).order("count(id) DESC").count.first
+  end
+
+  def self.bike_with_least_rides
+    group(:bike_id).order("count(id)").count.first
+  end
+
+  def self.rides_by_subscription
+    group(:subscription_type).count
+  end
+
+  def self.date_with_most_rides
+    group(:start_date).order("count(id) DESC").count.first
+  end
+
+  def self.date_with_fewest_rides
+    group(:start_date).order("count(id)").count.first
+  end
+
+  def self.weather_for_date_with_most_rides
+    Condition.find_by(date: date_with_most_rides.first)
+  end
+
+  def self.weather_for_date_with_fewest_rides
+    Condition.find_by(date: date_with_fewest_rides.first)
+  end
 end
