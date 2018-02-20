@@ -6,8 +6,10 @@ describe "As a registered user and admin" do
       create_list(:station, 84)
       
       visit '/stations-dashboard'
-
+save_and_open_page
       expect(page).to have_content("Total count of stations: 84")
+      expect(page).to have_content("Average bikes available: 42")
+      expect(page).to have_content("Most bikes available at a station: ")
     end
   end
 end

@@ -16,4 +16,16 @@ class Station < ApplicationRecord
     count
   end
 
+  def self.average_bikes_available_per_station
+    average("dock_count").floor
+  end
+
+  def self.most_bikes_available_per_station 
+    group(:name).order("dock_count ASC")
+  end
+
+  # def self.stations_with_most_bikes_available
+  #   group("name")where(max("dock_count"))
+  # end
+
 end
