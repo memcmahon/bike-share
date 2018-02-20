@@ -1,0 +1,22 @@
+<div class="container conditions">
+    <h1>Conditions</h1>
+
+    <% @conditions.each do |cond| %>
+    <div class="col-lg-3 col-md-4">
+      <div class="panel panel-default text-center">
+        <h3 class="panel-heading condition-<%= cond.id %>">
+          <strong><%= link_to cond.month_day_converter, condition_path(cond) %></strong>
+        </h3>
+        <div class="panel-body buttons">
+          <li>
+            <%= button_to 'Delete', admin_condition_path(cond), method: :delete, class: 'btn btn-danger' %>
+          </li>
+          <li>
+            <%= link_to 'Edit', edit_admin_condition_path(cond), class: 'btn btn-warning' %>
+          </li>
+        </div>
+      </div>
+    </div>
+    <% end %>
+</div>
+<%= will_paginate @condtions %>

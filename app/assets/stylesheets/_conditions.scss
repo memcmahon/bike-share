@@ -5,11 +5,17 @@
 
     .panel-heading {
       margin-top: 0px;
-      margin-botton: 0px;
+      margin-bottom: 0px;
     }
 
     .panel-body {
       font-size: 1.2em;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: space-around;
+      padding: 0.5em;
     }
   }
 }
