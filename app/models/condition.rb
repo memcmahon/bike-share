@@ -8,79 +8,107 @@ class Condition < ApplicationRecord
   end
 
   def self.trips_with_max_temp(temp)
-    joins(:trips).where(max_temp_f: temp)
+    where(max_temp_f: temp).
+    joins(:trips).
+    group(:date).
+    order("count(*) DESC").
+    count.
+    values
   end
 
   def self.avg_trips_max_temp(temp)
-    trips = trips_with_max_temp(temp).count
-    days = where(max_temp_f: temp).count
+    trips = trips_with_max_temp(temp).sum
+    days = trips_with_max_temp(temp).count
     days == 0 ? 0 : (trips / days).round(2)
   end
 
-  def self.extremum_trips_max_temp(temp, order)
-    trips_with_max_temp(temp).
-    group(:date).
-    order("count(*) #{order}").
-    count.
-    values.
-    first
+  def self.extremum_trips_max_temp(extremum, range)
+    return 0 if trips_with_max_temp(range).empty?
+    if extremum == 'min'
+      trips_with_max_temp(range).last
+    elsif extremum == 'max'
+      trips_with_max_temp(range).first
+    else
+      0
+    end
   end
 
   def self.trips_with_precipitation(inches)
-    joins(:trips).where(precipitation_inches: inches)
+    where(precipitation_inches: inches).
+    joins(:trips).
+    group(:date).
+    order("count(*) DESC").
+    count.
+    values
   end
 
   def self.avg_trips_precipitation(inches)
-    trips = trips_with_precipitation(inches).count
-    days = where(precipitation_inches: inches).count
+    trips = trips_with_precipitation(inches).sum
+    days = trips_with_precipitation(inches).count
     days == 0 ? 0 : (trips/days).round(2)
   end
 
-  def self.extremum_trips_precipitation(inches, order)
-    trips_with_precipitation(inches).
-    group(:date).
-    order("count(*) #{order}").
-    count.
-    values.
-    first
+  def self.extremum_trips_precipitation(extremum, inches)
+    return 0 if trips_with_precipitation(inches).empty?
+    if extremum == 'min'
+      trips_with_precipitation(inches).last
+    elsif extremum == 'max'
+      trips_with_precipitation(inches).first
+    else
+      0
+    end
   end
 
   def self.trips_wind_speed(mph)
-    joins(:trips).where(mean_wind_speed_mph: mph)
+    where(mean_wind_speed_mph: mph).
+    joins(:trips).
+    group(:date).
+    order("count(*) DESC").
+    count.
+    values
   end
 
   def self.avg_trips_wind_speed(mph)
-    trips = trips_wind_speed(mph).count
-    days = where(mean_wind_speed_mph: mph).count
+    trips = trips_wind_speed(mph).sum
+    days = trips_wind_speed(mph).count
     days == 0 ? 0 : (trips/days).round(2)
   end
 
-  def self.extremum_trips_wind_speed(mph, order)
-    trips_wind_speed(mph).
-    group(:date).
-    order("count(*) #{order}").
-    count.
-    values.
-    first
+  def self.extremum_trips_wind_speed(extremum, mph)
+    return 0 if trips_wind_speed(mph).empty?
+    if extremum == 'min'
+      trips_wind_speed(mph).last
+    elsif extremum == 'max'
+      trips_wind_speed(mph).first
+    else
+      0
+    end
   end
 
   def self.trips_visibility(miles)
-    joins(:trips).where(mean_visibility_miles: miles)
+    where(mean_visibility_miles: miles).
+    joins(:trips).
+    group(:date).
+    order("count(*) DESC").
+    count.
+    values
   end
 
   def self.avg_trips_visibility(miles)
-    trips = trips_visibility(miles).count
-    days = where(mean_visibility_miles: miles).count
+    trips = trips_visibility(miles).sum
+    days = trips_visibility(miles).count
     days == 0 ? 0 : (trips/days).round(2)
   end
 
-  def self.extremum_trips_visibility(miles, order)
-    trips_visibility(miles).
-    group(:date).
-    order("count(*) #{order}").
-    count.
-    values.
-    first
+  def self.extremum_trips_visibility(extremum, miles)
+    return 0 if trips_visibility(miles).empty?
+    if extremum == 'min'
+      trips_visibility(miles).last
+    elsif extremum == 'max'
+      trips_visibility(miles).first
+    else
+      0
+    end
   end
 
 end
