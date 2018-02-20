@@ -1,7 +1,7 @@
 class Condition < ApplicationRecord
   has_many :trips
 
-  validates_presence_of :date,
+  validates_presence_of :date
 
   def month_day_converter
     date.strftime('%B %d, %Y')
@@ -11,16 +11,15 @@ class Condition < ApplicationRecord
     joins(:trips).where(max_temp_f: temp)
   end
 
-
   def self.avg_trips_max_temp(temp)
     trips = trips_with_max_temp(temp).count
     days = where(max_temp_f: temp).count
     days == 0 ? 0 : (trips / days).round(2)
   end
 
-  def self.extremum_trips_max_temp(temp, order, attribute)
+  def self.extremum_trips_max_temp(temp, order)
     trips_with_max_temp(temp).
-    group(attribute).
+    group(:date).
     order("count(*) #{order}").
     count.
     first.
@@ -37,19 +36,10 @@ class Condition < ApplicationRecord
     days == 0 ? 0 : (trips/days).round(2)
   end
 
-  def self.max_trips_precipitation(inches)
+  def self.extremum_trips_precipitation(inches, order)
     trips_with_precipitation(inches).
-    group(:precipitation_inches).
-    order("count(*) DESC").
-    count.
-    first.
-    last
-  end
-
-  def self.min_trips_precipitation(inches)
-    trips_with_precipitation(inches).
-    group(:precipitation_inches).
-    order("count(*) ASC").
+    group(:date).
+    order("count(*) #{order}").
     count.
     first.
     last
@@ -60,24 +50,15 @@ class Condition < ApplicationRecord
   end
 
   def self.avg_trips_wind_speed(mph)
-    trips = trips_wind_speed(mph)
+    trips = trips_wind_speed(mph).count
     days = where(mean_wind_speed_mph: mph).count
     days == 0 ? 0 : (trips/days).round(2)
   end
 
-  def self.max_trips_wind_speed(mph)
+  def self.extremum_trips_wind_speed(mph, order)
     trips_wind_speed(mph).
-    group(:mean_wind_speed_mph).
-    order('count(*) DESC').
-    count.
-    first.
-    last
-  end
-
-  def self.min_trips_wind_speed(mph)
-    trips_wind_speed(mph).
-    group(:mean_wind_speed_mph).
-    order('count(*) ASC').
+    group(:date).
+    order("count(*) #{order}").
     count.
     first.
     last
@@ -88,24 +69,15 @@ class Condition < ApplicationRecord
   end
 
   def self.avg_trips_visibility(miles)
-    trips = trips_visibility(miles)
+    trips = trips_visibility(miles).count
     days = where(mean_visibility_miles: miles).count
     days == 0 ? 0 : (trips/days).round(2)
   end
 
-  def self.max_trips_visibility(miles)
+  def self.extremum_trips_visibility(miles, order)
     trips_visibility(miles).
-    group(:mean_visibility_miles).
-    order('count(*) DESC').
-    count.
-    first.
-    last
-  end
-
-  def self.min_trips_visibility(miles)
-    trips_visibility(miles).
-    group(:mean_visibility_miles).
-    order('count(*) ASC').
+    group(:date).
+    order("count(*) #{order}").
     count.
     first.
     last
