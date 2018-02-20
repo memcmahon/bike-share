@@ -22,8 +22,8 @@ class Condition < ApplicationRecord
     group(:date).
     order("count(*) #{order}").
     count.
-    first.
-    last
+    values.
+    first
   end
 
   def self.trips_with_precipitation(inches)
@@ -60,8 +60,8 @@ class Condition < ApplicationRecord
     group(:date).
     order("count(*) #{order}").
     count.
-    first.
-    last
+    values.
+    first
   end
 
   def self.trips_visibility(miles)
