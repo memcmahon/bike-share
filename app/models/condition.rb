@@ -41,8 +41,8 @@ class Condition < ApplicationRecord
     group(:date).
     order("count(*) #{order}").
     count.
-    first.
-    last
+    values.
+    first
   end
 
   def self.trips_wind_speed(mph)
@@ -79,8 +79,8 @@ class Condition < ApplicationRecord
     group(:date).
     order("count(*) #{order}").
     count.
-    first.
-    last
+    values.
+    first
   end
 
 end
