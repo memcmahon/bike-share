@@ -15,4 +15,24 @@ describe Trip, type: :model do
   describe "relationships" do
     it {should belong_to(:condition)}
   end
+
+  describe "analytics" do
+    before(:each) do
+      @user = create(:user)
+      @condition_1 = create(:condition, date: Date.strptime("10/3/2017", "%m/%e/%Y"))
+      @condition_2 = create(:condition, date: Date.strptime("11/3/2016", "%m/%e/%Y"))
+      @trip_1 = Trip.create!(duration: 200, start_date: Date.strptime("10/3/2017", "%m/%e/%Y"), start_station_name: "Little Man", start_station_id: 3, end_date: Date.strptime("10/3/2017", "%m/%e/%Y"), end_station_name: "Diebolt", end_station_id: 2, bike_id: 14, subscription_type: "Customer", zip_code: 55555, condition: @condition_1)
+      @trip_2 = Trip.create!(duration: 250, start_date: Date.strptime("10/3/2017", "%m/%e/%Y"), start_station_name: "DBC", start_station_id: 1, end_date: Date.strptime("10/3/2017", "%m/%e/%Y"), end_station_name: "Diebolt", end_station_id: 2, bike_id: 13, subscription_type: "Subscriber", zip_code: 55555, condition: @condition_1)
+      @trip_3 = Trip.create!(duration: 300, start_date: Date.strptime("11/3/2016", "%m/%e/%Y"), start_station_name: "DBC", start_station_id: 1, end_date: Date.strptime("11/3/2016", "%m/%e/%Y"), end_station_name: "Little Man", end_station_id: 3, bike_id: 13, subscription_type: "Subscriber", zip_code: 55555, condition: @condition_2)
+    end
+
+    it "calculates average duration of a ride" do
+      expect(Trip.average_duration).to eq(250)
+    end
+
+    it "returns longest and shortest rides" do
+      expect(Trip.sort_by_duration.last).to eq(300)
+      expect(Trip.sort_by_duration.first).to eq(200)
+    end
+  end
 end
