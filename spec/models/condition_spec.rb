@@ -36,5 +36,12 @@ describe Condition, type: :model do
       expect(Condition.extremum_trips_max_temp(50..60, 'DESC')).to eq(33)
       expect(Condition.extremum_trips_max_temp(50..60, 'ASC')).to eq(17)
     end
+    it "returns average count of trips within precipitation range" do
+      expect(Condition.avg_trips_precipitation(0..0.5)).to eq(12)
+    end 
+    it "returns count of most and least trips within precipitation range" do
+      expect(Condition.extremum_trips_precipitation(0..0.5, 'DESC')).to eq(33)
+      expect(Condition.extremum_trips_precipitation(0..0.5, 'ASC')).to eq(17)
+    end
   end
 end
