@@ -3,8 +3,8 @@ require 'rails_helper'
 describe "As a registered user and admin" do
   describe "when I visit the stations-dashboard" do
     it "I see station analytics" do
-    create_list(:station, 84)
-
+      create_list(:station, 84)
+      
       visit '/stations-dashboard'
 
       expect(page).to have_content("Total count of stations: 84")
