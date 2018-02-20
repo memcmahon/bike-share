@@ -14,10 +14,11 @@ describe "As a user" do
   describe "they visit /trips-dashboard" do
     before(:each) do
       @user = create(:user)
-      @condition = create(:condition)
-      @trip_1 = Trip.create!(duration: 200, start_date: Date.strptime("10/3/2017", "%m/%e/%Y"), start_station_name: "Little Man", start_station_id: 3, end_date: Date.strptime("10/3/2017", "%m/%e/%Y"), end_station_name: "Diebolt", end_station_id: 2, bike_id: 14, subscription_type: "Customer", zip_code: 55555, condition: @condition)
-      @trip_2 = Trip.create!(duration: 250, start_date: Date.strptime("10/3/2017", "%m/%e/%Y"), start_station_name: "DBC", start_station_id: 1, end_date: Date.strptime("10/3/2017", "%m/%e/%Y"), end_station_name: "Diebolt", end_station_id: 2, bike_id: 13, subscription_type: "Subscriber", zip_code: 55555, condition: @condition)
-      @trip_3 = Trip.create!(duration: 300, start_date: Date.strptime("11/3/2016", "%m/%e/%Y"), start_station_name: "DBC", start_station_id: 1, end_date: Date.strptime("11/3/2016", "%m/%e/%Y"), end_station_name: "Little Man", end_station_id: 3, bike_id: 13, subscription_type: "Subscriber", zip_code: 55555, condition: @condition)
+      @condition_1 = create(:condition)
+      @condition_2 = create(:condition)
+      @trip_1 = Trip.create!(duration: 200, start_date: Date.strptime("10/3/2017", "%m/%e/%Y"), start_station_name: "Little Man", start_station_id: 3, end_date: Date.strptime("10/3/2017", "%m/%e/%Y"), end_station_name: "Diebolt", end_station_id: 2, bike_id: 14, subscription_type: "Customer", zip_code: 55555, condition: @condition_1)
+      @trip_2 = Trip.create!(duration: 250, start_date: Date.strptime("10/3/2017", "%m/%e/%Y"), start_station_name: "DBC", start_station_id: 1, end_date: Date.strptime("10/3/2017", "%m/%e/%Y"), end_station_name: "Diebolt", end_station_id: 2, bike_id: 13, subscription_type: "Subscriber", zip_code: 55555, condition: @condition_1)
+      @trip_3 = Trip.create!(duration: 300, start_date: Date.strptime("11/3/2016", "%m/%e/%Y"), start_station_name: "DBC", start_station_id: 1, end_date: Date.strptime("11/3/2016", "%m/%e/%Y"), end_station_name: "Little Man", end_station_id: 3, bike_id: 13, subscription_type: "Subscriber", zip_code: 55555, condition: @condition_1)
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(:user)
       visit "/trips-dashboard"
     end
@@ -56,6 +57,11 @@ describe "As a user" do
     it "they see the date with highest and lowest number of rides" do
       expect(page).to have_content("Date with most rides: 10/03/2017 - 2 ride(s)")
       expect(page).to have_content("Date with fewest rides: 11/03/2016 - 1 ride(s)")
+    end
+
+    it "they see the weather on the date with the most and fewest rides" do
+      expect(page).to have_content("Weather for date with most rides: High - #{@condition_1.max_temp_f}, Low - #{@condition_1.min_temp_f}, Precipitation - #{@condition_1.precipitation_inches}")
+      expect(page).to have_content("Weather for date with fewest rides: High - #{@condition_2.max_temp_f}, Low - #{@condition_2.min_temp_f}, Precipitation - #{@condition_2.precipitation_inches}")
     end
   end
 end
