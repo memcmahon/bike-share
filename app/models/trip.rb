@@ -32,4 +32,12 @@ class Trip < ApplicationRecord
   def self.rides_by_year
     group("DATE_TRUNC('year', start_date)").count
   end
+
+  def self.bike_with_most_rides
+    group(:bike_id).order("count(id) DESC").count.first
+  end
+
+  def self.bike_with_least_rides
+    group(:bike_id).order("count(id)").count.first
+  end
 end

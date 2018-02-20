@@ -16,3 +16,6 @@
   <% @trips.rides_by_month.each do |key, value| %>
     <%= key.strftime("%B") %>: <%= value %>
   <% end %>
+
+  <p>Most ridden bike: <%= @trips.bike_with_most_rides.first %> - <%= @trips.bike_with_most_rides.last %> rides</p>
+  <p>Least ridden bike: <%= @trips.bike_with_least_rides.first %> - <%= @trips.bike_with_least_rides.last %> rides</p>
