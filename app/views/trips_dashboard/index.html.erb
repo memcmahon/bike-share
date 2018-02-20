@@ -27,3 +27,6 @@
 
 <p>Date with most rides: <%= @trips.date_with_most_rides.first.strftime("%m/%d/%Y") %> - <%= @trips.date_with_most_rides.last %> ride(s)</p>
 <p>Date with fewest rides: <%= @trips.date_with_fewest_rides.first.strftime("%m/%d/%Y") %> - <%= @trips.date_with_fewest_rides.last %> ride(s)</p>
+
+<p>Weather for date with most rides: High - <%= @trips.weather_for_date_with_most_rides.max_temp_f %>, Low - <%= @trips.weather_for_date_with_most_rides.min_temp_f %>, Precipitation - <%= @trips.weather_for_date_with_most_rides.precipitation_inches %></p>
+<p>Weather for date with fewest rides: High - <%= @trips.weather_for_date_with_fewest_rides.max_temp_f %>, Low - <%= @trips.weather_for_date_with_fewest_rides.min_temp_f %>, Precipitation - <%= @trips.weather_for_date_with_fewest_rides.precipitation_inches %></p>

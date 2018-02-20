@@ -14,11 +14,11 @@ describe "As a user" do
   describe "they visit /trips-dashboard" do
     before(:each) do
       @user = create(:user)
-      @condition_1 = create(:condition)
-      @condition_2 = create(:condition)
+      @condition_1 = create(:condition, date: Date.strptime("10/3/2017", "%m/%e/%Y"))
+      @condition_2 = create(:condition, date: Date.strptime("11/3/2016", "%m/%e/%Y"))
       @trip_1 = Trip.create!(duration: 200, start_date: Date.strptime("10/3/2017", "%m/%e/%Y"), start_station_name: "Little Man", start_station_id: 3, end_date: Date.strptime("10/3/2017", "%m/%e/%Y"), end_station_name: "Diebolt", end_station_id: 2, bike_id: 14, subscription_type: "Customer", zip_code: 55555, condition: @condition_1)
       @trip_2 = Trip.create!(duration: 250, start_date: Date.strptime("10/3/2017", "%m/%e/%Y"), start_station_name: "DBC", start_station_id: 1, end_date: Date.strptime("10/3/2017", "%m/%e/%Y"), end_station_name: "Diebolt", end_station_id: 2, bike_id: 13, subscription_type: "Subscriber", zip_code: 55555, condition: @condition_1)
-      @trip_3 = Trip.create!(duration: 300, start_date: Date.strptime("11/3/2016", "%m/%e/%Y"), start_station_name: "DBC", start_station_id: 1, end_date: Date.strptime("11/3/2016", "%m/%e/%Y"), end_station_name: "Little Man", end_station_id: 3, bike_id: 13, subscription_type: "Subscriber", zip_code: 55555, condition: @condition_1)
+      @trip_3 = Trip.create!(duration: 300, start_date: Date.strptime("11/3/2016", "%m/%e/%Y"), start_station_name: "DBC", start_station_id: 1, end_date: Date.strptime("11/3/2016", "%m/%e/%Y"), end_station_name: "Little Man", end_station_id: 3, bike_id: 13, subscription_type: "Subscriber", zip_code: 55555, condition: @condition_2)
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(:user)
       visit "/trips-dashboard"
     end

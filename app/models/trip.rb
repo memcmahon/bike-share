@@ -52,4 +52,12 @@ class Trip < ApplicationRecord
   def self.date_with_fewest_rides
     group(:start_date).order("count(id)").count.first
   end
+
+  def self.weather_for_date_with_most_rides
+    Condition.find_by(date: date_with_most_rides.first)
+  end
+
+  def self.weather_for_date_with_fewest_rides
+    Condition.find_by(date: date_with_fewest_rides.first)
+  end
 end
