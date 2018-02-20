@@ -11,6 +11,7 @@ body {
     size: cover;
     repeat: no-repeat;
     position: center;
+    attachment: fixed;
   }
 }
 
@@ -41,6 +42,6 @@ a {
 .pagination {
   span, .next_page, a, .current {
     font-size: 20px;
-    padding: 0px 2px; 
+    padding: 0px 2px;
   }
 }

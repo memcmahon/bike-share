@@ -1,1 +1,169 @@
-<h1>Weather Dashboard</h1>
+<div class="jumbotron text-center">
+  <i class="fa fa-cloud"></i>
+  <h1><em>Weather Dashboard</em></h1>
+</div>
+
+<div class="container analytics">
+
+  <h2>Ride Analytics For High Temperatures</h2>
+
+  <div class="col-lg-3 col-md-4">
+    <div class="panel panel-default text-center">
+      <h3 class="panel-heading">50-60 Degrees Farenheit</h3>
+      <ul class="panel-body">
+        <li>Average Trips: <%= @conditions.avg_trips_max_temp(50..60) %></li>
+        <li>Most Trips: <%= @conditions.extremum_trips_max_temp(50..60, 'DESC') %></li>
+        <li>Least Trips: <%= @conditions.extremum_trips_max_temp(50..60, 'ASC') %></li>
+      </ul>
+    </div>
+  </div>
+  <div class="col-lg-3 col-md-4">
+    <div class="panel panel-default text-center">
+      <h3 class="panel-heading">61-70 Degrees Farenheit</h3>
+      <ul class="panel-body">
+        <li>Average Trips: <%= @conditions.avg_trips_max_temp(61..70) %></li>
+        <li>Most Trips: <%= @conditions.extremum_trips_max_temp(61..70, 'DESC') %></li>
+        <li>Least Trips: <%= @conditions.extremum_trips_max_temp(61..70, 'ASC') %></li>
+      </ul>
+    </div>
+  </div>
+  <div class="col-lg-3 col-md-4">
+    <div class="panel panel-default text-center">
+      <h3 class="panel-heading">71-80 Degrees Farenheit</h3>
+      <ul class="panel-body">
+        <li>Average Trips: <%= @conditions.avg_trips_max_temp(71..80) %></li>
+        <li>Most Trips: <%= @conditions.extremum_trips_max_temp(71..80, 'DESC') %></li>
+        <li>Least Trips: <%= @conditions.extremum_trips_max_temp(71..80, 'ASC') %></li>
+      </ul>
+    </div>
+  </div>
+  <div class="col-lg-3 col-md-4">
+    <div class="panel panel-default text-center">
+      <h3 class="panel-heading">81-90 Degrees Farenheit</h3>
+      <ul class="panel-body">
+        <li>Average Trips: <%= @conditions.avg_trips_max_temp(81..90) %></li>
+        <li>Most Trips: <%= @conditions.extremum_trips_max_temp(81..90, 'DESC') %></li>
+        <li>Least Trips: <%= @conditions.extremum_trips_max_temp(81..90, 'ASC') %></li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>Ride Analytics For Precipitation Levels</h2>
+
+  <div class="col-lg-4 col-md-4">
+    <div class="panel panel-default text-center">
+      <h3 class="panel-heading">0"-0.5" of Precipitaion</h3>
+      <ul class="panel-body">
+        <li>Average Trips: <%= @conditions.avg_trips_precipitation(0..0.5) %></li>
+        <li>Most Trips: <%= @conditions.extremum_trips_precipitation(0..0.5, 'DESC') %></li>
+        <li>Least Trips: <%= @conditions.extremum_trips_precipitation(0..0.5, 'ASC') %></li>
+      </ul>
+    </div>
+  </div>
+  <div class="col-lg-4 col-md-4">
+    <div class="panel panel-default text-center">
+      <h3 class="panel-heading">0.6"-1.0" of Precipitaion</h3>
+      <ul class="panel-body">
+        <li>Average Trips: <%= @conditions.avg_trips_precipitation(0.6..1.0) %></li>
+        <li>Most Trips: <%= @conditions.extremum_trips_precipitation(0.6..1.0, 'DESC') %></li>
+        <li>Least Trips: <%= @conditions.extremum_trips_precipitation(0.6..1.0, 'ASC') %></li>
+      </ul>
+    </div>
+  </div>
+  <div class="col-lg-4 col-md-4">
+    <div class="panel panel-default text-center">
+      <h3 class="panel-heading">1.1"-1.5" of Precipitaion</h3>
+      <ul class="panel-body">
+        <li>Average Trips: <%= @conditions.avg_trips_precipitation(1.1..1.5) %></li>
+        <li>Most Trips: <%= @conditions.extremum_trips_precipitation(1.1..1.5, 'DESC') %></li>
+        <li>Least Trips: <%= @conditions.extremum_trips_precipitation(1.1..1.5, 'ASC') %></li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>Ride Analytics For Visibility</h2>
+
+  <div class="col-lg-4 col-md-4">
+    <div class="panel panel-default text-center">
+      <h3 class="panel-heading">0-4 Miles of Visibility</h3>
+      <ul class="panel-body">
+        <li>Average Trips: <%= @conditions.avg_trips_visibility(0..4) %></li>
+        <li>Most Trips: <%= @conditions.extremum_trips_visibility(0..4, 'DESC') %></li>
+        <li>Least Trips: <%= @conditions.extremum_trips_visibility(0..4, 'ASC') %></li>
+      </ul>
+    </div>
+  </div>
+  <div class="col-lg-4 col-md-4">
+    <div class="panel panel-default text-center">
+      <h3 class="panel-heading">5-8 Miles of Visibility</h3>
+      <ul class="panel-body">
+        <li>Average Trips: <%= @conditions.avg_trips_visibility(5..8) %></li>
+        <li>Most Trips: <%= @conditions.extremum_trips_visibility(5..8, 'DESC') %></li>
+        <li>Least Trips: <%= @conditions.extremum_trips_visibility(5..8, 'ASC') %></li>
+      </ul>
+    </div>
+  </div>
+  <div class="col-lg-4 col-md-4">
+    <div class="panel panel-default text-center">
+      <h3 class="panel-heading">5-8 Miles of Visibility</h3>
+      <ul class="panel-body">
+        <li>Average Trips: <%= @conditions.avg_trips_visibility(8..12) %></li>
+        <li>Most Trips: <%= @conditions.extremum_trips_visibility(8..12, 'DESC') %></li>
+        <li>Least Trips: <%= @conditions.extremum_trips_visibility(8..12, 'ASC') %></li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>Ride Analytics For Max Wind Speeds</h2>
+
+  <div class="col-md-3 col-md-4">
+    <div class="panel panel-default text-center">
+      <h3 class="panel-heading">0-4 MPH of Wind Speed</h3>
+      <ul class="panel-body">
+        <li>Average Trips: <%= @conditions.avg_trips_wind_speed(0..4) %></li>
+        <li>Most Trips: <%= @conditions.extremum_trips_wind_speed(0..4, 'DESC') %></li>
+        <li>Least Trips: <%= @conditions.extremum_trips_wind_speed(0..4, 'ASC') %></li>
+      </ul>
+    </div>
+  </div>
+  <div class="col-md-3 col-md-4">
+    <div class="panel panel-default text-center">
+      <h3 class="panel-heading">5-9 MPH of Wind Speed</h3>
+      <ul class="panel-body">
+        <li>Average Trips: <%= @conditions.avg_trips_wind_speed(5..9) %></li>
+        <li>Most Trips: <%= @conditions.extremum_trips_wind_speed(5..9, 'DESC') %></li>
+        <li>Least Trips: <%= @conditions.extremum_trips_wind_speed(5..9, 'ASC') %></li>
+      </ul>
+    </div>
+  </div>
+  <div class="col-md-3 col-md-4">
+    <div class="panel panel-default text-center">
+      <h3 class="panel-heading">10-14 MPH of Wind Speed</h3>
+      <ul class="panel-body">
+        <li>Average Trips: <%= @conditions.avg_trips_wind_speed(10..14) %></li>
+        <li>Most Trips: <%= @conditions.extremum_trips_wind_speed(10..14, 'DESC') %></li>
+        <li>Least Trips: <%= @conditions.extremum_trips_wind_speed(10..14, 'ASC') %></li>
+      </ul>
+    </div>
+  </div>
+  <div class="col-md-3 col-md-4">
+    <div class="panel panel-default text-center">
+      <h3 class="panel-heading">15-19 MPH of Wind Speed</h3>
+      <ul class="panel-body">
+        <li>Average Trips: <%= @conditions.avg_trips_wind_speed(15..19) %></li>
+        <li>Most Trips: <%= @conditions.extremum_trips_wind_speed(15..19, 'DESC') %></li>
+        <li>Least Trips: <%= @conditions.extremum_trips_wind_speed(15..19, 'ASC') %></li>
+      </ul>
+    </div>
+  </div>
+  <div class="col-md-3 col-md-4">
+    <div class="panel panel-default text-center">
+      <h3 class="panel-heading">20-24 MPH of Wind Speed</h3>
+      <ul class="panel-body">
+        <li>Average Trips: <%= @conditions.avg_trips_wind_speed(20..24) %></li>
+        <li>Most Trips: <%= @conditions.extremum_trips_wind_speed(20..24, 'DESC') %></li>
+        <li>Least Trips: <%= @conditions.extremum_trips_wind_speed(20..24, 'ASC') %></li>
+      </ul>
+    </div>
+  </div>
+</div>
