@@ -1,15 +1,27 @@
-<%= will_paginate @trips %>
-  <ul>
-    <% @trips.each do |trip| %>
-      <li>Duration: <%= trip.duration %></li>
-      <li>Start Date: <%= trip.start_date %></li>
-      <li>Start Station: <%= trip.start_station_name %></li>
-      <li>End Date: <%= trip.end_date %></li>
-      <li>End Station: <%= trip.end_station_name %></li>
-      <li>Bike Id: <%= trip.bike_id %></li>
-      <li>Subscription Type: <%= trip.subscription_type %></li>
-      <li>Zip Code: <%= trip.zip_code %></li>
-    <% end %>
-  </ul>
+<div class="index-pagination">
+  <h1>Trips</h1>
+  <%= will_paginate @trips %>
+</div>
 
-<%= will_paginate @products %>
+<div class="container trips">
+  <% @trips.each do |trip| %>
+    <a href="<%= trip_path(trip) %>">
+      <div class="col-lg-3 col-md-4">
+        <div class="panel">
+          <li>Duration: <%= trip.duration %></li>
+          <li>Start Date: <%= trip.start_date.strftime("%m/%d/%Y") %></li>
+          <li>Start Station: <%= trip.start_station_name %></li>
+          <li>End Date: <%= trip.end_date.strftime("%m/%d/%Y") %></li>
+          <li>End Station: <%= trip.end_station_name %></li>
+          <li>Bike Id: <%= trip.bike_id %></li>
+          <li>Subscription Type: <%= trip.subscription_type %></li>
+          <li>Zip Code: <%= trip.zip_code %></li>
+        </div>
+      </div>
+    </a>
+  <% end %>
+</div>
+
+<div class="index-pagination">
+  <%= will_paginate @trips %>
+</div>
