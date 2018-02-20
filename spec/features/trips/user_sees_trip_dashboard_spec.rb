@@ -52,9 +52,10 @@ describe "As a user" do
       expect(page).to have_content("Customer: 1 - 33.33%")
       expect(page).to have_content("Subscriber: 2 - 66.67%")
     end
+
+    it "they see the date with highest and lowest number of rides" do
+      expect(page).to have_content("Date with most rides: 10/3/2017 - 2 ride(s)")
+      expect(page).to have_content("Date with fewest rides: 11/3/2017 - 1 ride(s)")
+    end
   end
 end
-
-# I see the User subscription type breakout with both count and percentage,
-# I see the Single date with the highest number of trips with a count of those trips,
-# I see the Single date with the lowest number of trips with a count of those trips.
