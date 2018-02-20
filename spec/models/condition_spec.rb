@@ -50,5 +50,12 @@ describe Condition, type: :model do
       expect(Condition.extremum_trips_wind_speed(20..25, 'DESC')).to eq(33)
       expect(Condition.extremum_trips_wind_speed(20..25, 'ASC')).to eq(17)
     end
+    it "returns average count of trips within visibility range" do
+      expect(Condition.avg_trips_visibility(5..10)).to eq(12)
+    end
+    it "returns count of most and least trips within visibility range" do
+      expect(Condition.extremum_trips_visibility(5..10, 'DESC')).to eq(33)
+      expect(Condition.extremum_trips_visibility(5..10, 'ASC')).to eq(17)
+    end
   end
 end
