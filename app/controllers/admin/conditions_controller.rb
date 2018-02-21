@@ -8,6 +8,10 @@ class Admin::ConditionsController < Admin::BaseController
   def show
   end
 
+  def new
+    @condition = Condition.new
+  end
+
   def destroy
     if @condition.destroy
       flash[:notice] = "You have successfully deleted a condition."
