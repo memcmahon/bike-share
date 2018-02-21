@@ -56,5 +56,14 @@ describe "As a visitor" do
       expect(page).to have_content(trip[33].duration)
       expect(page).to have_content(trip[34].duration)
     end
+
+    it "they do not see links to edit or delete" do
+      trip = create_list(:trip, 35)
+
+      visit trips_path
+
+      expect(page).to_not have_link("Edit")
+      expect(page).to_not have_link("Delete")
+    end
   end
 end
