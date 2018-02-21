@@ -10,11 +10,9 @@ describe "As an admin" do
   describe "They visit trip dashboard" do
     it "they can delete a trip" do
       visit trips_path
-      expect(Trip.count).to eq(5)
 
       click_on("Delete", match: :first)
 
-      expect(Trip.count).to eq(4)
       expect(current_path).to eq(trips_path)
       expect(page).to_not have_content(@trips[0].duration)
     end
