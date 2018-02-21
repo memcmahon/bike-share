@@ -7,6 +7,8 @@ class Station < ApplicationRecord
                         :installation_date
                         
   before_save :generate_slug
+  has_many :start_trip_stations, class_name: "Trip", foreign_key: "start_station_id"
+  has_many :end_trip_stations, class_name: "Trip", foreign_key: "end_station_id"
 
   def generate_slug
     self.slug = name.parameterize if name
