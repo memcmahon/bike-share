@@ -1,5 +1,5 @@
 class Admin::ConditionsController < Admin::BaseController
-  before_action :set_condition, only: [:show, :destroy]
+  before_action :set_condition, only: [:show, :destroy, :edit]
 
   def index
     @conditions = Condition.all.paginate(page: params[:page], per_page: 20)
@@ -21,7 +21,10 @@ class Admin::ConditionsController < Admin::BaseController
       flash[:notice] = "Unable to create condition. Please make sure date is filled in."
       render :new
     end
-  end 
+  end
+
+  def edit
+  end
 
   def destroy
     if @condition.destroy
