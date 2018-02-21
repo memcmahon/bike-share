@@ -5,7 +5,7 @@ class Station < ApplicationRecord
                         :dock_count,
                         :city,
                         :installation_date
-  has_many :statuses
+                        
   before_save :generate_slug
 
   def generate_slug
@@ -21,7 +21,6 @@ class Station < ApplicationRecord
   end
 
   def self.most_bikes_available_at_a_station 
-    statuses.order(:time).last.bikes_available
     # most_bikes = maximum(:dock_count)
   end
 

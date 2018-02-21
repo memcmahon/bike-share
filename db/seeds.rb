@@ -7,7 +7,6 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'csv'
 OPTIONS = {headers: true, header_converters: :symbol }
-Status.destroy_all
 Station.destroy_all
 Trip.destroy_all
 Condition.destroy_all
@@ -64,10 +63,3 @@ CSV.foreach('db/fixtures/station.csv', OPTIONS) do |row|
   puts "Created #{Station.last}"
 end
 
-CSV.foreach('db/csv/status.csv', OPTIONS) do |row|
-  Status.create!(bikes_available: row[:bikes_available],
-                 docks_available: row[:docks_available],
-                 time: row[:time],
-                 station_id: row[:station_id])
-  puts "Created #{Status.last}"
-end

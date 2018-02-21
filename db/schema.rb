@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180219060342) do
+ActiveRecord::Schema.define(version: 20180221224004) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -76,14 +76,6 @@ ActiveRecord::Schema.define(version: 20180219060342) do
     t.string "slug"
   end
 
-  create_table "statuses", force: :cascade do |t|
-    t.integer "bikes_available"
-    t.integer "docks_available"
-    t.datetime "time"
-    t.bigint "station_id"
-    t.index ["station_id"], name: "index_statuses_on_station_id"
-  end
-
   create_table "trips", force: :cascade do |t|
     t.integer "duration"
     t.datetime "start_date"
@@ -111,6 +103,5 @@ ActiveRecord::Schema.define(version: 20180219060342) do
   add_foreign_key "carts", "users"
   add_foreign_key "orders", "carts"
   add_foreign_key "orders", "users"
-  add_foreign_key "statuses", "stations"
   add_foreign_key "trips", "conditions"
 end
