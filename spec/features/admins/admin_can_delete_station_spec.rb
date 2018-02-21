@@ -14,7 +14,7 @@ describe "As an admin" do
       expect(page).to have_content("1 Street")
       expect(page).to have_content("City: San Francisco")
       expect(page).to have_content("1991-12-12")
-
+      
       click_on "delete"
 
       expect(page).to have_content("Stations")
@@ -24,3 +24,4 @@ describe "As an admin" do
     end
   end
 end
+ 
