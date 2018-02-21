@@ -16,6 +16,8 @@ describe "As a visitor" do
       expect(page).to have_content(trip.bike_id)
       expect(page).to have_content(trip.subscription_type)
       expect(page).to have_content(trip.zip_code)
+      expect(page).to_not have_link("Edit")
+      expect(page).to_not have_link("Delete")
     end
   end
 end
