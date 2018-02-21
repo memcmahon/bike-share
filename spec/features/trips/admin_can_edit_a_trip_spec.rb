@@ -23,7 +23,6 @@ describe "As an admin" do
       fill_in("trip[bike_id]", with: 13)
       fill_in("trip[subscription_type]", with: "customer")
       fill_in("trip[zip_code]", with: 55555)
-      select("01/13/1988", from: "condition")
       click_on("Update Trip")
 
       expect(current_path).to eq(trip_path(@trips[0]))

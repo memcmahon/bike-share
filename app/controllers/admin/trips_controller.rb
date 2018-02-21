@@ -7,6 +7,7 @@ class Admin::TripsController < Admin::BaseController
   end
 
   def edit
+    @conditions = Condition.all
   end
 
   private
