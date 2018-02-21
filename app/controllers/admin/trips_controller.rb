@@ -10,6 +10,11 @@ class Admin::TripsController < Admin::BaseController
     @conditions = Condition.all
   end
 
+  def update
+    @trip.update(trip_params)
+    redirect_to trip_path(@trip)
+  end
+
   private
     def set_trip
       @trip = Trip.find(params[:id])
