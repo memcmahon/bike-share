@@ -19,8 +19,9 @@ describe "as an admin" do
       fill_in "condition[zip_code]", with: 122323
 
       click_on "Create Condition"
-
-      expect(page).to have_content("Conditions on '12/12/1232'")
+      
+      expect(page).to have_content("You have successfully created a condition")
+      expect(page).to have_content("Conditions on December 12, 1232")
       expect(page).to have_content("Max Temperature: 12.2")
       expect(page).to have_content("Mean Temperature: 12.2")
       expect(page).to have_content("Minimum Temperature: 12.2")
