@@ -12,6 +12,17 @@ class Admin::ConditionsController < Admin::BaseController
     @condition = Condition.new
   end
 
+  def create
+    @condition = Condition.new(condition_params)
+    if @condition.save
+      flash[:notice] = "You have successfully created a condition"
+      redirect_to admin_condition_path(@condition)
+    else
+      flash[:notice] = "Unable to create condition. Please make sure date is filled in."
+      render :new
+    end
+  end 
+
   def destroy
     if @condition.destroy
       flash[:notice] = "You have successfully deleted a condition."
@@ -21,6 +32,18 @@ class Admin::ConditionsController < Admin::BaseController
 
 
   private
+
+    def condition_params
+      params.require(:condition).permit(:max_temp_f,
+                                        :min_temp_f,
+                                        :mean_temp_f,
+                                        :mean_humidity,
+                                        :mean_visibility_miles,
+                                        :mean_wind_speed_mph,
+                                        :precipitation_inches,
+                                        :date,
+                                        :zip_code)
+    end
 
     def set_condition
       @condition = Condition.find(params[:id])
