@@ -5,6 +5,31 @@ class StationsController < ApplicationController
   end
 
   def show
-    @station = Station.find_by(slug: params[:name])
-   end
+    @station = Station.find_by(slug: params[:slug])
+  end
+
+  def edit
+    @station = Station.find_by(slug: params[:slug])
+  end
+
+  def update
+    @station = Station.find(params[:slug])
+    @station.update(station_params)
+
+    redirect_to station_path(@station.slug)
+  end
+
+  def destroy
+    station = Station.find(params[:slug])
+    station.destroy
+    flash[:notice] = "#{station.name} was deleted"
+
+    redirect_to stations_path
+  end
+
+  private
+
+    def station_params
+      params.require(:station).permit(:name, :lat, :long, :dock_count, :city, :installation_date, :slug)
+    end
 end
