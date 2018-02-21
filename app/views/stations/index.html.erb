@@ -1,5 +1,10 @@
 <h1>Stations</h1>
 
+
+<% if current_user && current_user.admin? %>
+  <h3><%= link_to "Create New Station", new_admin_station_path %></h3>
+<% end %>
+
 <%= will_paginate @stations %>
 <ul>
   <% @stations.each do |station| %>
