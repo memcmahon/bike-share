@@ -38,14 +38,13 @@ describe "As an admin" do
       expect(page).to have_content(@trip[26].duration)
       expect(page).to have_content(@trip[27].duration)
       expect(page).to have_content(@trip[28].duration)
-      expect(page).to have_content(@trip[29].duration)
       expect(page).to_not have_content(@trip[31].duration)
     end
 
     it "they can click through to next page of trips" do
       click_on("Next", match: :first)
 
-      expect(page).to_not have_content(@trip[29].duration)
+      expect(page).to_not have_content(@trip[24].duration)
       expect(page).to have_content(@trip[30].duration)
       expect(page).to have_content(@trip[31].duration)
       expect(page).to have_content(@trip[32].duration)
