@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   end
 
 
-  resources :stations, param: :name
+  resources :stations, param: :slug
 
   resources :conditions, only: [:index, :show]
 
@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :conditions
     resources :trips
+    resources :stations 
   end
 
   get '/login', to: 'sessions#new'

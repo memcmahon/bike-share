@@ -26,7 +26,7 @@ class Station < ApplicationRecord
   end
 
   def self.stations_with_most_bikes_available
-    where(dock_count: most_bikes_available_per_station).pluck(:name)
+    where(dock_count: most_bikes_available_at_a_station).pluck(:name)
   end
 
 end
