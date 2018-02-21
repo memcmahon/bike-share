@@ -1,0 +1,41 @@
+<div class="container forms">
+  <%= form_for [:admin, @condition] do |f| %>
+    <div class="form-group">
+      <%= f.label :date %>
+      <%= f.date_field :date, class: "form-control"%>
+    </div>
+    <div class="form-group">
+      <%= f.label :zip_code %>
+      <%= f.date_field :zip_code, class: "form-control"%>
+    </div>
+    <div class="form-group">
+      <%= f.label :max_temp_f %>
+      <%= f.number_field :max_temp_f, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :mean_temp_f %>
+      <%= f.number_field :mean_temp_f, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :min_temp_f %>
+      <%= f.number_field :min_temp_f, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :mean_humidity %>
+      <%= f.number_field :mean_humidity, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :mean_visibility_miles %>
+      <%= f.number_field :mean_visibility_miles, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :mean_wind_speed_mph %>
+      <%= f.number_field :mean_wind_speed_mph, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :precipitation_inches %>
+      <%= f.number_field :precipitation_inches, class: "form-control" %>
+    </div>
+  <%= f.submit class: 'btn btn-default btn-lg btn-submit'%>
+  <% end %>
+</div>
