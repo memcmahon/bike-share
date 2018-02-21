@@ -11,7 +11,7 @@ class Admin::TripsController < Admin::BaseController
 
   private
     def set_trip
-      Trip.find(params[:id])
+      @trip = Trip.find(params[:id])
     end
 
     def trip_params
