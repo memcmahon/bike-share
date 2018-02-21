@@ -6,7 +6,8 @@ describe "as an admin" do
       admin = create(:admin)
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
-      visit new_admin_condition_path
+      visit admin_conditions_path
+      click_on "New Condition"
 
       fill_in "condition[date]", with: '12/12/1232'
       fill_in "condition[max_temp_f]", with: 12.2
@@ -19,7 +20,7 @@ describe "as an admin" do
       fill_in "condition[zip_code]", with: 122323
 
       click_on "Create Condition"
-      
+
       expect(page).to have_content("You have successfully created a condition")
       expect(page).to have_content("Conditions on December 12, 1232")
       expect(page).to have_content("Max Temperature: 12.2")
