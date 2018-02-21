@@ -54,8 +54,8 @@ describe "As an admin" do
     end
 
     it "they see a link to edit and delete each trip" do
-      expect(page).to have_link("Edit", :count => 30)
-      expect(page).to have_link("Delete", :count => 30)
+      expect(page).to have_content("Edit", :count => 30)
+      expect(page).to have_content("Delete", :count => 30)
     end
   end
 end
