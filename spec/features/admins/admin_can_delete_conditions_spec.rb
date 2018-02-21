@@ -10,7 +10,10 @@ describe "as an admin" do
       visit admin_conditions_path
       click_on "Delete"
 
+      save_and_open_page
+
       expect(page).to_not have_link(condition.date)
+      expect(page).to have_content("You have successfully deleted a condition.")
     end
   end
 end
