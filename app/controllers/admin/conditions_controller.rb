@@ -1,5 +1,5 @@
 class Admin::ConditionsController < Admin::BaseController
-  before_action :set_condition, only: [:show, :destroy, :edit]
+  before_action :set_condition, only: [:show, :destroy, :edit, :update]
 
   def index
     @conditions = Condition.all.paginate(page: params[:page], per_page: 20)
@@ -24,6 +24,16 @@ class Admin::ConditionsController < Admin::BaseController
   end
 
   def edit
+  end
+
+  def update
+    if @condition.update(condition_params)
+      flash[:notice] = "You have successfully updated the condition"
+      redirect_to admin_condition_path(@condition)
+    else
+      flash[:notice] = "Unable to edit condition. Please make sure date is filled in."
+      render :new
+    end
   end
 
   def destroy
