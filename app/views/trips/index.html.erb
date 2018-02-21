@@ -6,7 +6,7 @@
 <div class="container trips">
   <% @trips.each do |trip| %>
     <a href="<%= trip_path(trip) %>">
-      <div class="col-lg-3 col-md-4">
+      <div class="col-lg-4 col-md-3">
         <div class="panel">
           <li>Duration: <%= trip.duration %></li>
           <li>Start Date: <%= trip.start_date.strftime("%m/%d/%Y") %></li>
@@ -25,6 +25,6 @@
   <% end %>
 </div>
 
-<div class="index-pagination">
+<div class="index-pagination panel">
   <%= will_paginate @trips %>
 </div>
