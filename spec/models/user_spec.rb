@@ -12,7 +12,6 @@ describe User, type: :model do
 
   describe "Relationships" do
     it { should have_many(:orders) }
-    it { should have_many(:accessories).through(:carts) }
   end
 
   describe "Roles" do
