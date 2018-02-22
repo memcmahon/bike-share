@@ -6,7 +6,7 @@
 <div class="container trips">
   <% @trips.each do |trip| %>
     <a href="<%= trip_path(trip) %>">
-      <div class="col-lg-3 col-md-4">
+      <div class="col-lg-4 col-md-3">
         <div class="panel">
           <li>Duration: <%= trip.duration %></li>
           <li>Start Date: <%= trip.start_date.strftime("%m/%d/%Y") %></li>
@@ -16,12 +16,15 @@
           <li>Bike Id: <%= trip.bike_id %></li>
           <li>Subscription Type: <%= trip.subscription_type %></li>
           <li>Zip Code: <%= trip.zip_code %></li>
+          <% if current_user && current_user.admin? %>
+            <%= link_to "Edit", edit_admin_trip_path(trip) %> - <%= link_to "Delete", admin_trip_path(trip), method: :delete %>
+          <% end %>
         </div>
       </div>
     </a>
   <% end %>
 </div>
 
-<div class="index-pagination">
+<div class="index-pagination panel">
   <%= will_paginate @trips %>
 </div>

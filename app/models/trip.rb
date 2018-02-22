@@ -26,11 +26,15 @@ class Trip < ApplicationRecord
   end
 
   def self.rides_by_month
-    group("DATE_TRUNC('month', start_date)").count
+    group("DATE_TRUNC('month', start_date)").count.transform_keys do |key|
+      key.strftime("%B")
+    end
   end
 
   def self.rides_by_year
-    group("DATE_TRUNC('year', start_date)").count
+    group("DATE_TRUNC('year', start_date)").count.transform_keys do |key|
+      key.year
+    end
   end
 
   def self.bike_with_most_rides

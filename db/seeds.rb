@@ -38,28 +38,29 @@ CSV.foreach('db/fixtures/condition.csv', OPTIONS) do |row|
   puts "Created #{Condition.last}"
 end
 
-CSV.foreach('db/fixtures/trip.csv', OPTIONS) do |row|
-  Trip.create!(duration: row[:duration],
-               start_date: Date.strptime(row[:start_date], '%m/%e/%Y'),
-               start_station_name: row[:start_station_name],
-               start_station_id: row[:start_station_id],
-               end_date: Date.strptime(row[:end_date], '%m/%e/%Y'),
-               end_station_name: row[:end_station_name],
-               end_station_id: row[:end_station_id],
-               bike_id: row[:bike_id],
-               subscription_type: row[:subscription_type],
-               zip_code: row[:zip_code],
-               condition_id: Condition.find_by(date: row[:start_date]).id) if Condition.find_by(date: row[:start_date])
-  puts "Created #{Trip.last}"
-end
-
 CSV.foreach('db/fixtures/station.csv', OPTIONS) do |row|
   Station.create!(name: row[:name],
-                  lat: row[:lat],
-                  long: row[:long],
-                  dock_count: row[:dock_count],
-                  city: row[:city],
-                  installation_date: Date.strptime(row[:installation_date], '%m/%e/%Y'))
+    lat: row[:lat],
+    long: row[:long],
+    dock_count: row[:dock_count],
+    city: row[:city],
+    installation_date: Date.strptime(row[:installation_date], '%m/%e/%Y'))
   puts "Created #{Station.last}"
 end
 
+CSV.foreach('db/fixtures/trip.csv', OPTIONS) do |row|
+  Trip.create!(duration: row[:duration],
+               start_date: Date.strptime(row[:start_date], '%m/%e/%Y'),
+               start_station: Station.all.shuffle[0],
+               end_date: Date.strptime(row[:end_date], '%m/%e/%Y'),
+               end_station: Station.all.shuffle[0],
+               bike_id: row[:bike_id],
+               subscription_type: row[:subscription_type],
+               zip_code: row[:zip_code],
+               condition: if Condition.find_by(date: Date.strptime(row[:start_date], '%m/%e/%Y'))
+                            Condition.find_by(date: Date.strptime(row[:start_date], '%m/%e/%Y'))
+                          else
+                            Condition.all.shuffle[0]
+                          end)
+  puts "Created #{Trip.last}"
+end
