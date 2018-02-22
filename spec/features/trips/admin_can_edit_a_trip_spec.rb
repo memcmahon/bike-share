@@ -2,7 +2,8 @@ require 'rails_helper'
 
 describe "As an admin" do
   before(:each) do
-    @trips = create_list(:trip, 5)
+    @station = create(:station)
+    @trips = create_list(:trip, 5, start_station: @station, end_station: @station)
     @admin = create(:admin)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@admin)
   end
@@ -32,7 +33,8 @@ end
 
 describe "as a registered user" do
   before(:each) do
-    @trips = create_list(:trip, 5)
+    @station = create(:station)
+    @trips = create_list(:trip, 5, start_station: @station, end_station: @station)
     @user = create(:user)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
   end

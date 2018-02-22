@@ -2,8 +2,9 @@ require 'rails_helper'
 
 describe "As an admin" do
   before(:each) do
+    @station = create(:station)
     @admin = create(:admin)
-    @trip = create_list(:trip, 35)
+    @trip = create_list(:trip, 35, start_station: @station, end_station: @station)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@admin)
     visit trips_path
   end

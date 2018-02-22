@@ -4,7 +4,8 @@ describe "As an admin" do
   describe "they visit trips show" do
     before(:each) do
       @admin = create(:admin)
-      @trip = create(:trip)
+      @station = create(:station)
+      @trip = create(:trip, start_station: @station, end_station: @station)
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@admin)
       visit trip_path(@trip)
     end

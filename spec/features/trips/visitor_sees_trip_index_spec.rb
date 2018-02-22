@@ -58,7 +58,8 @@ describe "As a visitor" do
     end
 
     it "they do not see links to edit or delete" do
-      trip = create_list(:trip, 35)
+      station = create(:station)
+      trip = create_list(:trip, 35, start_station: station, end_station: station)
 
       visit trips_path
 
