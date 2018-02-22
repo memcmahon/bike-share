@@ -3,18 +3,19 @@ require 'rails_helper'
 describe "As a registered user and admin" do
   describe "when I visit the weather-dashboard" do
     before(:each) do
+        station = create(:station)
         condition1 = create(:condition, max_temp_f: 55, date: '2/2/1993', precipitation_inches: 0.2, mean_wind_speed_mph: 4, mean_visibility_miles: 3)
         condition2 = create(:condition, max_temp_f: 65, date: '2/2/1993', precipitation_inches: 0.8, mean_wind_speed_mph: 7, mean_visibility_miles: 8)
         condition3 = create(:condition, max_temp_f: 75, date: '2/3/1993', precipitation_inches: 1.2, mean_wind_speed_mph: 13, mean_visibility_miles: 4)
         condition4 = create(:condition, max_temp_f: 85, date: '2/3/1993', precipitation_inches: 0.5, mean_wind_speed_mph: 16, mean_visibility_miles: 5)
         condition5 = create(:condition, max_temp_f: 70, date: '2/3/1993', precipitation_inches: 0.7, mean_wind_speed_mph: 22, mean_visibility_miles: 7)
         condition6 = create(:condition, max_temp_f: 70, date: '2/3/1993', precipitation_inches: 0.7, mean_wind_speed_mph: 12, mean_visibility_miles: 2)
-        create_list(:trip, 5, condition_id: condition1.id)
-        create_list(:trip, 12, condition_id: condition2.id)
-        create_list(:trip, 13, condition_id: condition3.id)
-        create_list(:trip, 20, condition_id: condition4.id)
-        create_list(:trip, 32, condition_id: condition5.id)
-        create_list(:trip, 45, condition_id: condition6.id)
+        create_list(:trip, 5, condition_id: condition1.id, start_station_id: station.id, end_station_id: station.id)
+        create_list(:trip, 12, condition_id: condition2.id, start_station_id: station.id, end_station_id: station.id)
+        create_list(:trip, 13, condition_id: condition3.id, start_station_id: station.id, end_station_id: station.id)
+        create_list(:trip, 20, condition_id: condition4.id, start_station_id: station.id, end_station_id: station.id)
+        create_list(:trip, 32, condition_id: condition5.id, start_station_id: station.id, end_station_id: station.id)
+        create_list(:trip, 45, condition_id: condition6.id, start_station_id: station.id, end_station_id: station.id)
       end
     it "shows weather analytics" do
       user = create(:user)

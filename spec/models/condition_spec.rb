@@ -24,10 +24,10 @@ describe Condition, type: :model do
       @condition2 = create(:condition, max_temp_f: 51, date: '2/4/1993', precipitation_inches: 0.3, mean_wind_speed_mph: 20, mean_visibility_miles: 11)
       @condition3 = create(:condition, max_temp_f: 58, date: '2/3/1993', precipitation_inches: 0.4, mean_wind_speed_mph: 22, mean_visibility_miles: 11)
       @condition4 = create(:condition, max_temp_f: 60, date: '2/5/1993', precipitation_inches: 0.1, mean_wind_speed_mph: 24, mean_visibility_miles: 12)
-      create_list(:trip, 5, condition_id: @condition1.id)
-      create_list(:trip, 12, condition_id: @condition2.id)
-      create_list(:trip, 13, condition_id: @condition3.id)
-      create_list(:trip, 20, condition_id: @condition4.id)
+      create_list(:trip, 5, condition_id: @condition1.id, start_station_id: @station_1.id, end_station_id: @station_1.id)
+      create_list(:trip, 12, condition_id: @condition2.id, start_station_id: @station_1.id, end_station_id: @station_1.id)
+      create_list(:trip, 13, condition_id: @condition3.id, start_station_id: @station_1.id, end_station_id: @station_1.id)
+      create_list(:trip, 20, condition_id: @condition4.id, start_station_id: @station_1.id, end_station_id: @station_1.id)
     end
     describe "#trip_counts" do
       it "returns count of trips per day within a range" do
