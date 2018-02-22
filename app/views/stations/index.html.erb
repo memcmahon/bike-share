@@ -6,12 +6,12 @@
     <h3><%= link_to "Create New Station", new_admin_station_path %></h3>
   <% end %>
 
-  <div class="container stations">
+  <div class="station-container">
   <ul>
     <% @stations.each do |station| %>
     <div class="col-lg-4 col-md-3">
       <div class="panel">
-        <li>Name:              <%= station.slug %></li>
+        <li>Name:              <%= station.name %></li>
         <li>Dock Count:        <%= station.dock_count %></li>
         <li>City:              <%= station.city %></li>
         <li>Installation Date: <%= station.installation_date %></li>

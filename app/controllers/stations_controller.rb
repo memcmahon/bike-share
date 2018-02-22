@@ -1,7 +1,7 @@
 class StationsController < ApplicationController
 
   def index
-    @stations = Station.all.paginate(page: params[:page], per_page: 20)
+    @stations = Station.all.paginate(page: params[:page], per_page: 30)
   end
 
   def show
@@ -15,7 +15,7 @@ class StationsController < ApplicationController
   def update
     @station = Station.find(params[:slug])
     @station.update(station_params)
-    flash[:notice] = "#{station.name} was updated"
+    flash[:notice] = "#{@station.name} was updated"
 
     redirect_to station_path(@station.slug)
   end
