@@ -3,7 +3,8 @@ require 'rails_helper'
 describe "As a visitor" do
   describe "they visit trips show" do
     it "they can see the trip details" do
-      trip = create(:trip)
+      station = create(:station)
+      trip = create(:trip, start_station: station, end_station: station)
 
       visit trip_path(trip)
 

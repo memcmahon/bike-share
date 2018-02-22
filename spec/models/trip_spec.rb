@@ -4,11 +4,9 @@ describe Trip, type: :model do
   describe "validations" do
     it {should validate_presence_of(:duration)}
     it {should validate_presence_of(:start_date)}
-    it {should validate_presence_of(:start_station_id)}
-    it {should validate_presence_of(:start_station_name)}
+    it {should validate_presence_of(:start_station)}
     it {should validate_presence_of(:end_date)}
-    it {should validate_presence_of(:end_station_id)}
-    it {should validate_presence_of(:end_station_name)}
+    it {should validate_presence_of(:end_station)}
     it {should validate_presence_of(:bike_id)}
     it {should validate_presence_of(:subscription_type)}
   end
@@ -19,11 +17,14 @@ describe Trip, type: :model do
   describe "analytics" do
     before(:each) do
       @user = create(:user)
+      @station_1 = create(:station)
+      @station_2 = create(:station)
+      @station_3 = create(:station)
       @condition_1 = create(:condition, date: Date.strptime("10/3/2017", "%m/%e/%Y"))
       @condition_2 = create(:condition, date: Date.strptime("11/3/2016", "%m/%e/%Y"))
-      @trip_1 = Trip.create!(duration: 200, start_date: Date.strptime("10/3/2017", "%m/%e/%Y"), start_station_name: "Little Man", start_station_id: 3, end_date: Date.strptime("10/3/2017", "%m/%e/%Y"), end_station_name: "Diebolt", end_station_id: 2, bike_id: 14, subscription_type: "Customer", zip_code: 55555, condition: @condition_1)
-      @trip_2 = Trip.create!(duration: 250, start_date: Date.strptime("10/3/2017", "%m/%e/%Y"), start_station_name: "DBC", start_station_id: 1, end_date: Date.strptime("10/3/2017", "%m/%e/%Y"), end_station_name: "Diebolt", end_station_id: 2, bike_id: 13, subscription_type: "Subscriber", zip_code: 55555, condition: @condition_1)
-      @trip_3 = Trip.create!(duration: 300, start_date: Date.strptime("11/3/2016", "%m/%e/%Y"), start_station_name: "DBC", start_station_id: 1, end_date: Date.strptime("11/3/2016", "%m/%e/%Y"), end_station_name: "Little Man", end_station_id: 3, bike_id: 13, subscription_type: "Subscriber", zip_code: 55555, condition: @condition_2)
+      @trip_1 = Trip.create!(duration: 200, start_date: Date.strptime("10/3/2017", "%m/%e/%Y"), start_station: @station_1, end_date: Date.strptime("10/3/2017", "%m/%e/%Y"), end_station: @station_2, bike_id: 14, subscription_type: "Customer", zip_code: 55555, condition: @condition_1)
+      @trip_2 = Trip.create!(duration: 250, start_date: Date.strptime("10/3/2017", "%m/%e/%Y"), start_station: @station_2, end_date: Date.strptime("10/3/2017", "%m/%e/%Y"), end_station: @station_2, bike_id: 13, subscription_type: "Subscriber", zip_code: 55555, condition: @condition_1)
+      @trip_3 = Trip.create!(duration: 300, start_date: Date.strptime("11/3/2016", "%m/%e/%Y"), start_station: @station_2, end_date: Date.strptime("11/3/2016", "%m/%e/%Y"), end_station: @station_3, bike_id: 13, subscription_type: "Subscriber", zip_code: 55555, condition: @condition_2)
     end
 
     it "calculates average duration of a ride" do
@@ -36,8 +37,8 @@ describe Trip, type: :model do
     end
 
     it "returns stations with most and fewest started rides" do
-      expect(Trip.station_with_most_starts).to eq("DBC")
-      expect(Trip.station_with_most_ends).to eq("Diebolt")
+      expect(Trip.station_with_most_starts).to eq(@station_1.name)
+      expect(Trip.station_with_most_ends).to eq(@station_2.name)
     end
 
     it "returns a breakdown of rides by month and by year" do

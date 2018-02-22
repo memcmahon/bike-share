@@ -3,7 +3,8 @@ require 'rails_helper'
 describe "As a visitor" do
   describe "They can visit trips index" do
     it "They can see first 30 trips" do
-      trip = create_list(:trip, 35)
+      station = create(:station)
+      trip = create_list(:trip, 35, start_station: station, end_station: station)
 
       visit trips_path
 
@@ -41,7 +42,8 @@ describe "As a visitor" do
     end
 
     it "they can click through to next page of trips" do
-      trip = create_list(:trip, 35)
+      station = create(:station)
+      trip = create_list(:trip, 35, start_station: station, end_station: station)
 
       visit trips_path
 

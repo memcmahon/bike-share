@@ -42,20 +42,6 @@ FactoryBot.define do
   sequence(:zip_code) { |n| n }
   end
 
-  factory :trip do
-  sequence(:duration) { |n| n }
-  start_date "10/1/1990"
-  end_date "10/2/1990"
-  start_station_name "Willow Creek"
-  start_station_id 1
-  sequence(:bike_id) { |n| n }
-  end_station_name "Jumping Rabbit Creek"
-  end_station_id 2
-  subscription_type "Subscriber"
-  zip_code 55555
-  condition
-  end
-
   factory :station do
   sequence(:name) { |n| "#{n} Street"}
   sequence(:lat) { |n| n }
@@ -63,6 +49,18 @@ FactoryBot.define do
   sequence(:dock_count) { |n| n }
   city "San Francisco"
   installation_date "12/12/1991"
+  end
+
+  factory :trip do
+  sequence(:duration) { |n| n }
+  start_date "10/1/1990"
+  end_date "10/2/1990"
+  sequence(:bike_id) { |n| n }
+  start_station "station_1"
+  end_station "station_2"
+  subscription_type "Subscriber"
+  zip_code 55555
+  condition
   end
 
   factory :status do

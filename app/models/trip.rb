@@ -5,11 +5,9 @@ class Trip < ApplicationRecord
 
   validates_presence_of :duration,
                         :start_date,
-                        :start_station_name,
-                        :start_station_id,
+                        :start_station,
                         :end_date,
-                        :end_station_name,
-                        :end_station_id,
+                        :end_station,
                         :bike_id,
                         :subscription_type
 
