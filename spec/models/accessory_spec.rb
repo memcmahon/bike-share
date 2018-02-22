@@ -9,6 +9,5 @@ describe Accessory, type: :model do
   end
 
   describe "Relationships" do
-    it { should have_many(:users).through(:carts) }
   end
 end
