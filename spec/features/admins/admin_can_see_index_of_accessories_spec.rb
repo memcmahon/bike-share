@@ -4,6 +4,7 @@ describe "as an admin" do
   describe "when I visit the index page" do
     it "shows all accessories" do
       admin = create(:admin)
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
       accessories = create_list(:accessory, 4)
 
       visit admin_bike_shop_index_path
