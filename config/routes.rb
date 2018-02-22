@@ -13,6 +13,8 @@
 
   resources :trips, only: [:index, :show]
 
+  resources :'bike-shop', as: 'bike_shop', controller: :accessories, only: [:index, :show]
+
   namespace :admin do
     resources :conditions, except: [:index, :show]
     resources :trips, except: [:index, :show]
