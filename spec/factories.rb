@@ -46,7 +46,7 @@ FactoryBot.define do
   sequence(:name) { |n| "#{n} Street"}
   sequence(:lat) { |n| n }
   sequence(:long) { |n| n }
-  sequence(:dock_count) { |n| n }
+  dock_count 4
   city "San Francisco"
   installation_date "12/12/1991"
   end

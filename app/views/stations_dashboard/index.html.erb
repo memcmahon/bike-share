@@ -4,8 +4,21 @@
 </div>
 
 
-<p>Total count of stations: <%= Station.total_count_of_stations %><p>
-<p>Average bikes available: <%= Station.average_bikes_available_per_station %></p>
-<p>Station(s) with most bikes available: <%= Station.stations_with_most_bikes_available %></p>
+<p>Total count of stations: <%= Station.count %><p>
+<p>Average bikes available: <%= Station.average(:dock_count).round(2) %></p>
+<p>Most bikes available at any station: <%= Station.most_bikes_available_at_a_station %></p>
+  <ul>
+    <% Station.stations_with_most_bikes_available.each do |station| %>
+      <li><%= station %></li>
+    <% end %>
+  </ul>
 
+<p>Fewest bikes available at any station: <%= Station.fewest_bikes_available_at_a_station %></p>
+  <ul>
+    <% Station.stations_with_fewest_bikes_available.each do |station| %>
+      <li><%= station %></li>
+    <% end %>
+  </ul>
 
+<p>Most recently installed station: <%= Station.sort_by_installation_date.last.name %></p>
+<p>Oldest station: <%= Station.sort_by_installation_date.first.name %></p>
