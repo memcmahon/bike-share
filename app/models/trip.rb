@@ -18,11 +18,11 @@ class Trip < ApplicationRecord
   end
 
   def self.station_with_most_starts
-    group(:start_station_name).order('count(id) DESC').count.first.first
+    group(:start_station).order('count(id) DESC').count.first.first
   end
 
   def self.station_with_most_ends
-    group(:end_station_name).order('count(id) DESC').count.first.first
+    group(:end_station).order('count(id) DESC').count.first.first
   end
 
   def self.rides_by_month
