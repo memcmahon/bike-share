@@ -7,7 +7,6 @@
     resources :orders, except: [:destroy, :edit, :update]
   end
 
-
   resources :stations, param: :slug
 
   resources :conditions, only: [:index, :show]
@@ -30,10 +29,9 @@
   get '/trips-dashboard', to: 'trips_dashboard#index'
   get '/weather-dashboard', to: 'conditions_dashboard#index'
 
-  get '/bikeshop', to: 'accessories#index'
-  get '/admin/bike-shop', to: 'admin/accessories#index'
-  get '/admin/bike-shop/new', to: 'admin/accessories#new'
-  post '/admin/bike-shop', to: 'admin/accessories#create'
-  get '/admin/bike-shop/edit', to: 'admin/accessories#edit'
-  patch '/admin/bike-shop', to: 'admin/accessories#update'
+  get '/bike-shop', to: 'accessories#index'
+  get '/bike-shop/new', to: 'accessories#new'
+  post '/bike-shop', to: 'accessories#create'
+  get '/bike-shop/edit', to: 'accessories#edit'
+  patch '/bike-shop', to: 'accessories#update'
 end
