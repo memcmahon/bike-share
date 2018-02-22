@@ -31,7 +31,7 @@ describe "visitor sees single condition" do
       expect(page).to have_content(condition.events)
       expect(page).to have_content(condition.wind_dir_degrees)
       expect(page).to have_content(condition.zip_code)
-      expect(page).to have_content(condition.date)
+      expect(page).to_not have_content("Edit")
     end
   end
 end
