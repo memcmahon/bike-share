@@ -7,11 +7,7 @@ describe "As a registered user and admin" do
       second = create(:station, name: "2st")
       third = create(:station, name: "3st")
       forth = create(:station, name: "4st")
-      create(:status, bikes_available: 5, docks_available: 22, station_id: first.id)
-      create(:status, bikes_available: 2, docks_available: 25, station_id: second.id)
-      create(:status, bikes_available: 10, docks_available: 17, station_id: third.id)
-      create(:status, bikes_available: 7, docks_available: 20, station_id: forth.id)
-
+      
       visit '/stations-dashboard'
 
       expect(page).to have_content("Total count of stations: 84")

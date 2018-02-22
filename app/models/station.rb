@@ -5,8 +5,10 @@ class Station < ApplicationRecord
                         :dock_count,
                         :city,
                         :installation_date
-  has_many :statuses
+                        
   before_save :generate_slug
+  has_many :start_trip_stations, class_name: "Trip", foreign_key: "start_station_id"
+  has_many :end_trip_stations, class_name: "Trip", foreign_key: "end_station_id"
 
   def generate_slug
     self.slug = name.parameterize if name
@@ -21,7 +23,6 @@ class Station < ApplicationRecord
   end
 
   def self.most_bikes_available_at_a_station 
-    statuses.order(:time).last.bikes_available
     # most_bikes = maximum(:dock_count)
   end
 

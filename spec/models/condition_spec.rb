@@ -19,14 +19,15 @@ describe Condition, type: :model do
 
   describe 'class methods' do
     before(:each) do
+      @station_1 = create(:station)
       @condition1 = create(:condition, max_temp_f: 55, date: '2/2/1993', precipitation_inches: 0.2, mean_wind_speed_mph: 23, mean_visibility_miles: 10)
       @condition2 = create(:condition, max_temp_f: 51, date: '2/4/1993', precipitation_inches: 0.2, mean_wind_speed_mph: 23, mean_visibility_miles: 10)
       @condition3 = create(:condition, max_temp_f: 58, date: '2/3/1993', precipitation_inches: 0.2, mean_wind_speed_mph: 23, mean_visibility_miles: 10)
       @condition4 = create(:condition, max_temp_f: 60, date: '2/5/1993', precipitation_inches: 0.2, mean_wind_speed_mph: 23, mean_visibility_miles: 10)
-      create_list(:trip, 5, condition_id: @condition1.id)
-      create_list(:trip, 12, condition_id: @condition2.id)
-      create_list(:trip, 13, condition_id: @condition3.id)
-      create_list(:trip, 20, condition_id: @condition4.id)
+      create_list(:trip, 5, start_station: @station_1, end_station: @station_1, condition_id: @condition1.id)
+      create_list(:trip, 12, start_station: @station_1, end_station: @station_1, condition_id: @condition2.id)
+      create_list(:trip, 13, start_station: @station_1, end_station: @station_1, condition_id: @condition3.id)
+      create_list(:trip, 20, start_station: @station_1, end_station: @station_1, condition_id: @condition4.id)
     end
     it "returns conditions joined on max temp range" do
       expect(Condition.trips_with_max_temp(50..60)).to eq([20, 13, 12, 5])
