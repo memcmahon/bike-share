@@ -6,8 +6,11 @@ describe "as an admin" do
       admin = create(:admin)
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
-      visit admin_conditions_path
-      click_on "New Condition"
+      visit conditions_path
+
+      click_link "New Condition"
+
+      expect(current_path).to eq(new_admin_condition_path)
 
       fill_in "condition[date]", with: '12/12/1232'
       fill_in "condition[max_temp_f]", with: 12.2

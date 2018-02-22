@@ -16,7 +16,7 @@ class Admin::ConditionsController < Admin::BaseController
     @condition = Condition.new(condition_params)
     if @condition.save
       flash[:notice] = "You have successfully created a condition"
-      redirect_to admin_condition_path(@condition)
+      redirect_to condition_path(@condition)
     else
       flash[:notice] = "Unable to create condition. Please make sure date is filled in."
       render :new

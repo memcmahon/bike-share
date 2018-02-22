@@ -1,6 +1,12 @@
   <div class="container conditions">
   <h1>Conditions</h1>
-  
+
+  <% if current_user && current_user.admin? %>
+    <div class="mr-auto new-condition">
+      <%= link_to "New Condition", new_admin_condition_path, class: 'btn btn-success' %>
+    </div>
+  <% end %>
+
   <% @conditions.each do |cond| %>
     <div class="col-lg-3 col-md-4">
       <div class="panel panel-default text-center">
