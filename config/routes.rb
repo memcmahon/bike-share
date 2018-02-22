@@ -29,9 +29,5 @@
   get '/trips-dashboard', to: 'trips_dashboard#index'
   get '/weather-dashboard', to: 'conditions_dashboard#index'
 
-  get '/bike-shop', to: 'accessories#index'
-  get '/bike-shop/new', to: 'accessories#new'
-  post '/bike-shop', to: 'accessories#create'
-  get '/bike-shop/edit', to: 'accessories#edit'
-  patch '/bike-shop', to: 'accessories#update'
+
 end
