@@ -42,14 +42,14 @@ class Condition < ApplicationRecord
     ranges
   end
 
-  def self.round_down(number)
-    (number / 10).floor * 10
-  end
-
   def self.ranges(min, max, incrementor)
     set_ranges(min, max, incrementor).map do |range|
       Range.new(range[0], range[1])
     end
+  end
+  
+  def self.round_down(number)
+    (number / 10).floor * 10
   end
 
   def self.temp_extremums
