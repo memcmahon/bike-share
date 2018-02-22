@@ -11,7 +11,7 @@ describe "As an admin" do
       visit station_path(station.slug)
 
       expect(page).to have_content("Station Details")
-      expect(page).to have_content("1 Street")
+      expect(page).to have_content(station.name)
       expect(page).to have_content("City: San Francisco")
       expect(page).to have_content("1991-12-12")
 

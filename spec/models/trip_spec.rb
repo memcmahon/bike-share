@@ -17,13 +17,13 @@ describe Trip, type: :model do
   describe "analytics" do
     before(:each) do
       @user = create(:user)
-      @station_1 = create(:station)
-      @station_2 = create(:station)
-      @station_3 = create(:station)
+      @station_1 = create(:station, name: "Joe")
+      @station_2 = create(:station, name: "Sal")
+      @station_3 = create(:station, name: "Ilana")
       @condition_1 = create(:condition, date: Date.strptime("10/3/2017", "%m/%e/%Y"))
       @condition_2 = create(:condition, date: Date.strptime("11/3/2016", "%m/%e/%Y"))
       @trip_1 = Trip.create!(duration: 200, start_date: Date.strptime("10/3/2017", "%m/%e/%Y"), start_station: @station_1, end_date: Date.strptime("10/3/2017", "%m/%e/%Y"), end_station: @station_2, bike_id: 14, subscription_type: "Customer", zip_code: 55555, condition: @condition_1)
-      @trip_2 = Trip.create!(duration: 250, start_date: Date.strptime("10/3/2017", "%m/%e/%Y"), start_station: @station_2, end_date: Date.strptime("10/3/2017", "%m/%e/%Y"), end_station: @station_2, bike_id: 13, subscription_type: "Subscriber", zip_code: 55555, condition: @condition_1)
+      @trip_2 = Trip.create!(duration: 250, start_date: Date.strptime("10/3/2017", "%m/%e/%Y"), start_station: @station_1, end_date: Date.strptime("10/3/2017", "%m/%e/%Y"), end_station: @station_2, bike_id: 13, subscription_type: "Subscriber", zip_code: 55555, condition: @condition_1)
       @trip_3 = Trip.create!(duration: 300, start_date: Date.strptime("11/3/2016", "%m/%e/%Y"), start_station: @station_2, end_date: Date.strptime("11/3/2016", "%m/%e/%Y"), end_station: @station_3, bike_id: 13, subscription_type: "Subscriber", zip_code: 55555, condition: @condition_2)
     end
 
@@ -37,13 +37,13 @@ describe Trip, type: :model do
     end
 
     it "returns stations with most and fewest started rides" do
-      expect(Trip.station_with_most_starts).to eq(@station_1.name)
-      expect(Trip.station_with_most_ends).to eq(@station_2.name)
+      expect(Trip.station_with_most_starts.name).to eq(@station_1.name)
+      expect(Trip.station_with_most_ends.name).to eq(@station_2.name)
     end
 
     it "returns a breakdown of rides by month and by year" do
       expect(Trip.rides_by_month.first.last).to eq(1)
-      expect(Trip.rides_by_year.first.last).to eq(1)
+      expect(Trip.rides_by_year.first.last).to eq(2)
     end
 
     it "returns the most and least ridden bike" do

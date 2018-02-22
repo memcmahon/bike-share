@@ -13,8 +13,8 @@
 
   <div class="panel panel-default">
     <h2 class="panel-heading">Station Analytics</h2>
-    <p>Station with most started rides: <%= @trips.station_with_most_starts %></p>
-    <p>Station with most ended rides: <%= @trips.station_with_most_ends %></p>
+    <p>Station with most started rides: <%= @trips.station_with_most_starts.name %></p>
+    <p>Station with most ended rides: <%= @trips.station_with_most_ends.name %></p>
   </div>
 
   <div class="panel panel-default">
