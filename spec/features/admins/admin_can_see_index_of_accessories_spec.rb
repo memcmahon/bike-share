@@ -14,6 +14,9 @@ describe "as an admin" do
       expect(page).to have_link(accessories[1].name)
       expect(page).to have_link(accessories[2].name)
       expect(page).to have_link(accessories[3].name)
+      expect(page).to have_button("Delete")
+      expect(page).to have_link("Edit")
+      expect(page).to have_link("New Accessory")
     end
   end
 end
