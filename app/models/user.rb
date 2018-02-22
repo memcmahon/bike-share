@@ -5,8 +5,6 @@ class User < ApplicationRecord
   validates_uniqueness_of :email
 
   has_many :orders
-  has_many :carts
-  has_many :accessories, through: :carts
 
   enum role: ["default", "admin"]
 end
