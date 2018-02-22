@@ -14,7 +14,7 @@ class Trip < ApplicationRecord
   scope :sort_by_duration, -> { order(duration: :asc) }
 
   def self.average_duration
-    average(:duration)
+    average(:duration).round(2)
   end
 
   def self.station_with_most_starts

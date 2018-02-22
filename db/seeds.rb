@@ -10,6 +10,21 @@ OPTIONS = {headers: true, header_converters: :symbol }
 Station.destroy_all
 Trip.destroy_all
 Condition.destroy_all
+Accessory.destroy_all
+
+Accessory.create!(name: "Headlight", description: "See things!", price: 1200, status: 0)
+Accessory.create!(name: "Taillight", description: "Let people see you!", price: 1300, status: 0)
+Accessory.create!(name: "Wheel lights", description: "Get fancy!", price: 1400, status: 0)
+Accessory.create!(name: "Rear rack", description: "Get ready to hold things!", price: 1200, status: 0)
+Accessory.create!(name: "Basket", description: "For Toto!", price: 1500, status: 0)
+Accessory.create!(name: "Panniers", description: "Hold things!", price: 1600, status: 0)
+Accessory.create!(name: "Cup holder", description: "Drink things!", price: 1700, status: 0)
+Accessory.create!(name: "Insulated Bike Bag", description: "Keep things cold!", price: 1800, status: 0)
+Accessory.create!(name: "Tubes", description: "Air pressure!", price: 1900, status: 0)
+Accessory.create!(name: "Tires", description: "Grip things!", price: 2000, status: 0)
+Accessory.create!(name: "Spokes", description: "Structure!", price: 2100, status: 0)
+Accessory.create!(name: "Hanle wrap", description: "Be unique!", price: 2200, status: 0)
+
 
 CSV.foreach('db/fixtures/condition.csv', OPTIONS) do |row|
   Condition.create!(date: Date.strptime(row[:date], '%m/%e/%Y'),
