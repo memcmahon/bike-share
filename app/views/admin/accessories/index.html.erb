@@ -1,0 +1,23 @@
+<div class="jumbotron text-center">
+  <h1><em>Bike Shop</em></h1>
+</div>
+<div class="container text-center">
+  <% @accessories.each do |accessory| %>
+  <div class="col-md-4 col-md-4">
+    <div class="panel panel-default text-center">
+      <h3 class="panel-heading"> <%= link_to accessory.name, admin_bike_shop_path(accessory) %> </h3>
+      <ul class="panel-body">
+        <li><%= accessory.price %></li>
+        <li><%= accessory.description %></li>
+        <div class="buttons">
+          <li>
+            <%= button_to 'Delete', admin_bike_shop_path(accessory), method: :delete, class: 'btn btn-danger' %>
+          </li>
+          <li>
+            <%= link_to 'Edit', edit_admin_bike_shop_path(accessory), class: 'btn btn-warning' %>
+          </li>
+        </div>
+    </div>
+  </div>
+  <% end %>
+</div>
