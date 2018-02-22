@@ -22,13 +22,13 @@
     <p>Rides by Year:</p>
       <ul>
         <% @trips.rides_by_year.each do |key, value| %>
-          <li><%= key.year %>: <%= value %></li>
+          <li><%= key %>: <%= value %></li>
         <% end %>
       </ul>
     <p>Rides by Month: </p>
       <ul>
         <% @trips.rides_by_month.each do |key, value| %>
-          <li><%= key.strftime("%B") %>: <%= value %></li>
+          <li><%= key %>: <%= value %></li>
         <% end %>
       </ul>
     <p>Date with most rides: <%= @trips.date_with_most_rides.first.strftime("%m/%d/%Y") %> - <%= @trips.date_with_most_rides.last %> ride(s)</p>
