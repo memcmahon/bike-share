@@ -1,5 +1,5 @@
 class Condition < ApplicationRecord
-  has_many :trips
+  has_many :trips, dependent: :nullify
 
   validates_presence_of :date
 
@@ -47,7 +47,7 @@ class Condition < ApplicationRecord
       Range.new(range[0], range[1])
     end
   end
-  
+
   def self.round_down(number)
     (number / 10).floor * 10
   end

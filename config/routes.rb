@@ -15,9 +15,9 @@
   resources :trips, only: [:index, :show]
 
   namespace :admin do
-    resources :conditions
-    resources :trips
-    resources :stations 
+    resources :conditions, except: [:index, :show]
+    resources :trips, except: [:index, :show]
+    resources :stations, except: [:index, :show]
   end
 
   get '/login', to: 'sessions#new'

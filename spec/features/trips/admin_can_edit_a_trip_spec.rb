@@ -3,6 +3,7 @@ require 'rails_helper'
 describe "As an admin" do
   before(:each) do
     @station = create(:station)
+    @condition = create(:condition)
     @trips = create_list(:trip, 5, start_station: @station, end_station: @station)
     @admin = create(:admin)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@admin)
@@ -14,18 +15,17 @@ describe "As an admin" do
 
       click_on("Edit")
 
-      fill_in("trip[duration]", with: 1331)
-      fill_in("trip[start_date]", with: "01/13/1988")
-      fill_in("trip[start_station_name]", with: "DBC")
-      fill_in("trip[start_station_id]", with: 1)
-      fill_in("trip[end_date]", with: "01/13/1988")
-      fill_in("trip[end_station_name]", with: "Diebolt")
-      fill_in("trip[end_station_id]", with: 2)
-      fill_in("trip[bike_id]", with: 13)
-      fill_in("trip[subscription_type]", with: "customer")
-      fill_in("trip[zip_code]", with: 55555)
+      fill_in("trip[duration]", with: "300")
+      fill_in("trip[start_date]", with: "02/12/1232")
+      select(@station.name, from: "trip[start_station_id]")
+      fill_in("trip[end_date]", with: "02/12/1232")
+      select(@station.name, from: "trip[end_station_id]")
+      fill_in("trip[bike_id]", with: "13")
+      fill_in("trip[subscription_type]", with: "Customer")
+      fill_in("trip[zip_code]", with: "52556")
       click_on("Update Trip")
 
+      expect(page).to have_content("Success - you have updated a trip.")
       expect(current_path).to eq(trip_path(@trips[0]))
     end
   end

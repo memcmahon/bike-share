@@ -1,4 +1,4 @@
-<h1>Conditions on <%= @condition.date %></h1>
+<h1>Conditions on <%= @condition.month_day_converter %></h1>
 
 <div class="container">
   <ul>
@@ -9,7 +9,7 @@
     <li>Mean Dew Point: <%= @condition.mean_dew_point_f %></li>
     <li>Max Humidity: <%= @condition.max_humidity %></li>
     <li>Mean Humidity: <%= @condition.mean_humidity %></li>
-    <li>Minimum Humidity<%= @condition.min_humidity %></li>
+    <li>Minimum Humidity: <%= @condition.min_humidity %></li>
     <li>Max Sea Level Pressure: <%= @condition.max_sea_level_pressure_inches %></li>
     <li>Mean Sea Level Pressure: <%= @condition.mean_sea_level_pressure_inches %></li>
     <li>Minimum Sea Level Pressure: <%= @condition.min_sea_level_pressure_inches %></li>
@@ -25,4 +25,15 @@
     <li>Wind Direction: <%= @condition.wind_dir_degrees %></li>
     <li>Zipcode: <%= @condition.zip_code %></li>
   </ul>
+
+  <% if current_user && current_user.admin? %>
+    <div class="well buttons">
+      <p>
+        <%= button_to 'Delete', admin_condition_path(@condition), method: :delete, class: 'btn btn-danger' %>
+      </p>
+      <p>
+        <%= link_to 'Edit', edit_admin_condition_path(@condition), class: 'btn btn-warning' %>
+      </p>
+    </div>
+  <% end %>
 </div>

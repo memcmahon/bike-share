@@ -10,13 +10,8 @@
   </div>
 
   <div class="form-group">
-    <%= f.label :start_station_name %>
-    <%= f.text_field :start_station_name %><br>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :start_station_id %>
-    <%= f.number_field :start_station_id %><br>
+    <%= f.label :start_station %>
+    <%= f.collection_select :start_station_id, @stations, :id, :name %><br>
   </div>
 
   <div class="form-group">
@@ -25,13 +20,8 @@
   </div>
 
   <div class="form-group">
-    <%= f.label :end_station_name %>
-    <%= f.text_field :end_station_name %><br>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :end_station_id %>
-    <%= f.number_field :end_station_id %><br>
+    <%= f.label :end_station %>
+    <%= f.collection_select :end_station_id, @stations, :id, :name %><br>
   </div>
 
   <div class="form-group">
@@ -49,10 +39,5 @@
     <%= f.number_field :zip_code %><br>
   </div>
 
-  <div class="form-group">
-    <%= f.label :condition_id %>
-    <%= f.collection_select(:condition_id, @conditions, :id, :date) %><br>
-  </div>
-
-  <%= f.submit "Update Trip", class: 'btn btn-default btn-submit' %>
+  <%= f.submit class: 'btn btn-default btn-submit' %>
 <% end %>
