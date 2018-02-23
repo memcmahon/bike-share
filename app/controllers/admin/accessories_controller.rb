@@ -8,7 +8,7 @@ class Admin::AccessoriesController < Admin::BaseController
     @accessory = Accessory.new(accessory_params)
     if @accessory.save
       flash[:success] = "You have successfully created an accessory"
-      redirect bike_shop_path(@accessory)
+      redirect_to accessory_path(@accessory)
     else
       render :new
     end
