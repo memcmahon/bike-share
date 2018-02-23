@@ -9,6 +9,7 @@
   <div class="container station-container">
   <ul>
     <% @stations.each do |station| %>
+    <a href="<%= station_path(station) %>">
     <div class="col-lg-4 col-md-3">
       <div class="panel">
         <li>Name:              <%= station.name %></li>
@@ -24,7 +25,5 @@
     <% end %>
   </ul>
   </div>
- <!--  <div class="index-pagination panel">
-    <%= will_paginate @stations %>
-  </div>   -->
+  <%= will_paginate @stations %>
 </div>
