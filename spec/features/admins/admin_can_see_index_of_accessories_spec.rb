@@ -16,7 +16,7 @@ describe "as an admin" do
       expect(page).to have_link(accessories[3].name)
       expect(page).to have_button("Delete")
       expect(page).to have_link("Edit")
-      expect(page).to have_link("New Accessory")
+      expect(page).to have_link("Create Accessory")
     end
     it "doesn't show edit and delete for user" do
       user = create(:user)
@@ -31,7 +31,7 @@ describe "as an admin" do
       expect(page).to have_link(accessories[3].name)
       expect(page).to_not have_button("Delete")
       expect(page).to_not have_link("Edit")
-      expect(page).to_not have_link("New Accessory")
+      expect(page).to_not have_link("Create Accessory")
     end
   end
 end
