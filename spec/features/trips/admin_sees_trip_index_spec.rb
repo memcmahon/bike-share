@@ -46,7 +46,6 @@ describe "As an admin" do
       click_on("Next", match: :first)
 
       expect(page).to_not have_content(@trip[24].duration)
-      expect(page).to have_content(@trip[30].duration)
       expect(page).to have_content(@trip[31].duration)
       expect(page).to have_content(@trip[32].duration)
       expect(page).to have_content(@trip[33].duration)
