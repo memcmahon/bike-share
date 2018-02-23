@@ -1,5 +1,8 @@
 <div class="index-pagination">
   <h1>Trips</h1>
+  <% if current_user && current_user.admin? %>
+    <%= link_to "New Trip", new_admin_trip_path %>
+  <% end %>
   <%= will_paginate @trips %>
 </div>
 

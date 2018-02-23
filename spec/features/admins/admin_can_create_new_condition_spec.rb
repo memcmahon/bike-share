@@ -3,7 +3,7 @@ require 'rails_helper'
 describe "as an admin" do
   describe "when I navigate to conditions/new and fill the form" do
     it "creates a new condition" do
-      admin = create(:admin)
+      admin = create(:admin) 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
       visit conditions_path
