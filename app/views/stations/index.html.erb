@@ -9,7 +9,7 @@
   <div class="container station-container">
   <ul>
     <% @stations.each do |station| %>
-    <a href="<%= station_path(station) %>">
+    <a href= "/stations/<%= station.slug %>">
     <div class="col-lg-4 col-md-3">
       <div class="panel">
         <li>Name:              <%= station.name %></li>
