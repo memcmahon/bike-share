@@ -13,12 +13,13 @@
 
   resources :trips, only: [:index, :show]
 
-  resources :'bike-shop', as: 'bike_shop', controller: :accessories, only: [:index, :show]
+  resources :accessories, path: 'bike-shop', only: [:index, :show]
 
   namespace :admin do
     resources :conditions, except: [:index, :show]
     resources :trips, except: [:index, :show]
     resources :stations, except: [:index, :show]
+    resources :accessories, path: 'bike-shop', except: [:index, :show, :new]
   end
 
   get '/login', to: 'sessions#new'
@@ -31,5 +32,6 @@
   get '/trips-dashboard', to: 'trips_dashboard#index'
   get '/weather-dashboard', to: 'conditions_dashboard#index'
 
+  get '/bike-shop/new', to: 'admin/accessories#new'
 
 end
