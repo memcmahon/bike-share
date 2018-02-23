@@ -23,7 +23,7 @@ describe "as an admin" do
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
       accessories = create_list(:accessory, 4)
 
-      visit bike_shop_index_path
+      visit accessories_path
 
       expect(page).to have_link(accessories[0].name)
       expect(page).to have_link(accessories[1].name)
