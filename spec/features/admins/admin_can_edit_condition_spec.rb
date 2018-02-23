@@ -1,13 +1,13 @@
 require 'rails_helper'
 
 describe "as and admin" do
-  describe "when I click on edit in the coditions index" do
+  describe "when I click on edit in condition show" do
     it "can edit condition" do
       admin = create(:admin)
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
       condition = create(:condition)
 
-      visit admin_conditions_path
+      visit condition_path(condition)
       click_on "Edit"
 
       fill_in "condition[date]", with: '12/12/1232'

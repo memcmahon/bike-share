@@ -29,7 +29,7 @@ class Admin::ConditionsController < Admin::BaseController
   def update
     if @condition.update(condition_params)
       flash[:notice] = "You have successfully updated the condition"
-      redirect_to admin_condition_path(@condition)
+      redirect_to condition_path(@condition)
     else
       flash[:notice] = "Unable to edit condition. Please make sure date is filled in."
       render :new
