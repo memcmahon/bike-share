@@ -7,7 +7,7 @@ describe 'as an admin' do
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
       condition = create(:condition)
 
-      visit admin_condition_path(condition)
+      visit condition_path(condition)
 
       expect(page).to have_button("Delete")
       expect(page).to have_link("Edit")
