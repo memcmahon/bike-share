@@ -1,8 +1,15 @@
-<div class="index-pagination">
-  <div class="panel panel-default">
-    <h2><%= current_user.first_name %>'s Profile</h2>
+<div class="container text-center">
 
-    <p>Name: <%= current_user.first_name %> <%= current_user.last_name %></p>
-    <p>Email: <%= current_user.email %></p>
+  <div class="index-pagination">
+    <div class="panel panel-default">
+      <h2 class='panel-heading'><%= current_user.first_name %>'s Profile</h2>
+      <div class="panel-body">
+        <p>Name: <%= current_user.first_name %> <%= current_user.last_name %></p>
+        <p>Email: <%= current_user.email %></p>
+      </div>
+    </div>
+  </div>
+  <div class="admin-links">
+    <h1><%= link_to 'Bike-Shop', accessories_path %></h1>
   </div>
 </div>

@@ -70,4 +70,11 @@ FactoryBot.define do
   station
   end
 
+  factory :accessory do
+    price 1200
+    name "Wild Locally Sourced Buttered Lettuce"
+    description "Found in the tundras of alaska. This lettuce has been naturally buttered by bears and beavers."
+    status 0
+  end
+
 end
