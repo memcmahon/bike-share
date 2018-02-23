@@ -24,12 +24,18 @@ class Admin::TripsController < Admin::BaseController
   end
 
   def edit
-    @conditions = Condition.all
+    @stations = Station.all
   end
 
   def update
-    @trip.update(trip_params)
-    redirect_to trip_path(@trip)
+    if @trip.update(trip_params)
+      @trip.condition_id = Condition.find_by(date: @trip.start_date).id if Condition.find_by(date: @trip.start_date)
+      flash[:notice] = "Success - you have updated a trip."
+      redirect_to trip_path(@trip)
+    else
+      flash[:notice] = "Unable to update trip"
+      render :edit
+    end
   end
 
   private
