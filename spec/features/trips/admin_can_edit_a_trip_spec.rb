@@ -25,6 +25,7 @@ describe "As an admin" do
       fill_in("trip[zip_code]", with: "52556")
       click_on("Update Trip")
 
+      expect(page).to have_content("Success - you have updated a trip.")
       expect(current_path).to eq(trip_path(@trips[0]))
     end
   end
