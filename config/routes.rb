@@ -31,5 +31,4 @@
   get '/stations-dashboard', to: 'stations_dashboard#index'
   get '/trips-dashboard', to: 'trips_dashboard#index'
   get '/weather-dashboard', to: 'conditions_dashboard#index'
-
 end
