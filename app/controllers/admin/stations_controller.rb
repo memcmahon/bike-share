@@ -9,10 +9,12 @@ class Admin::StationsController < Admin::BaseController
   def create
     @station = Station.new(station_params)
     if @station.save
-      flash[:success] = "Station created!"
+      flash[:notice] = "Station created!"
+
       redirect_to station_path(@station.slug)
     else
-      flash[:error] = "This station already exist!"
+      flash[:notice] = "Opps Something Went Wrong!"
+
       render :new
     end
   end

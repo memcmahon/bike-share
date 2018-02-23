@@ -15,6 +15,7 @@ class StationsController < ApplicationController
   def update
     @station = Station.find(params[:slug])
     @station.update(station_params)
+    flash[:notice] = "#{@station.name} was updated"
 
     redirect_to station_path(@station.slug)
   end
