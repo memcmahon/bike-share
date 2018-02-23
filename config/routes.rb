@@ -19,7 +19,7 @@
     resources :conditions, except: [:index, :show]
     resources :trips, except: [:index, :show]
     resources :stations, except: [:index, :show]
-    resources :accessories, path: 'bike-shop', except: [:index, :show, :new]
+    resources :accessories, path: 'bike-shop', except: [:index, :show]
   end
 
   get '/login', to: 'sessions#new'
@@ -31,7 +31,5 @@
   get '/stations-dashboard', to: 'stations_dashboard#index'
   get '/trips-dashboard', to: 'trips_dashboard#index'
   get '/weather-dashboard', to: 'conditions_dashboard#index'
-
-  get '/bike-shop/new', to: 'admin/accessories#new'
 
 end
