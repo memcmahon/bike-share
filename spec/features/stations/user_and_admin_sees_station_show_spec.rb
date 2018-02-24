@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe "as a user or admin" do
-  describe "when I visit a station show" do
+  describe "when I visit a station path" do
     before(:each) do
       @user = create(:user)
       @station_1 = create(:station, name: "Ali")
@@ -18,43 +18,43 @@ describe "as a user or admin" do
     end
 
     it "I see the number of rides started at this station" do
-      visit station_show(@station_1)
+      visit station_path(@station_1)
 
       expect(page).to have_content("Trips started here: 3")
     end
 
     it "I see the number of rides ended at this station" do
-      visit station_show(@station_3)
+      visit station_path(@station_3)
 
       expect(page).to have_content("Trips ended here: 1")
     end
 
     it "I see the most frequent destination station for rides started at this station" do
-      visit station_show(@station_1)
+      visit station_path(@station_1)
 
       expect(page).to have_content("Most frequent destination from this stop: #{@station_2}")
     end
 
     it "I see the most frequent origination station for rides ended at this station" do
-      visit station_show(@station_2)
+      visit station_path(@station_2)
 
       expect(page).to have_content("Most frequent origination to this stop: #{@station_1}")
     end
 
     it "I see the date with the highest number of rides started at this station" do
-      visit station_show(@station_1)
+      visit station_path(@station_1)
 
       expect(page).to have_content("Date with most rides started: 10/03/2017")
     end
 
     it "I see the most frequent zip code for trips starting at this station" do
-      visit station_show(@station_1)
+      visit station_path(@station_1)
 
       expect(page).to have_content("Most frequent zip code for trips starting here: 52556")
     end
 
     it "I see the most frequent bike_id starting from this station" do
-      visit station_show(@station_1)
+      visit station_path(@station_1)
 
       expect(page).to have_content("Most frequent bike id for trips starting here: 13")
     end
