@@ -57,7 +57,7 @@ describe "as a visitor" do
 
       click_on "Remove Accessory"
 
-      expect(page).to_not have_content(@accessory.name)
+      expect(page).to have_content("You have removed #{@accessory.name} from the cart.")
       expect(page).to have_content("Cart Count: 0")
     end
   end
