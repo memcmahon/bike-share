@@ -6,8 +6,8 @@ describe "as a visitor" do
       @accessory = create(:accessory)
     end
     it "shows cart contents and count" do
-      
-      visit cart_path
+
+      visit '/cart'
 
       expect(page).to have_content("Cart Count: 0")
 
@@ -15,7 +15,7 @@ describe "as a visitor" do
 
       click_on "Add to Cart"
 
-      visit carts_path
+      visit '/cart'
 
       expect(page).to have_content("Cart Count: 1")
     end
