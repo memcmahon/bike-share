@@ -38,7 +38,7 @@ describe "as a user or admin" do
     it "I see the most frequent origination station for rides ended at this station" do
       visit station_path(@station_2.slug)
 
-      expect(page).to have_content("Most frequent origination to this station: #{@station_1}")
+      expect(page).to have_content("Most frequent origination to this station: #{@station_1.name}")
     end
 
     it "I see the date with the highest number of rides started at this station" do

@@ -36,7 +36,13 @@ class Station < ApplicationRecord
     else
       "N/A"
     end
+  end
 
-
+  def most_frequent_origination
+    if !end_trip_stations.group(:start_station_id).order('count(id) DESC').count.empty?
+      Station.find(end_trip_stations.group(:start_station_id).order('count(id) DESC').count.first.first).name
+    else
+      "N/A"
+    end
   end
 end
