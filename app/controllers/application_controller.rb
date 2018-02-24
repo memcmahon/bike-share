@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
+  before_action :set_cart
 
   helper_method :current_user, :print_range
 
@@ -9,5 +10,9 @@ class ApplicationController < ActionController::Base
 
   def print_range(range)
     range.to_s.split('..').join(' - ')
+  end
+
+  def set_cart
+    @cart = Cart.new(session[:cart])
   end
 end
