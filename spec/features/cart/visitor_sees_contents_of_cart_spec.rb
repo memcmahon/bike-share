@@ -5,7 +5,7 @@ describe "as a visitor" do
     before(:each) do
       @accessory = create(:accessory)
     end
-    xit "shows cart contents and count" do
+    it "shows cart contents and count" do
 
       visit '/cart'
 
@@ -18,6 +18,10 @@ describe "as a visitor" do
       visit '/cart'
 
       expect(page).to have_content("Cart Count: 1")
+
+      click_on "Increase"
+
+      expect(page).to have_content("Cart Count: 2")
     end
   end
 end
