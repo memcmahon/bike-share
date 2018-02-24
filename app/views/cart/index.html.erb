@@ -14,8 +14,7 @@
       <ul class="panel-body">
         <li>Unit Price: <%= accessory.price %></li>
         <li>Subtotal: <%= @cart.subtotal(accessory) %></li>
-        <%= button_to 'Increase', increase_path(accessory_id: accessory.id) %>
-        <%= button_to 'Decrease', carts_path(accessory_id: accessory.id) %>
+        <%= button_to 'Increase', increase_cart_index_path(accessory_id: accessory.id) %>
       </ul>
     </div>
   <% end %>

@@ -14,7 +14,7 @@
       <ul class="panel-body">
         <li><%= accessory.price %></li>
         <li><%= accessory.description %></li>
-        <%= button_to 'Add to Cart', carts_path(accessory_id: accessory.id) %>
+        <%= button_to 'Add to Cart', cart_index_path(accessory_id: accessory.id) %>
       <% if current_user && current_user.admin? %>
         <div class="buttons">
           <li>
