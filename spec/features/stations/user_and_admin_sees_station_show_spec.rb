@@ -56,7 +56,7 @@ describe "as a user or admin" do
     it "I see the most frequent bike_id starting from this station" do
       visit station_path(@station_1.slug)
 
-      expect(page).to have_content("Most frequent bike id for trips starting here: 13")
+      expect(page).to have_content("Most frequent bike for trips starting here: 13")
     end
   end
 end
