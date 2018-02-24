@@ -1,6 +1,6 @@
 class CartController < ApplicationController
   include ActionView::Helpers::TextHelper
-  before_action :set_accessory, only: [:create, :increase, :decrease]
+  before_action :set_accessory, only: [:create, :increase, :decrease, :remove]
 
   def index
     @accessories = @cart.cart_accessories
@@ -25,6 +25,12 @@ class CartController < ApplicationController
   def decrease
     @cart.lose_accessory(params[:accessory_id])
     flash[:alert] = "You have lost 1 #{@accessory.name}"
+    redirect_to cart_index_path
+  end
+
+  def remove
+    @cart.remove_accessory(params[:accessory_id])
+    flash[:alert] = "You have removed #{@accessory.name} from the cart."
     redirect_to cart_index_path
   end
 
