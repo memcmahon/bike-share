@@ -2,10 +2,6 @@
 
   root to: 'welcome#index'
 
-  resources :users, except: [:index, :show], shallow: :true do
-    resources :carts
-    resources :orders, except: [:destroy, :edit, :update]
-  end
 
   resources :stations, param: :slug
 
@@ -15,11 +11,23 @@
 
   resources :accessories, path: 'bike-shop', only: [:index, :show]
 
+  resources :users, except: [:index, :show], shallow: :true do
+    resources :orders, except: [:destroy, :edit, :update]
+  end
+
   namespace :admin do
     resources :conditions, except: [:index, :show]
     resources :trips, except: [:index, :show]
     resources :stations, except: [:index, :show]
     resources :accessories, path: 'bike-shop', except: [:index, :show]
+  end
+
+  resources :cart, only: [:index, :create] do
+    collection do
+      post 'increase'
+      post 'decrease'
+      post 'remove'
+    end
   end
 
   get '/login', to: 'sessions#new'

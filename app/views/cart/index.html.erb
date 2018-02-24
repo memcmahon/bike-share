@@ -1,0 +1,25 @@
+<div class="container">
+
+  <div class="jumbotron">
+    <h1>Cart</h1>
+    <h3>Cart Count: <%= @cart.total_count %></h3>
+    <%= button_to "Checkout", root_path %>
+  </div>
+
+  <% @accessories.each do |accessory| %>
+    <div class="panel panel-default text-center cart-contents">
+      <h3 class="panel-heading">
+        <%= link_to accessory.name, accessory_path(accessory) %>
+      </h3>
+      <p>Quantity: <%= @cart.count_of(accessory.id) %></p>
+      <ul class="panel-body">
+        <li>Unit Price: <%= accessory.price %></li>
+        <li>Subtotal: <%= @cart.subtotal(accessory) %></li>
+        <%= button_to 'Increase', increase_cart_index_path(accessory_id: accessory.id) %>
+        <%= button_to 'Decrease', decrease_cart_index_path(accessory_id: accessory.id) %>
+        <%= button_to 'Remove Accessory', remove_cart_index_path(accessory_id: accessory.id) %>
+      </ul>
+    </div>
+  <% end %>
+
+</div>
