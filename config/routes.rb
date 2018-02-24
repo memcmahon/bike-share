@@ -26,6 +26,7 @@
     collection do
       post 'increase'
       post 'decrease'
+      post 'remove'
     end
   end
 
