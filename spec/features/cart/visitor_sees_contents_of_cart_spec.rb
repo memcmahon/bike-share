@@ -7,7 +7,7 @@ describe "as a visitor" do
     end
     it "shows cart contents and count" do
 
-      visit '/cart'
+      visit cart_index_path
 
       expect(page).to have_content("Cart Count: 0")
 
@@ -15,13 +15,36 @@ describe "as a visitor" do
 
       click_on "Add to Cart"
 
-      visit '/cart'
+      visit cart_index_path
 
       expect(page).to have_content("Cart Count: 1")
+    end
+    it "increases accessory count" do
+      visit accessories_path
+
+      click_on "Add to Cart"
+
+      visit cart_index_path
+
 
       click_on "Increase"
 
       expect(page).to have_content("Cart Count: 2")
+    end
+    it "decreases accessory count" do
+      visit accessories_path
+
+      click_on "Add to Cart"
+
+      visit cart_index_path
+
+      click_on "Increase"
+
+      expect(page).to have_content("Cart Count: 2")
+
+      click_on "Decrease"
+
+      expect(page).to have_content("Cart Count: 1")
     end
   end
 end
