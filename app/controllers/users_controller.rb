@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
 
-
   def new
     @user = User.new()
   end
@@ -21,11 +20,22 @@ class UsersController < ApplicationController
   end
 
   def update
+    @user = current_user
     @user.update(user_params)
-    flash[:notice] = "#{@user.name} was updated"
     if @user.save
+      flash[:notice] = "#{@user.first_name} was updated"
+      redirect_to dashboard_path
+    else
+      flash[:notice] = "Something went wrong, please try again."
+      render :edit
+    end
+  end
 
-    redirect_to user_path(@user.slug)
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    session.destroy
+    redirect_to root_path
   end
 
   private
