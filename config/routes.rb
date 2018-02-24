@@ -12,7 +12,6 @@
   resources :accessories, path: 'bike-shop', only: [:index, :show]
 
   resources :users, except: [:index, :show], shallow: :true do
-    resources :carts
     resources :orders, except: [:destroy, :edit, :update]
   end
 
@@ -23,8 +22,12 @@
     resources :accessories, path: 'bike-shop', except: [:index, :show]
   end
 
-  resources :carts, only: [:create]
-  get '/cart', to: 'carts#show'
+  resources :cart, only: [:index, :create] do
+    collection do
+      post 'increase'
+      post 'decrease'
+    end
+  end
 
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
