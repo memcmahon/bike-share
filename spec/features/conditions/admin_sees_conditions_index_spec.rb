@@ -8,7 +8,7 @@ describe "as an admin" do
       condition = create_list(:condition, 4)
       visit conditions_path
 
-      expect(page).to have_content("January 10, 1990", 4)
+      expect(page).to have_content("January 10, 1990")
     end
   end
 end
