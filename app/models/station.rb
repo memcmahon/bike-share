@@ -45,4 +45,16 @@ class Station < ApplicationRecord
       "N/A"
     end
   end
+
+  def date_with_most_rides_started
+    unless start_trip_stations.group(:start_date).order('count(id) DESC').count.empty?
+      start_trip_stations.group(:start_date).order('count(id) DESC').count.first.first.strftime("%m/%d/%Y")
+    end
+  end
+
+  def most_frequent_zip_code
+    unless start_trip_stations.group(:zip_code).order('count(id) DESC').count.empty?
+      start_trip_stations.group(:zip_code).order('count (id) DESC').count.first.first
+    end
+  end
 end

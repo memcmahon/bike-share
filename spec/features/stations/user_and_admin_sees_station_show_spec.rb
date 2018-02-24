@@ -44,7 +44,7 @@ describe "as a user or admin" do
     it "I see the date with the highest number of rides started at this station" do
       visit station_path(@station_1.slug)
 
-      expect(page).to have_content("Date with most rides started: 10/03/2017")
+      expect(page).to have_content("Date with most rides started at this station: 10/03/2017")
     end
 
     it "I see the most frequent zip code for trips starting at this station" do
