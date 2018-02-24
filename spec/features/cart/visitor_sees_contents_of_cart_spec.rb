@@ -5,7 +5,7 @@ describe "as a visitor" do
     before(:each) do
       @accessory = create(:accessory)
     end
-    it "shows cart contents and count" do
+    xit "shows cart contents and count" do
 
       visit '/cart'
 
