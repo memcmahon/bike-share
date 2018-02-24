@@ -22,6 +22,8 @@
     resources :accessories, path: 'bike-shop', except: [:index, :show]
   end
 
+  resources :carts, only: [:create]
+
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
