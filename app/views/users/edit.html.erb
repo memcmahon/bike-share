@@ -1,0 +1,7 @@
+<% if current_user || current_user.admin? %>
+  <h2>Modify Account</h2>
+
+  <%= render partial: "form" %>
+<% else %>
+  <%= render file: 'public/404' %>
+<% end %>
