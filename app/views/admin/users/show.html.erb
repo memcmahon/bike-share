@@ -6,6 +6,10 @@
       <div class="panel-body">
         <p>Name: <%= current_user.first_name %> <%= current_user.last_name %></p>
         <p>Email: <%= current_user.email %></p>
+        <% if current_user && current_user.admin? %>
+          <%= link_to "delete", user_path(current_user), method: "delete", data: {confirm: "Are you sure you want to delete your account?"} %> -
+          <%= link_to "edit", edit_user_path(current_user) %>
+        <% end %>
       </div>
     </div>
   </div>
