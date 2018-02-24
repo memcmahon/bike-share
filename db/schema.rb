@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20180223034812) do
     t.integer "price"
     t.string "name"
     t.text "description"
-    t.integer "status"
+    t.integer "status", default: 0
     t.string "avatar_file_name"
     t.string "avatar_content_type"
     t.integer "avatar_file_size"
