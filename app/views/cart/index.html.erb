@@ -3,6 +3,7 @@
   <div class="jumbotron">
     <h1>Cart</h1>
     <h3>Cart Count: <%= @cart.total_count %></h3>
+    <%= button_to "Checkout", root_path %>
   </div>
 
   <% @accessories.each do |accessory| %>
