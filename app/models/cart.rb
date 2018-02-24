@@ -11,11 +11,19 @@ class Cart
   end
 
   def add_accessory(id)
-    contents[id.to_s] += 1
+    if contents[id.to_s] == nil
+      contents[id.to_s] = 1
+    else
+      contents[id.to_s] += 1
+    end 
   end
 
   def lose_accessory(id)
     contents[id.to_s] -= 1
+  end
+
+  def remove_accessory(id)
+    contents.delete(id)
   end
 
   def total_count
