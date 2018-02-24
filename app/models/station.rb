@@ -30,4 +30,13 @@ class Station < ApplicationRecord
     where(dock_count: fewest_bikes_available_at_a_station).pluck(:name)
   end
 
+  def most_frequent_destination
+    if !start_trip_stations.group(:end_station_id).order('count(id) DESC').count.empty?
+      Station.find(start_trip_stations.group(:end_station_id).order('count(id) DESC').count.first.first).name
+    else
+      "N/A"
+    end
+
+
+  end
 end

@@ -15,6 +15,7 @@
     <% if current_user %>
       <p>Trips started here: <%= @station.start_trip_stations.count %></p>
       <p>Trips ended here: <%= @station.end_trip_stations.count %></p>
+      <p>Most frequent destination from this station: <%= @station.most_frequent_destination %></p>
 
     <% end %>
 
