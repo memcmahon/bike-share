@@ -12,6 +12,17 @@
       <li>Installation Date: <%= @station.installation_date %></li>
     </ul>
 
+    <% if current_user %>
+      <p>Trips started here: <%= @station.start_trip_stations.count %></p>
+      <p>Trips ended here: <%= @station.end_trip_stations.count %></p>
+      <p>Most frequent destination from this station: <%= @station.most_frequent_destination %></p>
+      <p>Most frequent origination to this station: <%= @station.most_frequent_origination %></p>
+      <p>Date with most rides started at this station: <%= @station.date_with_most_rides_started %></p>
+      <p>Most frequent zip code for trips starting here: <%= @station.most_frequent_zip_code %></p>
+      <p>Most frequent bike for trips starting here: <%= @station.most_frequent_bike %></p>
+
+    <% end %>
+
     <% if current_user && current_user.admin? %>
       <%= link_to "delete", station_path(@station.name), method: "delete", data: {confirm: "Are you sure you want to delete this station?"} %>
       <%= link_to "edit", edit_station_path(@station.slug) %>
