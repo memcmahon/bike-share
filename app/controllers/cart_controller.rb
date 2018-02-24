@@ -17,7 +17,12 @@ class CartController < ApplicationController
 
   def increase
     @cart.add_accessory(params[:accessory_id])
-    redirect_to '/cart'
+    redirect_to cart_index_path
+  end
+
+  def decrease
+    @cart.lose_accessory(params[:accessory_id])
+    redirect_to cart_index_path
   end
 
 end
