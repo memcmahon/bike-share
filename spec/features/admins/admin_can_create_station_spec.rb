@@ -9,7 +9,7 @@ describe "As an admin" do
 
       visit new_admin_station_path
 
-      expect(page).to have_content("Create A Station")
+      expect(page).to have_content("Create a Station")
 
       fill_in 'station[name]', with: "Denver Bike"
       fill_in 'station[dock_count]', with: 20
@@ -21,7 +21,7 @@ describe "As an admin" do
       expect(page).to have_content("Station Details")
       expect(page).to have_content("Denver Bike")
       expect(page).to have_content("Miami")
-      expect(page).to have_content("2013-12-12")
+      expect(page).to have_content("12/12/2013")
 
     end
   end

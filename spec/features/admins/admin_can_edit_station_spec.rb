@@ -13,7 +13,7 @@ describe "As an admin" do
       expect(page).to have_content("Station Details")
       expect(page).to have_content(station.name)
       expect(page).to have_content("City: San Francisco")
-      expect(page).to have_content("1991-12-12")
+      expect(page).to have_content("12/12/1991")
 
       click_on "edit"
 
@@ -21,8 +21,6 @@ describe "As an admin" do
       expect(page).to have_content("Edit Station")
 
       fill_in 'station[name]', with: "Denver Bike"
-      fill_in 'station[lat]', with: "11"
-      fill_in 'station[long]', with: "22"
       fill_in 'station[dock_count]', with: 20
       fill_in 'station[city]', with: "Miami"
       fill_in 'station[installation_date]', with: Date.new(2013,12,12)
@@ -31,11 +29,10 @@ describe "As an admin" do
 
       expect(page).to have_content("Denver Bike")
       expect(page).to have_content("Miami")
-      expect(page).to have_content("2013-12-12")
+      expect(page).to have_content("12/12/2013")
       expect(page).to_not have_content("City: San Francisco")
-      expect(page).to_not have_content("1991-12-12")
-    
+      expect(page).to_not have_content("12/12/1991")
+
     end
   end
 end
-

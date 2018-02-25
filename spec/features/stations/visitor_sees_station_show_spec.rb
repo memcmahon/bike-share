@@ -10,10 +10,8 @@ describe "As a visitor" do
       expect(current_path).to eq("/stations/turing")
       expect(page).to have_content("Name: turing")
       expect(page).to have_content("Dock Count: 4")
-      expect(page).to have_content("Lat: 2")
-      expect(page).to have_content("Long: 3")
       expect(page).to have_content("City: San Francisco")
-      expect(page).to have_content("Installation Date: 1991-12-12")
+      expect(page).to have_content("Installation Date: 12/12/1991")
     end
   end
 end

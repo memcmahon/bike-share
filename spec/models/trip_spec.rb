@@ -43,7 +43,7 @@ describe Trip, type: :model do
 
     it "returns a breakdown of rides by month and by year" do
       expect(Trip.rides_by_month.first.last).to eq(1)
-      expect(Trip.rides_by_year.first.last).to eq(2)
+      expect(Trip.rides_by_year.first.last).to eq(1)
     end
 
     it "returns the most and least ridden bike" do
