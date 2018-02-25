@@ -16,9 +16,9 @@ describe "as an admin" do
         fill_in 'accessory[description]', with: 'Found in the tundras of alaska. This lettuce has been naturally buttered by bears and beavers.'
         click_on "Update Accessory"
 
-        expect(page).to have_content("You have successfully updated #{accessory.name}")
+        expect(page).to have_content("You have successfully updated Wild Buttered Lettuce")
         expect(page).to have_content("Wild Buttered Lettuce")
-        expect(page).to have_content('$12.00')
+        expect(page).to have_content('1200')
       end
     end
   end
