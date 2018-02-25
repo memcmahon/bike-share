@@ -1,19 +1,19 @@
 require 'rails_helper'
 
 describe "As an admin" do
-  describe "when they visit an order page" do
-    before(:each) do
-      @admin = create(:admin)
-      @user_1 = create(:user)
-      @accessory_1, @accessory_2, @accessory_3 = create_list(:accessory, 3)
-      @order_1 = @user_1.orders.create!(user: @user_1, status: 0)
-      @line_1 = OrderAccessory.create!(order: @order_1, accessory: @accessory_1, quantity: 1)
-      @line_2 = OrderAccessory.create!(order: @order_1, accessory: @accessory_2, quantity: 2)
-      @line_3 = OrderAccessory.create!(order: @order_1, accessory: @accessory_3, quantity: 3)
-      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(:admin)
-      visit admin_order_path(@order)
-    end
+  before(:each) do
+    @admin = create(:admin, email: "admin@fakemail.com")
+    @user_1 = create(:user)
+    @accessory_1, @accessory_2, @accessory_3 = create_list(:accessory, 3)
+    @order_1 = @user_1.orders.create!(user: @user_1, status: 0)
+    @line_1 = OrderAccessory.create!(order: @order_1, accessory: @accessory_1, quantity: 1)
+    @line_2 = OrderAccessory.create!(order: @order_1, accessory: @accessory_2, quantity: 2)
+    @line_3 = OrderAccessory.create!(order: @order_1, accessory: @accessory_3, quantity: 3)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(:admin)
+    visit admin_order_path(@order)
+  end
 
+  describe "when they visit an order page" do
     it "they see the oder date and time" do
       expect(page).to have_content("Order date: #{@order_1.created_at}")
     end
