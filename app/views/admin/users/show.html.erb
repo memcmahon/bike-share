@@ -20,6 +20,13 @@
 
   <h2>All Orders</h2>
 
+  <div class="">
+    <%= link_to "Ordered(#{@orders.by_status("Ordered")})", admin_dashboard_path, params: {sort: "Ordered"} %>
+    <%= link_to "Ordered(#{@orders.by_status("Paid")})", admin_dashboard_path, params: {sort: "Paid"} %>
+    <%= link_to "Ordered(#{@orders.by_status("Cancelled")})", admin_dashboard_path, params: {sort: "Cancelled"} %>
+    <%= link_to "Ordered(#{@orders.by_status("Completed")})", admin_dashboard_path, params: {sort: "Completed"} %>
+  </div>
+
   <% @orders.each do |order| %>
     <ul>
       <li><%= link_to "Order: #{order.id}", admin_order_path(order) %>: total - <%= order.total %>, <%= order.status %></li>
