@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="panel">
+    <div class="panel-heading">
+      <h1>Order: <%= @order.id %></h1>
+      <h2>Subtotal: <%= @order.subtotal %> </h2>
+      <h2>Status: <%= @order.status %></h2>
+      <h2>Submitted At: <%= @order.created_at %></h2>
+    </div>
+    <div class="panel-body">
+      <% @order.accessories.each do |accessory| %>
+        <li><%= accessory.name %></li>
+        <li><%= @order.accessory_quantity(accessory.id) %></li>
+        <li><%= @order.accessory_subtotal(accessory.id) %></li>
+      <% end %>
+    </div>
+  </div>
+</div>
