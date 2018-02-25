@@ -9,6 +9,8 @@ describe "As an admin" do
     @accessory_3 = create(:accessory)
     @order_1 = @user_1.orders.create!(user: @user_1, status: 0)
     @order_2 = @user_1.orders.create!(user: @user_1, status: 1)
+    @order_3 = @user_1.orders.create!(user: @user_1, status: 2)
+    @order_4 = @user_1.orders.create!(user: @user_1, status: 3)
     @line_1 = OrderAccessory.create!(order: @order_1, accessory: @accessory_1, quantity: 1)
     @line_2 = OrderAccessory.create!(order: @order_1, accessory: @accessory_2, quantity: 2)
     @line_3 = OrderAccessory.create!(order: @order_1, accessory: @accessory_3, quantity: 3)
@@ -28,6 +30,18 @@ describe "As an admin" do
       expect(page).to have_content(@order_1.status)
       expect(page).to have_content(@order_2.total)
       expect(page).to have_content(@order_2.status)
+    end
+
+    it "they can cancel orders that are paid or ordered" do
+      expect(page).to have_link("Cancel", count: 2)
+    end
+
+    it "they can mark as paid on orders that are ordered" do
+      expect(page).to have_link("Mark as Paid", count: 1)
+    end
+
+    it "they can mark as completed on orders that are paid" do
+      expect(page).to have_link("Mark as Completed", count: 1)
     end
   end
 end
