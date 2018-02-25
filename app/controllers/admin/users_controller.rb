@@ -1,6 +1,10 @@
 class Admin::UsersController < Admin::BaseController
   def show
-    binding.pry
-    @orders = Order.all
+    @all_orders = Order.all
+    if params[:sort]
+      @orders = Order.where(status: params[:sort])
+    else
+      @orders = Order.all
+    end
   end
 end

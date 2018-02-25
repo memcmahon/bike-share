@@ -8,7 +8,7 @@ describe "As an admin" do
     @accessory_2 = create(:accessory, name: "Thing 2")
     @accessory_3 = create(:accessory)
     @order_1 = @user_1.orders.create!(user: @user_1, status: 0)
-    @order_2 = @user_1.orders.create!(user: @user_1, status: 1)
+    @order_2 = @user_1.orders.create!(id: 11388, user: @user_1, status: 1)
     @order_3 = @user_1.orders.create!(user: @user_1, status: 2)
     @order_4 = @user_1.orders.create!(user: @user_1, status: 1)
     @line_1 = OrderAccessory.create!(order: @order_1, accessory: @accessory_1, quantity: 1)
@@ -33,12 +33,12 @@ describe "As an admin" do
     end
 
     it "they can cancel orders that are paid or ordered" do
-      expect(page).to have_button("Cancel", count: 3)
+      expect(page).to have_button("Cancel", exact: true, count: 3)
 
-      click_on("Cancel", match: :first)
+      click_button("Cancel", match: :first)
 
       expect(current_path).to eq(admin_dashboard_path)
-      expect(page).to have_button("Cancel", count: 2)
+      expect(page).to have_button("Cancel", exact: true, count: 2)
     end
 
     it "they can mark as paid on orders that are ordered" do
@@ -47,14 +47,14 @@ describe "As an admin" do
       click_button("Mark as Paid")
 
       expect(current_path).to eq(admin_dashboard_path)
-      expect(page).to have_button("Mark as Completed", count: 2)
+      expect(page).to have_button("Mark as Completed", count: 3)
     end
 
     it "they can mark as completed on orders that are paid" do
       click_button("Mark as Completed", match: :first)
 
       expect(current_path).to eq(admin_dashboard_path)
-      expect(page).to have_button("Cancel", count: 3)
+      expect(page).to have_button("Cancel", exact: true, count: 2)
     end
   end
 
@@ -66,7 +66,7 @@ describe "As an admin" do
     end
 
     it "they can link to a list of only orders in a specific status" do
-      click_on("Ordered(1)")
+      click_link("Ordered(1)")
 
       expect(page).to have_content(@order_1.id)
       expect(page).to_not have_content(@order_2.id)
