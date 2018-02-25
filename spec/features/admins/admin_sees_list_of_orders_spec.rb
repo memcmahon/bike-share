@@ -57,4 +57,19 @@ describe "As an admin" do
       expect(page).to have_button("Cancel", count: 3)
     end
   end
+
+  describe "they visit admin dashboard" do
+    it "they see the number of orders by status" do
+      expect(page).to have_content("Ordered(1)")
+      expect(page).to have_content("Paid(2)")
+      expect(page).to have_content("Cancelled(1)")
+    end
+
+    it "they can link to a list of only orders in a specific status" do
+      click_on("Ordered(1)")
+
+      expect(page).to have_content(@order_1.id)
+      expect(page).to_not have_content(@order_2.id)
+    end
+  end
 end
