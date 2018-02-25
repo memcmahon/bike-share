@@ -34,14 +34,29 @@ describe "As an admin" do
 
     it "they can cancel orders that are paid or ordered" do
       expect(page).to have_link("Cancel", count: 2)
+
+      click_link("Cancel", match: :first)
+
+      expect(current_path).to eq(admin_dashboard_path)
+      expect(@order_1.status).to eq(2)
     end
 
     it "they can mark as paid on orders that are ordered" do
       expect(page).to have_link("Mark as Paid", count: 1)
+
+      click_link("Mark as Paid")
+
+      expect(current_path).to eq(admin_dashboard_path)
+      expect(@order_3.status).to eq(1)
     end
 
     it "they can mark as completed on orders that are paid" do
-      expect(page).to have_link("Mark as Completed", count: 1)
+      expect(page).to have_link("Mark as Completed", count: 2)
+
+      click_link("Mark as Completed", match: :first)
+
+      expect(current_path).to eq(admin_dashboard_path)
+      expect(@order_3.status).to eq(3)
     end
   end
 end
