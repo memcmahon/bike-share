@@ -14,4 +14,7 @@ class Order < ApplicationRecord
     Accessory.find(id).price * accessory_quantity(id)
   end
 
+  def self.by_status(status)
+    Order.where(status: status).count
+  end
 end

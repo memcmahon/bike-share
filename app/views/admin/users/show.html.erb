@@ -16,4 +16,29 @@
   <div class="admin-links">
     <h1><%= link_to 'Bike-Shop', accessories_path %></h1>
   </div>
+
+
+  <h2><%= link_to "All Orders", admin_dashboard_path %></h2>
+
+  <div class="">
+    <%= link_to "Ordered(#{@all_orders.by_status("Ordered")})", admin_dashboard_path(sort: "Ordered") %>
+    <%= link_to "Paid(#{@all_orders.by_status("Paid")})", admin_dashboard_path(sort: "Paid") %>
+    <%= link_to "Cancelled(#{@all_orders.by_status("Cancelled")})", admin_dashboard_path(sort: "Cancelled") %>
+    <%= link_to "Completed(#{@all_orders.by_status("Completed")})", admin_dashboard_path(sort: "Completed") %>
+  </div>
+
+  <% @orders.each do |order| %>
+    <ul>
+      <li><%= link_to "Order: #{order.id}", admin_order_path(order) %>: total - <%= order.total %>, <%= order.status %></li>
+      <li><% if order.status == "Ordered" %>
+            <%= button_to "Cancel", admin_order_path(order), method: 'put', params: {status: "Cancelled"} %>
+            <%= button_to "Mark as Paid", admin_order_path(order), method: 'put', params: {status: "Paid"} %>
+          <% elsif order.status == "Paid" %>
+            <%= button_to "Cancel", admin_order_path(order), method: 'put', params: {status: "Cancelled"} %>
+            <%= button_to "Mark as Completed", admin_order_path(order), method: 'put', params: {status: "Completed"} %>
+          <% end %>
+      </li>
+    </ul>
+  <% end %>
+
 </div>

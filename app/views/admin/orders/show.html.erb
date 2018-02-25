@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="panel">
+    <div class="panel-heading">
+      <h1>Order: <%= @order.id %></h1>
+      <h2>Purchaser Name: <%= @order.user.first_name %> <%= @order.user.last_name %></h2>
+      <h2>Purchaser Address:</h2>
+        <address>
+          <p><%= @order.user.address %></p>
+          <p><%= @order.user.city %>, <%= @order.user.state %> <%= @order.user.zip_code %></p>
+        </address>
+      <h2>Total: <%= @order.total %> </h2>
+      <h2>Status: <%= @order.status %></h2>
+      <h2>Submitted At: <%= @order.created_at %></h2>
+    </div>
+    <div class="panel-body">
+      <% @order.accessories.each do |accessory| %>
+      <h3><%=link_to accessory.name, accessory_path(accessory) %></h3>
+        <ul>
+          <li><p>quantity: <%= @order.accessory_quantity(accessory.id) %></p></li>
+          <li><p>subtotal: <%= @order.accessory_subtotal(accessory.id) %></p></li>
+        </ul>
+      <% end %>
+    </div>
+  </div>
+</div>
