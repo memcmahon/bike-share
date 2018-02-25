@@ -8,4 +8,9 @@
       <%= link_to "edit", edit_user_path(current_user) %>
     <% end %>
   </div>
+  <% current_user.orders.each do |order| %>
+    <div class="panel">
+      <%= link_to "Order: #{order.id}", order_path(order) %>
+    </div>
+  <% end %>
 </div>

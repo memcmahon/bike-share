@@ -15,7 +15,7 @@ class Cart
       contents[id.to_s] = 1
     else
       contents[id.to_s] += 1
-    end 
+    end
   end
 
   def lose_accessory(id)
@@ -36,6 +36,10 @@ class Cart
 
   def subtotal(accessory)
     count_of(accessory.id) * Accessory.find(accessory.id).price
+  end
+
+  def cart_subtotal
+    cart_accessories.sum { |accessory| subtotal(accessory) }
   end
 
 end
