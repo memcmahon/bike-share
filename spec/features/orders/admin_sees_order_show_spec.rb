@@ -4,7 +4,9 @@ describe "As an admin" do
   before(:each) do
     @admin = create(:admin, email: "admin@fakemail.com")
     @user_1 = create(:user)
-    @accessory_1, @accessory_2, @accessory_3 = create_list(:accessory, 3)
+    @accessory_1 = create(:accessory, name: "Thing 1")
+    @accessory_2 = create(:accessory, name: "Thing 2")
+    @accessory_3 = create(:accessory)
     @order_1 = @user_1.orders.create!(user: @user_1, status: 0)
     @line_1 = OrderAccessory.create!(order: @order_1, accessory: @accessory_1, quantity: 1)
     @line_2 = OrderAccessory.create!(order: @order_1, accessory: @accessory_2, quantity: 2)
@@ -15,7 +17,7 @@ describe "As an admin" do
 
   describe "when they visit an order page" do
     it "they see the oder date and time" do
-      expect(page).to have_content("Order date: #{@order_1.created_at}")
+      expect(page).to have_content("Submitted At: #{@order_1.created_at}")
     end
 
     it "they see the purchaser's name and address" do
@@ -30,7 +32,7 @@ describe "As an admin" do
     end
 
     it "they see the quantity and item subtotal" do
-      expect(page).to have_content("#{@accessory_3.name} quantitiy: #{@line_3.quantity} subtotal: #{@order_1.accessory_subtotal(@accessory_3.id)}")
+      expect(page).to have_content("#{@accessory_3.name} quantity: 3 subtotal: #{@order_1.accessory_subtotal(@accessory_3.id)}")
     end
 
     it "they see the total for the order" do
