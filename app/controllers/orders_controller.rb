@@ -5,7 +5,7 @@ class OrdersController < ApplicationController
   end
 
   def create
-    order = current_user.orders.create(status: "Ordered",
+    order = current_user.orders.create(status: 0,
                                        total: @cart.cart_subtotal)
     session[:cart].each do |id, quantity|
       order.order_accessories.create(order_id: order.id,

@@ -14,10 +14,4 @@ class Order < ApplicationRecord
     Accessory.find(id).price * accessory_quantity(id)
   end
 
-  def subtotal
-    order_accessories.sum do |order_accessory|
-      accessory_subtotal(order_accessory.id)
-    end
-  end
-
 end
