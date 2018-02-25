@@ -11,6 +11,7 @@ describe "as a registered user" do
         visit accessories_path
 
         click_on "Add to Cart"
+        click_on "Add to Cart"
 
         visit cart_index_path
 
