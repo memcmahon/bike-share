@@ -9,7 +9,7 @@ describe "As an admin" do
     @line_1 = OrderAccessory.create!(order: @order_1, accessory: @accessory_1, quantity: 1)
     @line_2 = OrderAccessory.create!(order: @order_1, accessory: @accessory_2, quantity: 2)
     @line_3 = OrderAccessory.create!(order: @order_1, accessory: @accessory_3, quantity: 3)
-    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(:admin)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@admin)
     visit admin_order_path(@order_1)
   end
 
