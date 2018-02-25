@@ -12,6 +12,7 @@
     <div class="panel panel-default text-center">
       <h3 class="panel-heading"> <%= link_to accessory.name, accessory_path(accessory) %> </h3>
       <ul class="panel-body">
+        <p><%= image_tag accessory.avatar.url %></p>
         <li><%= accessory.price %></li>
         <li><%= accessory.description %></li>
         <%= button_to 'Add to Cart', cart_index_path(accessory_id: accessory.id) %>
