@@ -11,9 +11,9 @@
 
   resources :accessories, path: 'bike-shop', only: [:index, :show]
 
-  resources :users, except: [:index, :show], shallow: :true do
-    resources :orders, except: [:destroy, :edit, :update]
-  end
+  resources :users, except: [:index, :show], shallow: :true
+
+  resources :orders, only: [:create, :show]
 
   namespace :admin do
     resources :conditions, except: [:index, :show]
@@ -39,7 +39,7 @@
   get '/stations-dashboard', to: 'stations_dashboard#index'
   get '/trips-dashboard', to: 'trips_dashboard#index'
   get '/weather-dashboard', to: 'conditions_dashboard#index'
-  
+
   get '/bikeshop', to: 'accessories#index'
   get '/admin/bike-shop', to: 'admin/accessories#index'
   get '/admin/bike-shop/new', to: 'admin/accessories#new'
