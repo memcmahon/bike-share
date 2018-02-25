@@ -1,0 +1,33 @@
+require 'rails_helper'
+
+describe "As an admin" do
+  before(:each) do
+    @admin = create(:admin, email: "admin@fakemail.com")
+    @user_1 = create(:user)
+    @accessory_1 = create(:accessory, name: "Thing 1")
+    @accessory_2 = create(:accessory, name: "Thing 2")
+    @accessory_3 = create(:accessory)
+    @order_1 = @user_1.orders.create!(user: @user_1, status: 0)
+    @order_2 = @user_1.orders.create!(user: @user_1, status: 1)
+    @line_1 = OrderAccessory.create!(order: @order_1, accessory: @accessory_1, quantity: 1)
+    @line_2 = OrderAccessory.create!(order: @order_1, accessory: @accessory_2, quantity: 2)
+    @line_3 = OrderAccessory.create!(order: @order_1, accessory: @accessory_3, quantity: 3)
+    @line_4 = OrderAccessory.create!(order: @order_2, accessory: @accessory_1, quantity: 3)
+    @line_5 = OrderAccessory.create!(order: @order_2, accessory: @accessory_2, quantity: 2)
+    @line_6 = OrderAccessory.create!(order: @order_2, accessory: @accessory_3, quantity: 1)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@admin)
+    visit admin_dashboard_path
+  end
+
+  describe "They visit admin/dashboard" do
+    it "they see a list of all orders with links to orders" do
+      expect(page).to have_content("All Orders")
+      expect(page).to have_link(@order_1.id)
+      expect(page).to have_link(@order_2.id)
+      expect(page).to have_content(@order_1.total)
+      expect(page).to have_content(@order_1.status)
+      expect(page).to have_content(@order_2.total)
+      expect(page).to have_content(@order_2.status)
+    end
+  end
+end
