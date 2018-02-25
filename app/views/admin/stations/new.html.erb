@@ -1,23 +1,26 @@
-<h1>Create A Station</h1>
+<div class="container">
 
-<div class="container forms">
-  <%= form_for [:admin, @station] do |f| %>
-    <div class="form-group">
-      <%= f.label :name %>
-      <%= f.text_field :name, class: "form-control"%>
-    </div>
-    <div class="form-group">
-      <%= f.label :dock_count %>
-      <%= f.text_field :dock_count, class: "form-control" %>
-    </div>
-    <div class="form-group">
-      <%= f.label :city %>
-      <%= f.text_field :city, class: "form-control" %>
-    </div>
-    <div class="form-group">
-      <%= f.label :installation_date %>
-      <%= f.text_field :installation_date, class: "form-control" %>
-    </div>
-  <%= f.submit "Create Station", class: 'btn btn-default btn-lg btn-submit'%>
-  <% end %>
+  <h1>Create a Station</h1>
+
+  <div class="container forms">
+    <%= form_for [:admin, @station] do |f| %>
+      <div class="form-group">
+        <%= f.label :name %>
+        <%= f.text_field :name, class: "form-control"%>
+      </div>
+      <div class="form-group">
+        <%= f.label :dock_count %>
+        <%= f.text_field :dock_count, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :city %>
+        <%= f.text_field :city, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :installation_date %>
+        <%= f.date_field :installation_date, class: "form-control" %>
+      </div>
+    <%= f.submit "Create Station", class: 'btn btn-default btn-lg btn-submit'%>
+    <% end %>
+  </div>
 </div>
