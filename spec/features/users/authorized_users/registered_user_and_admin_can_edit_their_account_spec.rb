@@ -18,7 +18,7 @@ describe "As a registered user and admin" do
 
       click_on "Submit"
 
-      expect(current_path).to eq dashboard_path
+      expect(current_path).to eq(dashboard_path)
 
       expect(page).to have_content("Drew")
       expect(page).to have_content("Briggs")
@@ -43,7 +43,7 @@ describe "As a registered user and admin" do
 
       click_on "Submit"
 
-      expect(current_path).to eq admin_dashboard_path
+      expect(current_path).to eq(admin_dashboard_path)
 
       expect(page).to have_content("Drew")
       expect(page).to have_content("Briggs")
