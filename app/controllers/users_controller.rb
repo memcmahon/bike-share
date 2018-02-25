@@ -22,12 +22,12 @@ class UsersController < ApplicationController
   def update
     @user = current_user
     @user.update(user_params)
-    if @user.save && !current_user.admin?
-      flash[:notice] = "#{@user.first_name} was updated"
-      redirect_to dashboard_path
-    elsif @user.save && current_user.admin?
+    if @user.save && current_user.admin?
       flash[:notice] = "#{@user.first_name} was updated"
       redirect_to admin_dashboard_path
+    elsif @user.save && !current_user.admin?
+      flash[:notice] = "#{@user.first_name} was updated"
+      redirect_to dashboard_path
     else
       flash[:notice] = "Something went wrong, please try again."
       render :edit
