@@ -8,6 +8,11 @@ describe Accessory, type: :model do
     it { should validate_presence_of :status }
   end
 
+  describe "Relationships" do
+    it {should have_many(:order_accessories)}
+    it {should have_many(:orders).through(:order_accessories)}
+  end
+
   describe "Instance Methods" do
     before(:each) do
       @accessory_1 = create(:accessory, price: 30000)
