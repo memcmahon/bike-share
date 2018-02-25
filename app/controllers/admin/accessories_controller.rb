@@ -1,5 +1,5 @@
 class Admin::AccessoriesController < Admin::BaseController
-  before_action :set_accessory, only: [:edit, :update]
+  before_action :set_accessory, only: [:edit, :update, :destroy]
 
   def new
     @accessory = Accessory.new
@@ -28,10 +28,20 @@ class Admin::AccessoriesController < Admin::BaseController
     end
   end
 
+  def destroy
+    if @accessory.destroy
+      flash[:success] = 'Accessory successfully deleted'
+      redirect_to accessories_path
+    else
+      flash[:alert] = "Something went wrong"
+      redirect_to accessories_path
+    end
+  end
+
   private
 
   def accessory_params
-    params.require(:accessory).permit(:price, :name, :description, :role)
+    params.require(:accessory).permit(:price, :name, :description, :role, :avatar)
   end
 
   def set_accessory
