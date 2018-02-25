@@ -10,7 +10,7 @@
   resources :users, except: [:index, :show], shallow: :true
 
   namespace :admin do
-    resources :orders, only: [:show]
+    resources :orders, only: [:show, :update]
     resources :conditions, except: [:index, :show]
     resources :trips, except: [:index, :show]
     resources :stations, except: [:index, :show]

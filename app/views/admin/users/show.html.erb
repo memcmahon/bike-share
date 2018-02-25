@@ -23,6 +23,14 @@
   <% @orders.each do |order| %>
     <ul>
       <li><%= link_to "Order: #{order.id}", admin_order_path(order) %>: total - <%= order.total %>, <%= order.status %></li>
+      <li><% if order.status == "Ordered" %>
+            <%= button_to "Cancel", admin_order_path(order), method: 'patch' %>
+            <%= button_to "Mark as Paid", admin_order_path(order), method: 'patch' %>
+          <% elsif order.status == "Paid" %>
+            <%= button_to "Cancel", admin_order_path(order), method: 'patch' %>
+            <%= button_to "Mark as Completed", admin_order_path(order), method: 'patch' %>
+          <% end %>
+      </li>
     </ul>
   <% end %>
 
