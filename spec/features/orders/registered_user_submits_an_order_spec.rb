@@ -17,8 +17,9 @@ describe "as a registered user" do
 
         click_on "Checkout"
 
+        save_and_open_page
         expect(current_path).to eq('/dashboard')
-        expect(page).to have("Your order has been successfully submitted")
+        expect(page).to have_content("Your order was successfully submitted")
         expect(page).to have_link("Order: 1")
       end
     end
