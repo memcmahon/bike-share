@@ -19,4 +19,3 @@ describe "As a registered user and admin" do
     end
   end
 end
-

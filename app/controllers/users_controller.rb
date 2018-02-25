@@ -1,6 +1,4 @@
 class UsersController < ApplicationController
-  def show
-  end
 
   def new
     @user = User.new()
@@ -15,6 +13,32 @@ class UsersController < ApplicationController
     else
       render :new
     end
+  end
+
+  def edit
+    @user = current_user
+  end
+
+  def update
+    @user = current_user
+    @user.update(user_params)
+    if @user.save && current_user.admin?
+      flash[:notice] = "#{@user.first_name} was updated"
+      redirect_to admin_dashboard_path
+    elsif @user.save && !current_user.admin?
+      flash[:notice] = "#{@user.first_name} was updated"
+      redirect_to dashboard_path
+    else
+      flash[:notice] = "Something went wrong, please try again."
+      render :edit
+    end
+  end
+
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    session.destroy
+    redirect_to root_path
   end
 
   private

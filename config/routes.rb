@@ -39,4 +39,11 @@
   get '/stations-dashboard', to: 'stations_dashboard#index'
   get '/trips-dashboard', to: 'trips_dashboard#index'
   get '/weather-dashboard', to: 'conditions_dashboard#index'
+  
+  get '/bikeshop', to: 'accessories#index'
+  get '/admin/bike-shop', to: 'admin/accessories#index'
+  get '/admin/bike-shop/new', to: 'admin/accessories#new'
+  post '/admin/bike-shop', to: 'admin/accessories#create'
+  get '/admin/bike-shop/edit', to: 'admin/accessories#edit'
+  patch '/admin/bike-shop', to: 'admin/accessories#update'
 end

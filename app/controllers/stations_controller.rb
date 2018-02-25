@@ -34,3 +34,4 @@ class StationsController < ApplicationController
       params.require(:station).permit(:name, :lat, :long, :dock_count, :city, :installation_date, :slug)
     end
 end
+

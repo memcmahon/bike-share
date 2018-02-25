@@ -13,6 +13,7 @@ class SessionsController < ApplicationController
         redirect_to '/admin/dashboard'
       end
     else
+      flash[:notice] = "Email and Password may not match"
       render :new
     end
   end
