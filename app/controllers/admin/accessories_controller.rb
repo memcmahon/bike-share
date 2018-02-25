@@ -23,6 +23,7 @@ class Admin::AccessoriesController < Admin::BaseController
       flash[:success] = "You have successfully updated #{@accessory.name}"
       redirect_to accessories_path
     else
+      flash[:alert] = "Something went wrong. Please try again."
       render :new
     end
   end
