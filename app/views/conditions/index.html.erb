@@ -3,7 +3,7 @@
 
   <% if current_user && current_user.admin? %>
     <div class="mr-auto new-condition">
-      <%= link_to "New Condition", new_admin_condition_path, class: 'btn btn-success' %>
+      <h3><%= link_to "Create New Condition", new_admin_condition_path %></h3>
     </div>
   <% end %>
 
@@ -17,4 +17,7 @@
     </div>
   <% end %>
 </div>
-<%= will_paginate @condtions %>
+
+<div class="index-pagination panel">
+  <%= will_paginate @condtions %>
+</div>

@@ -2,17 +2,12 @@
 
   root to: 'welcome#index'
 
-  resources :stations, param: :slug
-
   resources :conditions, only: [:index, :show]
-
   resources :trips, only: [:index, :show]
-
+  resources :stations, param: :slug
   resources :accessories, path: 'bike-shop', only: [:index, :show]
-
-  resources :users, except: [:index, :show], shallow: :true
-
   resources :orders, only: [:create, :show]
+  resources :users, except: [:index, :show], shallow: :true
 
   namespace :admin do
     resources :conditions, except: [:index, :show]
