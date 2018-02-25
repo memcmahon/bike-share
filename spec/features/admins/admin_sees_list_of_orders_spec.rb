@@ -22,8 +22,8 @@ describe "As an admin" do
   describe "They visit admin/dashboard" do
     it "they see a list of all orders with links to orders" do
       expect(page).to have_content("All Orders")
-      expect(page).to have_link(@order_1.id)
-      expect(page).to have_link(@order_2.id)
+      expect(page).to have_link("Order: #{@order_1.id}")
+      expect(page).to have_link("Order: #{@order_2.id}")
       expect(page).to have_content(@order_1.total)
       expect(page).to have_content(@order_1.status)
       expect(page).to have_content(@order_2.total)

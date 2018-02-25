@@ -16,4 +16,14 @@
   <div class="admin-links">
     <h1><%= link_to 'Bike-Shop', accessories_path %></h1>
   </div>
+
+
+  <h2>All Orders</h2>
+
+  <% @orders.each do |order| %>
+    <ul>
+      <li><%= link_to "Order: #{order.id}", admin_order_path(order) %>: total - <%= order.total %>, <%= order.status %></li>
+    </ul>
+  <% end %>
+
 </div>
