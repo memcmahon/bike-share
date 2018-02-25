@@ -5,4 +5,19 @@ class Order < ApplicationRecord
   belongs_to :user
 
   enum status: ["Ordered", "Paid", "Cancelled", "Completed"]
+
+  def accessory_quantity(id)
+    order_accessories.find_by(accessory_id: id).quantity
+  end
+
+  def accessory_subtotal(id)
+    Accessory.find(id).price * accessory_quantity(id)
+  end
+
+  def subtotal
+    order_accessories.sum do |order_accessory|
+      accessory_subtotal(order_accessory.id)
+    end
+  end
+
 end
