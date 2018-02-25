@@ -14,9 +14,11 @@
     </div>
     <div class="panel-body">
       <% @order.accessories.each do |accessory| %>
-        <li><%=link_to accessory.name, accessory_path(accessory) %></li>
-        <li>quantity: <%= @order.accessory_quantity(accessory.id) %></li>
-        <li>subtotal: <%= @order.accessory_subtotal(accessory.id) %></li>
+      <h3><%=link_to accessory.name, accessory_path(accessory) %></h3>
+        <ul>
+          <li><p>quantity: <%= @order.accessory_quantity(accessory.id) %></p></li>
+          <li><p>subtotal: <%= @order.accessory_subtotal(accessory.id) %></p></li>
+        </ul>
       <% end %>
     </div>
   </div>
