@@ -15,4 +15,9 @@ class ApplicationController < ActionController::Base
   def set_cart
     @cart = Cart.new(session[:cart])
   end
+
+  def check_user
+    redirect_to root_path if !current_user
+  end
+
 end
