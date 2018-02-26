@@ -1,5 +1,5 @@
 class Trip < ApplicationRecord
-  has_one :condition
+  belongs_to :condition
   belongs_to :start_station, class_name: "Station"
   belongs_to :end_station, class_name: "Station"
 

@@ -9,8 +9,11 @@ class Admin::TripsController < Admin::BaseController
   def create
     @stations = Station.all
     @trip = Trip.new(trip_params)
-    binding.pry
-    @trip.condition_id = Condition.find_by(date: @trip.start_date).id if Condition.find_by(date: @trip.start_date)
+    @trip.condition_id = if Condition.find_by(date: @trip.start_date)
+                            Condition.find_by(date: @trip.start_date).id
+                         else
+                            Condition.first.id
+                         end
     if @trip.save
       flash[:notice] = "Success - you have created a trip."
       redirect_to trip_path(@trip)
