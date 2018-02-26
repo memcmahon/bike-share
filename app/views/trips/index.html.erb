@@ -1,7 +1,9 @@
 <div class="index-pagination">
   <h1>Trips</h1>
   <% if current_user && current_user.admin? %>
-    <%= link_to "New Trip", new_admin_trip_path %>
+    <div class="mr-auto new-condition">
+      <h3><%= link_to "Create New Trip", new_admin_trip_path %></h3>
+    </div>
   <% end %>
   <%= will_paginate @trips %>
 </div>
