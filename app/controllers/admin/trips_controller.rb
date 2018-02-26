@@ -7,7 +7,9 @@ class Admin::TripsController < Admin::BaseController
   end
 
   def create
+    @stations = Station.all
     @trip = Trip.new(trip_params)
+    binding.pry
     @trip.condition_id = Condition.find_by(date: @trip.start_date).id if Condition.find_by(date: @trip.start_date)
     if @trip.save
       flash[:notice] = "Success - you have created a trip."
