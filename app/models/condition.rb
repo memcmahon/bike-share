@@ -65,7 +65,7 @@ class Condition < ApplicationRecord
   end
 
   def self.precip_extremum
-    [(minimum(:precipitation_inches)).floor, maximum(:precipitation_inches).ceil]
+    [(minimum(:precipitation_inches)).floor, maximum(:precipitation_inches)]
   end
 
 end
