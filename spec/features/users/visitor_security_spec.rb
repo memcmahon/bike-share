@@ -1,4 +1,4 @@
-git require 'rails_helper'
+require 'rails_helper'
 
 describe "As a visitor" do
   describe "I have limitted access in the app" do
