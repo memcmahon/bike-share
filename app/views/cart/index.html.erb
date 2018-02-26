@@ -12,17 +12,35 @@
 
   <% @accessories.each do |accessory| %>
     <div class="panel panel-default text-center cart-contents">
-      <h3 class="panel-heading">
-        <%= link_to accessory.name, accessory_path(accessory) %>
-      </h3>
-      <p>Quantity: <%= @cart.count_of(accessory.id) %></p>
-      <ul class="panel-body">
-        <li>Unit Price: <%= number_to_currency(accessory.price) %></li>
-        <li>Subtotal: <%= number_to_currency(@cart.subtotal(accessory)) %></li>
-        <%= button_to 'Increase', increase_cart_index_path(accessory_id: accessory.id) %>
-        <%= button_to 'Decrease', decrease_cart_index_path(accessory_id: accessory.id) %>
-        <%= button_to 'Remove Accessory', remove_cart_index_path(accessory_id: accessory.id) %>
-      </ul>
+      <div class="panel-heading">
+        <h3>
+          <%= link_to accessory.name, accessory_path(accessory) %>
+        </h3>
+        <div class="image">
+          <%= image_tag accessory.avatar.url, class: 'img-responsive' %>
+        </div>
+      </div>
+      <div class="panel-body">
+        <div class='table-responsive'>
+          <table class='table'>
+            <thead>
+              <th>Unit Price</th>
+              <th>Quantity</th>
+              <th>Subtotal</th>
+            </thead>
+            <tbody>
+              <td><%= number_to_currency(accessory.price) %></td>
+              <td><%= @cart.count_of(accessory.id) %></td>
+              <td><%= number_to_currency(@cart.subtotal(accessory)) %></td>
+            </tbody>
+          </table>
+        </div>
+        <div class="buttons">
+          <%= button_to 'Increase', increase_cart_index_path(accessory_id: accessory.id) %>
+          <%= button_to 'Remove Accessory', remove_cart_index_path(accessory_id: accessory.id) %>
+          <%= button_to 'Decrease', decrease_cart_index_path(accessory_id: accessory.id) %>
+        </div>
+      </div>
     </div>
   <% end %>
 </div>

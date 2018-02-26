@@ -58,4 +58,15 @@ a {
   border-radius: .25em;
 }
 
+th {
+  text-align: center;
+}
 
+.buttons {
+  display: flex;
+  justify-content: center;
+
+  form {
+    margin: 0.5em 1.5em;
+  }
+}
