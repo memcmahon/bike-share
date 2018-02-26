@@ -7,7 +7,7 @@ class Accessory < ApplicationRecord
                     s3_region: 'US East(N.Virgina)',
                     s3_credentials: {access_key_id: ENV["AKIAIKHQYSMPYQKMO4FQ"],
                                      secret_access_key: ENV["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"]},
-                    bucket: "bike-share-assets",
+                    bucket: "bike-share-assets"
   validates_attachment_content_type :avatar, :content_type => ["image/jpg", "image/jpeg", "image/png"]
 
   enum status: ["Active", "Retired"]
