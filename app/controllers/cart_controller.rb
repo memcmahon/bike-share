@@ -30,7 +30,7 @@ class CartController < ApplicationController
 
   def remove
     @cart.remove_accessory(params[:accessory_id])
-    flash[:alert] = "You have removed #{@accessory.name} from the cart."
+    flash[:alert] = "You have removed #{view_context.link_to @accessory.name, accessory_path(@accessory)} from the cart."
     redirect_to cart_index_path
   end
 
