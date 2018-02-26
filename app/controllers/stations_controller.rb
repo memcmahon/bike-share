@@ -21,7 +21,7 @@ class StationsController < ApplicationController
   end
 
   def destroy
-    station = Station.find(params[:slug])
+    station = Station.find_by(slug: params[:slug])
     station.destroy
     flash[:notice] = "#{station.name} was deleted"
 
