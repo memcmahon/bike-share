@@ -1,7 +1,7 @@
 <div class="container trips">
   <div class="panel">
     <h3><%= @accessory.name %></h3>
-      <li><%= @accessory.convert_to_dollars %></li>
+      <li><%= number_to_currency( @accessory.price) %></li>
       <li><%= @accessory.description %></li>
   </div>
 </div>

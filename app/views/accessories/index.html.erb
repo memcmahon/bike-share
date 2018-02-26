@@ -13,7 +13,7 @@
       <h3 class="panel-heading"> <%= link_to accessory.name, accessory_path(accessory) %> </h3>
       <ul class="panel-body">
         <p><%= image_tag accessory.avatar.url, class: 'img-responsive' %></p>
-        <li><%= accessory.price %></li>
+        <li><%= number_to_currency(accessory.price) %></li>
         <li><%= accessory.description %></li>
         <%= button_to 'Add to Cart', cart_index_path(accessory_id: accessory.id) %>
       <% if current_user && current_user.admin? %>

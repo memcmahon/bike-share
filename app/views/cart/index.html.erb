@@ -1,9 +1,8 @@
 <div class="container">
-
   <div class="jumbotron">
     <h1>Cart</h1>
     <h3>Cart Count: <%= @cart.total_count %></h3>
-    <h3>Subtotal: <%= @cart.cart_subtotal %></h3>
+    <h3>Subtotal: <%= number_to_currency(@cart.cart_subtotal) %></h3>
     <%= button_to "Checkout", orders_path %>
   </div>
 
@@ -14,13 +13,12 @@
       </h3>
       <p>Quantity: <%= @cart.count_of(accessory.id) %></p>
       <ul class="panel-body">
-        <li>Unit Price: <%= accessory.price %></li>
-        <li>Subtotal: <%= @cart.subtotal(accessory) %></li>
+        <li>Unit Price: <%= number_to_currency(accessory.price) %></li>
+        <li>Subtotal: <%= number_to_currency(@cart.subtotal(accessory)) %></li>
         <%= button_to 'Increase', increase_cart_index_path(accessory_id: accessory.id) %>
         <%= button_to 'Decrease', decrease_cart_index_path(accessory_id: accessory.id) %>
         <%= button_to 'Remove Accessory', remove_cart_index_path(accessory_id: accessory.id) %>
       </ul>
     </div>
   <% end %>
-
 </div>
