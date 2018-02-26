@@ -4,36 +4,41 @@
 </div>
 
 <div class="container analytics">
+  <div class="container">
     <h2>Ride Analytics For Precipitation Levels</h2>
 
     <% @conditions.ranges(@conditions.precip_extremum[0], @conditions.precip_extremum[1], 0.5).each do |range| %>
-      <div class="col-md-6 col-md-4">
-        <div class="panel panel-default text-center">
-          <h3 class="panel-heading"> <%= print_range(range) %> Inches of Precipitaion</h3>
-          <ul class="panel-body">
-            <li>Average Trips: <%= @conditions.avg_trips({precipitation_inches: range}) %></li>
-            <li>Most Trips: <%= @conditions.trips_extremums('max', {precipitation_inches: range}) %></li>
-            <li>Least Trips: <%= @conditions.trips_extremums('min', {precipitation_inches: range}) %></li>
-          </ul>
-        </div>
+    <div class="col-md-6 col-md-4">
+      <div class="panel panel-default text-center">
+        <h3 class="panel-heading"> <%= print_range(range) %> Inches of Precipitaion</h3>
+        <ul class="panel-body">
+          <li>Average Trips: <%= @conditions.avg_trips({precipitation_inches: range}) %></li>
+          <li>Most Trips: <%= @conditions.trips_extremums('max', {precipitation_inches: range}) %></li>
+          <li>Least Trips: <%= @conditions.trips_extremums('min', {precipitation_inches: range}) %></li>
+        </ul>
       </div>
+    </div>
     <% end %>
+  </div>
 
+  <div class="container">
     <h2>Ride Analytics For High Temperatures</h2>
 
     <% @conditions.ranges(@conditions.temp_extremums[0], @conditions.temp_extremums[1], 10).each do |range| %>
-      <div class="col-md-3 col-md-4">
-        <div class="panel panel-default text-center">
-          <h3 class="panel-heading"> <%= print_range(range) %> Degrees Farenheit</h3>
-          <ul class="panel-body">
-            <li>Average Trips: <%= @conditions.avg_trips({max_temp_f: range}) %></li>
-            <li>Most Trips: <%= @conditions.trips_extremums('max', {max_temp_f: range}) %></li>
-            <li>Least Trips: <%= @conditions.trips_extremums('min', {max_temp_f: range}) %></li>
-          </ul>
-        </div>
+    <div class="col-md-3 col-md-4">
+      <div class="panel panel-default text-center">
+        <h3 class="panel-heading"> <%= print_range(range) %> Degrees Farenheit</h3>
+        <ul class="panel-body">
+          <li>Average Trips: <%= @conditions.avg_trips({max_temp_f: range}) %></li>
+          <li>Most Trips: <%= @conditions.trips_extremums('max', {max_temp_f: range}) %></li>
+          <li>Least Trips: <%= @conditions.trips_extremums('min', {max_temp_f: range}) %></li>
+        </ul>
       </div>
+    </div>
     <% end %>
+  </div>
 
+  <div class="container">
     <h2>Ride Analytics For Visibility</h2>
     <% @conditions.ranges(@conditions.vis_extremums[0], @conditions.vis_extremums[1], 4).each do |range| %>
 
@@ -48,19 +53,22 @@
       </div>
     </div>
     <% end %>
+  </div>
 
+  <div class="container">
     <h2>Ride Analytics For Max Wind Speeds</h2>
 
     <% @conditions.ranges(@conditions.wind_speed_extremums[0], @conditions.wind_speed_extremums[1], 4).each do |range| %>
-      <div class="col-md-3 col-md-4">
-        <div class="panel panel-default text-center">
-          <h3 class="panel-heading"> <%= print_range(range) %> Miles of Wind Speed</h3>
-          <ul class="panel-body">
-            <li>Average Trips: <%= @conditions.avg_trips({mean_wind_speed_mph: range}) %></li>
-            <li>Most Trips: <%= @conditions.trips_extremums('max', {mean_wind_speed_mph: range}) %></li>
-            <li>Least Trips: <%= @conditions.trips_extremums('min', {mean_wind_speed_mph: range}) %></li>
-          </ul>
-        </div>
+    <div class="col-md-3 col-md-4">
+      <div class="panel panel-default text-center">
+        <h3 class="panel-heading"> <%= print_range(range) %> Miles of Wind Speed</h3>
+        <ul class="panel-body">
+          <li>Average Trips: <%= @conditions.avg_trips({mean_wind_speed_mph: range}) %></li>
+          <li>Most Trips: <%= @conditions.trips_extremums('max', {mean_wind_speed_mph: range}) %></li>
+          <li>Least Trips: <%= @conditions.trips_extremums('min', {mean_wind_speed_mph: range}) %></li>
+        </ul>
       </div>
+    </div>
     <% end %>
+  </div>
 </div>
