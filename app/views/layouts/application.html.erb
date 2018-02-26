@@ -58,12 +58,23 @@
               <%= link_to "Sign Up", new_user_path, class: 'nav-link' %>
             </li>
           <% end %>
-          <li><a href="/cart"><i class="glyphicon glyphicon-shopping-cart"></i></a></li>
+          <li>
+            <% if @cart.cart_accessories.count > 0 %>
+              <%= link_to "/cart" do %> 
+              <i class="fa fa-shopping-cart"></i>
+              <%= @cart.cart_accessories.count %>
+              <% end %>
+              <% else %>
+                 <a href="/" class="menu-cart"><i class="fa fa-shopping-cart"></i> 0 </a>
+            <% end %> 
+          </li>
         </ul>
     </nav>
-    <% flash.each do |type, message| %>
-      <%= content_tag :div, message, class: type %>
-    <% end %>
+    <h1 class="flash">
+      <% flash.each do |type, message| %>
+        <%= content_tag :div, message, class: type %>
+      <% end %>
+    </h1>
     <%= yield %>
   </body>
 
