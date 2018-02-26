@@ -59,16 +59,14 @@
             </li>
           <% end %>
           <li>
-            <% if current_user %> 
-              <% if @cart.cart_accessories.count > 0 %>
-                <%= link_to "/cart" do %> 
-                <i class="fa fa-shopping-cart"></i>
-                <%= @cart.cart_accessories.count %>
-                <% end %>
-                <% else %>
-                   <a href="/" class="menu-cart"><i class="fa fa-shopping-cart"></i> 0 </a>
-              <% end %> 
-            <% end %>  
+            <% if @cart.cart_accessories.count > 0 %>
+              <%= link_to "/cart" do %> 
+              <i class="fa fa-shopping-cart"></i>
+              <%= @cart.cart_accessories.count %>
+              <% end %>
+              <% else %>
+                 <a href="/" class="menu-cart"><i class="fa fa-shopping-cart"></i> 0 </a>
+            <% end %> 
           </li>
         </ul>
     </nav>
