@@ -13,13 +13,23 @@
       <h3 class="panel-heading"> <%= link_to accessory.name, accessory_path(accessory) %> </h3>
       <ul class="panel-body">
         <p><%= image_tag accessory.avatar.url, class: 'img-responsive' %></p>
-        <li><%= number_to_currency(accessory.price) %></li>
+        <li><%= accessory.price %></li>
         <li><%= accessory.description %></li>
         <% if accessory.status == 'Active' %>
           <%= button_to 'Add to Cart', cart_index_path(accessory_id: accessory.id) %>
         <% else %>
           <li>Item is Retired</li>
         <% end %>
+      <% if current_user && current_user.admin? %>
+        <div class="buttons">
+          <li>
+            <%= button_to 'Retire', admin_accessory_path(accessory, accessory: {status: 'Retired'}), method: 'put' %>
+          </li>
+          <li>
+            <%= link_to 'Edit', edit_admin_accessory_path(accessory) %>
+          </li>
+        </div>
+      <% end %>
     </div>
   </div>
   <% end %>
