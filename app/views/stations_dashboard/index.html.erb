@@ -5,23 +5,15 @@
 
 <div class="container analytics">
   <div class="panel panel-default text-center">
-    <p>Total count of stations: <%= Station.count %><p>
-    <p>Average bikes available: <%= Station.average(:dock_count).round(2) %></p>
-    <p>Most bikes available at any station: <%= Station.most_bikes_available_at_a_station %></p>
       <ul>
-        <% Station.stations_with_most_bikes_available.each do |station| %>
           <li><%= station %></li>
         <% end %>
       </ul>
 
-    <p>Fewest bikes available at any station: <%= Station.fewest_bikes_available_at_a_station %></p>
       <ul>
-        <% Station.stations_with_fewest_bikes_available.each do |station| %>
           <li><%= station %></li>
         <% end %>
       </ul>
 
-    <p>Most recently installed station: <%= Station.sort_by_installation_date.last.name %></p>
-    <p>Oldest station: <%= Station.sort_by_installation_date.first.name %></p>
   </div>
 </div>
