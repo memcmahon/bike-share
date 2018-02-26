@@ -19,3 +19,6 @@
 .byebug_history
 
 /db/csv
+
+# Ignore application configuration
+/config/application.yml
