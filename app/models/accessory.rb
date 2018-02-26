@@ -13,8 +13,4 @@ class Accessory < ApplicationRecord
 
   enum status: ["Active", "Retired"]
 
-  def convert_to_dollars
-    price.to_s.insert(-3, '.').prepend('$')
-  end
-
 end
