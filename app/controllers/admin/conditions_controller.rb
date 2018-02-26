@@ -39,7 +39,7 @@ class Admin::ConditionsController < Admin::BaseController
   def destroy
     if @condition.destroy
       flash[:notice] = "You have successfully deleted a condition."
-      redirect_to admin_conditions_path
+      redirect_to conditions_path
     end
   end
 

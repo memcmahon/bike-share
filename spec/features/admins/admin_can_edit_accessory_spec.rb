@@ -8,7 +8,7 @@ describe "as an admin" do
         allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
         accessory = create(:accessory)
 
-        visit accessories_path
+        visit admin_accessories_path
         click_on "Edit"
 
         fill_in 'accessory[price]', with: '1200'

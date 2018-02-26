@@ -1,6 +1,10 @@
 class Admin::AccessoriesController < Admin::BaseController
   before_action :set_accessory, only: [:edit, :update, :destroy]
 
+  def index
+    @accessories = Accessory.all
+  end
+
   def new
     @accessory = Accessory.new
   end
@@ -41,7 +45,7 @@ class Admin::AccessoriesController < Admin::BaseController
   private
 
   def accessory_params
-    params.require(:accessory).permit(:price, :name, :description, :role, :avatar)
+    params.require(:accessory).permit(:price, :name, :description, :status, :avatar)
   end
 
   def set_accessory
