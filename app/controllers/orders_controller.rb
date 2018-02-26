@@ -2,8 +2,9 @@ class OrdersController < ApplicationController
   before_action :set_order, only: [:show]
 
   def show
-    if current_user.id != @order.user.id
-      flash[:alert] = "You don't have access to that order"
+    if current_user.id == @order.user_id
+    else
+      flash[:notice] = "Stick to Your own orders!"
       redirect_to dashboard_path
     end
   end
