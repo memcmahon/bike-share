@@ -14,7 +14,7 @@
     resources :conditions, except: [:index, :show]
     resources :trips, except: [:index, :show]
     resources :stations, except: [:index, :show]
-    resources :accessories, path: 'bike-shop', except: [:index, :show]
+    resources :accessories, path: 'bike-shop', except: [:show]
   end
 
   resources :cart, only: [:index, :create] do
