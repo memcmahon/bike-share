@@ -60,13 +60,13 @@
           <% end %>
           <li>
             <% if @cart.cart_accessories.count > 0 %>
-              <%= link_to "/cart" do %> 
+              <%= link_to "/cart" do %>
               <i class="fa fa-shopping-cart"></i>
-              <%= @cart.cart_accessories.count %>
+              <%= @cart.total_count %>
               <% end %>
               <% else %>
                  <a href="/" class="menu-cart"><i class="fa fa-shopping-cart"></i> 0 </a>
-            <% end %> 
+            <% end %>
           </li>
         </ul>
     </nav>
