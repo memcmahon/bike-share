@@ -14,6 +14,14 @@ class Station < ApplicationRecord
     self.slug = name.parameterize if name
   end
 
+  def self.station_count
+    count
+  end
+
+  def self.average_bikes_available
+    average(:dock_count).round(2)
+  end
+
   def self.most_bikes_available_at_a_station
     most_bikes = maximum(:dock_count)
   end
