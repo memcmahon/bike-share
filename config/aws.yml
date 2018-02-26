@@ -1,0 +1,10 @@
+development:
+  bucket_name: 'bike-share-assets'
+  access_key_id: AKIAIKHQYSMPYQKMO4FQ
+  secret_access_key: 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
+  
+
+production:
+  bucket_name: 'bike-share-assets'
+  access_key_id: AKIAIKHQYSMPYQKMO4FQ
+  secret_access_key: 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
