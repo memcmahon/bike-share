@@ -1,6 +1,8 @@
 <div class="container">
   <% if current_user || current_user.admin? %>
+  <div class="text-center">
     <h2>Modify Account</h2>
+  </div>
 
     <%= render partial: "address_form" %>
   <% else %>
