@@ -11,13 +11,13 @@ describe "as an admin" do
         visit admin_accessories_path
         click_on "Create Accessory"
 
-        fill_in 'accessory[price]', with: '400'
+        fill_in 'accessory[price]', with: '4000'
         fill_in 'accessory[name]', with: 'Wild Locally Sourced Organic Buttered Lettuce'
         fill_in 'accessory[description]', with: 'Found in the tundras of alaska. This lettuce has been naturally buttered by bears and beavers.'
         click_on "Create Accessory"
 
         expect(page).to have_content("Wild Locally Sourced Organic Buttered Lettuce")
-        expect(page).to have_content('$400.00')
+        expect(page).to have_content('$40.00')
       end
     end
   end
