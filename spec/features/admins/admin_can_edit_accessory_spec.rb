@@ -11,7 +11,7 @@ describe "as an admin" do
         visit admin_accessories_path
         click_on "Edit"
 
-        fill_in 'accessory[price]', with: '12'
+        fill_in 'accessory[price]', with: '1200'
         fill_in 'accessory[name]', with: 'Wild Buttered Lettuce'
         fill_in 'accessory[description]', with: 'Found in the tundras of alaska. This lettuce has been naturally buttered by bears and beavers.'
         click_on "Update Accessory"
