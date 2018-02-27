@@ -11,6 +11,7 @@ OrderAccessory.destroy_all
 Station.destroy_all
 Trip.destroy_all
 Condition.destroy_all
+Order.destroy_all
 Accessory.destroy_all
 
 Accessory.create!(name: "Headlight", description: "See things!", price: 1200, status: 0)
