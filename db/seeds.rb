@@ -26,7 +26,6 @@ Accessory.create!(name: "Tires", description: "Grip things!", price: 2000, statu
 Accessory.create!(name: "Spokes", description: "Structure!", price: 2100, status: 0)
 Accessory.create!(name: "Hanle wrap", description: "Be unique!", price: 2200, status: 0)
 
-
 CSV.foreach('db/fixtures/weather.csv', OPTIONS) do |row|
   Condition.create!(date: Date.strptime(row[:date], '%m/%e/%Y'),
                     max_temp_f: row[:max_temperature_f],
