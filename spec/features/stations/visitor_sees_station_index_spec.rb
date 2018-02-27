@@ -10,7 +10,7 @@ describe "As a visitor" do
       expect(page).to have_content("1 Street")
       expect(page).to have_content("1")
       expect(page).to have_content("San Francisco")
-      expect(page).to have_content("1991-12-12")
+      expect(page).to have_content("12/12/1991")
       expect(Station.all.count).to eq(84)
     end
   end
