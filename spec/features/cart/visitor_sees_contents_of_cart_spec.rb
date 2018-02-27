@@ -18,7 +18,7 @@ describe "as a visitor" do
       visit cart_index_path
 
       expect(page).to have_content("Cart Count: 1")
-      expect(page).to have_button("Checkout")
+      expect(page).to have_link("Please Sign Up Or Log In")
     end
     it "increases accessory count" do
       visit accessories_path

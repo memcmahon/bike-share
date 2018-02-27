@@ -10,7 +10,7 @@ describe "as an admin" do
       end
       it "retires accessory" do
         visit admin_accessories_path
-        save_and_open_page
+
         click_on "Retire"
 
         expect(page).to have_content("Item is Retired")
