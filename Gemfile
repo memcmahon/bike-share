@@ -48,6 +48,7 @@ group :development, :test do
   gem 'shoulda-matchers'
   gem 'database_cleaner'
   gem 'factory_bot_rails', '~> 4.0'
+  gem 'money-rails', '~>1'
 end
 
 group :development do
