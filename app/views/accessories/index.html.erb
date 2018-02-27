@@ -1,11 +1,11 @@
 <div class="jumbotron text-center">
   <h1><em>Bike Shop</em></h1>
+  <% if current_user && current_user.admin? %>
+    <div class="create-accessory">
+      <%= link_to "Create Accessory", new_admin_accessory_path %>
+    </div>
+  <% end %>
 </div>
-<% if current_user && current_user.admin? %>
-  <div class="create-accessory">
-    <%= link_to "Create Accessory", new_admin_accessory_path %>
-  </div>
-<% end %>
 <div class="container">
   <% @accessories.each do |accessory| %>
   <div class="col-md-4 col-md-4">

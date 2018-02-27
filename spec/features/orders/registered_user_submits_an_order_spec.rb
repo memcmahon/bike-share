@@ -19,7 +19,7 @@ describe "as a registered user" do
 
         expect(current_path).to eq('/dashboard')
         expect(page).to have_content("Your order was successfully submitted")
-        expect(page).to have_link("Order: 1")
+        expect(page).to have_link(Order.first.created_at)
       end
     end
   end

@@ -17,8 +17,8 @@ describe "as a registered user" do
         visit cart_index_path
 
         click_on "Checkout"
-        click_on "Order: 1"
-     
+        click_on Order.first.created_at
+
         expect(page).to have_content(@accessory.name)
         expect(page).to have_content("Subtotal: $2,400")
         expect(page).to have_content("Status: Ordered")
