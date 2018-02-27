@@ -2,7 +2,9 @@ class OrdersController < ApplicationController
   before_action :set_order, only: [:show]
 
   def show
-    if current_user.id == @order.user_id
+    if current_user.admin?
+      redirect_to admin_order_path(@order)
+    elsif current_user.id == @order.user_id
     else
       flash[:notice] = "Stick to Your own orders!"
       redirect_to dashboard_path
