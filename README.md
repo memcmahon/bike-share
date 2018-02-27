@@ -33,7 +33,7 @@ To run only a portion of the test suite:
 
 ## Schema
 
-
+![alt text](schema.png "schema.png")
 
 
 ## Additional Resources
