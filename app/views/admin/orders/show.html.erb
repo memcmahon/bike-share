@@ -32,7 +32,7 @@
         </thead>
         <% @order.accessories.each do |accessory| %>
           <tbody>
-            <td><%= accessory.name %></td>
+            <td><%= link_to accessory.name, accessory_path(accessory) %></td>
             <td><%= @order.accessory_quantity(accessory.id) %></td>
             <td><%= @order.accessory_subtotal(accessory.id) %></td>
           </tbody>

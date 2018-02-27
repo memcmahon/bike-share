@@ -17,12 +17,12 @@ describe "As an admin" do
 
   describe "when they visit an order page" do
     it "they see the oder date and time" do
-      expect(page).to have_content("Submitted At: #{@order_1.created_at}")
+      expect(page).to have_content("#{@order_1.created_at}")
     end
 
     it "they see the purchaser's name and address" do
-      expect(page).to have_content("Purchaser Name: #{@user_1.first_name} #{@user_1.last_name}")
-      expect(page).to have_content("Purchaser Address: #{@user_1.address} #{@user_1.city} #{@user_1.state} #{@user_1.zip_code}")
+      expect(page).to have_content("#{@user_1.first_name} #{@user_1.last_name}")
+      expect(page).to have_content("#{@user_1.address} #{@user_1.city} #{@user_1.state} #{@user_1.zip_code}")
     end
 
     it "they see a link to each order item page" do
@@ -32,15 +32,16 @@ describe "As an admin" do
     end
 
     it "they see the quantity and item subtotal" do
-      expect(page).to have_content("#{@accessory_3.name} quantity: 3 subtotal: #{@order_1.accessory_subtotal(@accessory_3.id)}")
+      expect(page).to have_content("#{@order_1.accessory_subtotal(@accessory_3.id)}")
+      expect(page).to have_content("3")
     end
 
     it "they see the total for the order" do
-      expect(page).to have_content("Total: #{@order_1.total}")
+      expect(page).to have_content("#{@order_1.total}")
     end
 
     it "they see the status of the order" do
-      expect(page).to have_content("Status: #{@order_1.status}")
+      expect(page).to have_content("#{@order_1.status}")
     end
   end
 end
