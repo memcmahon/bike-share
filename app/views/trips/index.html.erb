@@ -13,14 +13,14 @@
     <a href="<%= trip_path(trip) %>">
       <div class="col-lg-4 col-md-3">
         <div class="panel">
-          <li>Duration: <%= trip.duration %></li>
-          <li>Start Date: <%= trip.start_date.strftime("%m/%d/%Y") %></li>
-          <li>Start Station: <%= trip.start_station.name %></li>
-          <li>End Date: <%= trip.end_date.strftime("%m/%d/%Y") %></li>
-          <li>End Station: <%= trip.end_station.name %></li>
-          <li>Bike Id: <%= trip.bike_id %></li>
-          <li>Subscription Type: <%= trip.subscription_type %></li>
-          <li>Zip Code: <%= trip.zip_code %></li>
+          <li><p class="label">Duration:</p> <%= trip.duration %></li>
+          <li><p class="label">Start Date:</p> <%= trip.start_date.strftime("%m/%d/%Y") %></li>
+          <li><p class="label">Start Station:</p> <%= trip.start_station.name %></li>
+          <li><p class="label">End Date:</p> <%= trip.end_date.strftime("%m/%d/%Y") %></li>
+          <li><p class="label">End Station:</p> <%= trip.end_station.name %></li>
+          <li><p class="label">Bike Id:</p> <%= trip.bike_id %></li>
+          <li><p class="label">Subscription Type:</p> <%= trip.subscription_type %></li>
+          <li><p class="label">Zip Code:</p> <%= trip.zip_code %></li>
           <% if current_user && current_user.admin? %>
             <%= link_to "Edit", edit_admin_trip_path(trip) %> - <%= link_to "Delete", admin_trip_path(trip), method: :delete %>
           <% end %>

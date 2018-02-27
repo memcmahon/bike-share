@@ -5,14 +5,14 @@
 
   <div class="panel">
     <ul>
-      <li>Max Temperature: <%= @condition.max_temp_f %></li>
-      <li>Mean Temperature: <%= @condition.mean_temp_f %></li>
-      <li>Minimum Temperature: <%= @condition.min_temp_f %></li>
-      <li>Mean Humidity: <%= @condition.mean_humidity %></li>
-      <li>Mean Visibility Levels: <%= @condition.mean_visibility_miles %></li>
-      <li>Mean Wind Speed: <%= @condition.mean_wind_speed_mph %></li>
-      <li>Precipitation Levels: <%= @condition.precipitation_inches %></li>
-      <li>Zipcode: <%= @condition.zip_code %></li>
+      <li><p class="label">Max Temperature:</p> <%= @condition.max_temp_f %></li>
+      <li><p class="label">Mean Temperature:</p> <%= @condition.mean_temp_f %></li>
+      <li><p class="label">Minimum Temperature:</p> <%= @condition.min_temp_f %></li>
+      <li><p class="label">Mean Humidity:</p> <%= @condition.mean_humidity %></li>
+      <li><p class="label">Mean Visibility Levels:</p> <%= @condition.mean_visibility_miles %></li>
+      <li><p class="label">Mean Wind Speed:</p> <%= @condition.mean_wind_speed_mph %></li>
+      <li><p class="label">Precipitation Levels:</p> <%= @condition.precipitation_inches %></li>
+      <li><p class="label">Zipcode:</p> <%= @condition.zip_code %></li>
     </ul>
 
     <% if current_user && current_user.admin? %>
