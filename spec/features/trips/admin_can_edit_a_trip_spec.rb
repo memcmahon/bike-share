@@ -21,7 +21,7 @@ describe "As an admin" do
       fill_in("trip[end_date]", with: "02/12/1232")
       select(@station.name, from: "trip[end_station_id]")
       fill_in("trip[bike_id]", with: "13")
-      fill_in("trip[subscription_type]", with: "Customer")
+      select("Customer", from: "trip[subscription_type]")
       fill_in("trip[zip_code]", with: "52556")
       click_on("Update Trip")
 
