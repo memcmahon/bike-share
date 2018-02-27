@@ -2,7 +2,8 @@
   <div class="panel">
     <div class="panel-heading">
       <h1>Order: <%= @order.id %></h1>
-      <h2>Subtotal: <%= number_to_currency(@order.total) %> </h2>
+      <% order_total = Money.new(@order.total, 'USD') %>
+      <h2>Subtotal: <%= number_to_currency(order_total) %> </h2>
       <h2>Status: <%= @order.status %> (Updated at: <%= @order.updated_at %>)</h2>
       <h2>Submitted At: <%= @order.created_at %></h2>
     </div>
