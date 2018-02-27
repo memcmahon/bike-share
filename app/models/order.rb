@@ -4,7 +4,7 @@ class Order < ApplicationRecord
   has_many :accessories, through: :order_accessories
   belongs_to :user
 
-  enum status: ["Ordered", "Paid", "Cancelled", "Completed"]
+  enum status: ["Ordered", "Paid", "Completed", "Cancelled"]
 
   def accessory_quantity(id)
     order_accessories.find_by(accessory_id: id).quantity

@@ -24,8 +24,8 @@
     <div class="">
       <%= link_to "Ordered(#{@all_orders.by_status("Ordered")})", admin_dashboard_path(sort: "Ordered") %>
       <%= link_to "Paid(#{@all_orders.by_status("Paid")})", admin_dashboard_path(sort: "Paid") %>
-      <%= link_to "Cancelled(#{@all_orders.by_status("Cancelled")})", admin_dashboard_path(sort: "Cancelled") %>
       <%= link_to "Completed(#{@all_orders.by_status("Completed")})", admin_dashboard_path(sort: "Completed") %>
+      <%= link_to "Cancelled(#{@all_orders.by_status("Cancelled")})", admin_dashboard_path(sort: "Cancelled") %>
     </div>
 
     <table class="table">
@@ -35,19 +35,22 @@
           <th scope="col">Status</th>
           <th scope="col">Total</th>
           <th scope="col">Actions</th>
+          <th scope="col"></th>
         </tr>
       </thead>
       <tbody>
-        <% @orders.each do |order| %>
+        <% @orders.order(:status).each do |order| %>
           <tr>
-            <td> <%= link_to "Order: #{order.id}", admin_order_path(order) %> </td>
+            <td> <%= link_to "#{order.id}", admin_order_path(order) %> </td>
             <td> <%= order.status %> </td>
             <td> <%= order.total %> </td>
-            <td> <% if order.status == "Ordered" %>
-                  <%= button_to "Cancel", admin_order_path(order), method: 'put', params: {status: "Cancelled"} %><%= button_to "Mark as Paid", admin_order_path(order), method: 'put', params: {status: "Paid"} %>
-                <% elsif order.status == "Paid" %>
-                  <%= button_to "Cancel", admin_order_path(order), method: 'put', params: {status: "Cancelled"} %><%= button_to "Mark as Completed", admin_order_path(order), method: 'put', params: {status: "Completed"} %>
-                <% end %> </td>
+            <% if order.status == "Ordered" %>
+              <td><%= button_to "Cancel", admin_order_path(order), method: 'put', params: {status: "Cancelled"} %></td>
+              <td><%= button_to "Mark as Paid", admin_order_path(order), method: 'put', params: {status: "Paid"} %></td>
+            <% elsif order.status == "Paid" %>
+              <td><%= button_to "Cancel", admin_order_path(order), method: 'put', params: {status: "Cancelled"} %></td>
+              <td><%= button_to "Mark as Completed", admin_order_path(order), method: 'put', params: {status: "Completed"} %></td>
+            <% end %>
           </tr>
         <% end %>
       </tbody>
