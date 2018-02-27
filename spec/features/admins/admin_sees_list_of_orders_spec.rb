@@ -9,7 +9,7 @@ describe "As an admin" do
     @accessory_3 = create(:accessory)
     @order_1 = @user_1.orders.create!(user: @user_1, status: 0)
     @order_2 = @user_1.orders.create!(id: 11388, user: @user_1, status: 1)
-    @order_3 = @user_1.orders.create!(user: @user_1, status: 2)
+    @order_3 = @user_1.orders.create!(user: @user_1, status: 3)
     @order_4 = @user_1.orders.create!(user: @user_1, status: 1)
     @line_1 = OrderAccessory.create!(order: @order_1, accessory: @accessory_1, quantity: 1)
     @line_2 = OrderAccessory.create!(order: @order_1, accessory: @accessory_2, quantity: 2)
@@ -24,8 +24,8 @@ describe "As an admin" do
   describe "They visit admin/dashboard" do
     it "they see a list of all orders with links to orders" do
       expect(page).to have_content("All Orders")
-      expect(page).to have_link("Order: #{@order_1.id}")
-      expect(page).to have_link("Order: #{@order_2.id}")
+      expect(page).to have_link("#{@order_1.id}")
+      expect(page).to have_link("#{@order_2.id}")
       expect(page).to have_content(@order_1.total)
       expect(page).to have_content(@order_1.status)
       expect(page).to have_content(@order_2.total)
