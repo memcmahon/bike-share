@@ -16,7 +16,7 @@
     </ul>
 
     <% if current_user && current_user.admin? %>
-      <%= link_to "Edit", edit_admin_condition_path(@condition) %> - <%= button_to "Delete", admin_condition_path(@condition), method: :delete %>
+      <%= link_to "Edit", edit_admin_condition_path(@condition) %> - <%= link_to "Delete", admin_condition_path(@condition), method: :delete %>
     <% end %>
   </div>
 </div>

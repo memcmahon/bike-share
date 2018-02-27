@@ -9,7 +9,7 @@ describe 'as an admin' do
 
       visit condition_path(condition)
 
-      expect(page).to have_button("Delete")
+      expect(page).to have_link("Delete")
       expect(page).to have_link("Edit")
       expect(page).to have_content(condition.max_temp_f)
       expect(page).to have_content(condition.mean_temp_f)
