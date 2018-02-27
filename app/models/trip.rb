@@ -12,6 +12,7 @@ class Trip < ApplicationRecord
                         :subscription_type
 
   scope :sort_by_duration, -> { order(duration: :asc) }
+  scope :sort_by_start_date, -> { order(start_date: :asc) }
 
   def self.average_duration
     average(:duration).round(2)
