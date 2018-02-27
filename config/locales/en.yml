@@ -28,6 +28,7 @@
 #
 # To learn more, please read the Rails Internationalization guide
 # available at http://guides.rubyonrails.org/i18n.html.
+# Money.use_i18n = false
 
 en:
   hello: "Hello world"
