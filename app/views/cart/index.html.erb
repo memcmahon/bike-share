@@ -12,11 +12,11 @@
 
   <% @accessories.each do |accessory| %>
     <div class="panel panel-default text-center cart-contents">
-      <div class="panel-heading">
+      <div class="panel-heading ">
         <h3>
           <%= link_to accessory.name, accessory_path(accessory) %>
         </h3>
-        <div class="image">
+        <div class="image cart-image">
           <%= image_tag accessory.avatar.url, class: 'img-responsive' %>
         </div>
       </div>
