@@ -25,8 +25,9 @@
         </thead>
         <% current_user.orders.each do |order| %>
         <tbody>
+            <% order_total = Money.new(order.total, 'USD') %>
             <th><%= link_to "#{order.created_at}", order_path(order) %></th>
-            <th><%= order.total %></th>
+            <th><%= order_total %></th>
             <th><%= order.status %></th>
         </tbody>
         <% end %>
