@@ -2,7 +2,7 @@
   <div class="jumbotron">
     <h1>Cart</h1>
     <h3>Cart Count: <%= @cart.total_count %></h3>
-    <h3>Subtotal: <%= number_to_currency(@cart.cart_subtotal) %></h3>
+    <h3>Total: <%= number_to_currency(@cart.cart_subtotal) %></h3>
     <% unless current_user %>
       <%= link_to "Please Sign Up Or Log In", login_path %>
     <% else %>
