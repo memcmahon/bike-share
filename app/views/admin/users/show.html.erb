@@ -6,6 +6,10 @@
       <div class="panel-body">
         <p>Name: <%= current_user.first_name %> <%= current_user.last_name %></p>
         <p>Email: <%= current_user.email %></p>
+        <p>Address: <%= current_user.address %></p>
+        <p>City: <%= current_user.city %></p>
+        <p>State: <%= current_user.state %></p>
+        <p>Zip: <%= current_user.zip_code %></p>
         <% if current_user && current_user.admin? %>
           <%= link_to "delete", user_path(current_user), method: "delete", data: {confirm: "Are you sure you want to delete your account?"} %> -
           <%= link_to "edit", edit_user_path(current_user) %>
@@ -41,9 +45,10 @@
       <tbody>
         <% @orders.order(:status).each do |order| %>
           <tr>
+            <% order_total = Money.new(order.total, 'USD') %>
             <td> <%= link_to "#{order.id}", admin_order_path(order) %> </td>
             <td> <%= order.status %> </td>
-            <td> <%= order.total %> </td>
+            <td> <%= order_total %> </td>
             <% if order.status == "Ordered" %>
               <td><%= button_to "Cancel", admin_order_path(order), method: 'put', params: {status: "Cancelled"} %></td>
               <td><%= button_to "Mark as Paid", admin_order_path(order), method: 'put', params: {status: "Paid"} %></td>

@@ -5,7 +5,8 @@
       <%= image_tag @accessory.avatar.url, class: 'img-responsive' %>
     </div>
     <div class="panel-body">
-      <li><%= number_to_currency( @accessory.price) %></li><br>
+      <% price = Money.new(@accessory.price, 'USD') %>
+      <li><%= number_to_currency(price) %></li><br>
       <li><%= @accessory.description %></li><br>
       <% if @accessory.status == 'Active' %>
         <%= button_to 'Add to Cart', cart_index_path(accessory_id: @accessory.id) %>
