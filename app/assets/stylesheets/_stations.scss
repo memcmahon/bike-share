@@ -1,0 +1,22 @@
+.station-container {
+  text-align: center;
+  .panel {
+
+    .panel-heading {
+      margin-top: 0px;
+      margin-botton: 0px;
+    }
+
+    .panel-body {
+      font-size: 1.2em;
+    }
+    li {
+      max-height: 20px;
+      overflow: hidden;
+    }
+  }
+}
+
+.index-pagination {
+  text-align: center;
+}
