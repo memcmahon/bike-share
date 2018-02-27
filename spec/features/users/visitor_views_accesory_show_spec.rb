@@ -12,7 +12,7 @@ describe "As a visitor" do
       expect(page).to have_button("Add to Cart")
 
       visit accessory_path(item)    
-save_and_open_page
+
       expect(page).to have_content("Wild Locally Sourced Buttered Lettuce")
       expect(page).to have_content("Found in the tundras of alaska. This lettuce has been naturally buttered by bears and beavers.")
       expect(page).to have_content("$1,200.00")
