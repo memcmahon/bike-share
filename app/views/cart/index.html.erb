@@ -2,7 +2,8 @@
   <div class="jumbotron">
     <h1>Cart</h1>
     <h3>Cart Count: <%= @cart.total_count %></h3>
-    <h3>Total: <%= number_to_currency(@cart.cart_subtotal) %></h3>
+    <% cart_subtotal = Money.new(@cart.cart_subtotal, 'USD') %>
+    <h3>Total: <%= number_to_currency(cart_subtotal) %></h3>
     <% unless current_user %>
       <%= link_to "Please Sign Up Or Log In", login_path %>
     <% else %>
@@ -29,9 +30,11 @@
               <th>Subtotal</th>
             </thead>
             <tbody>
-              <td><%= number_to_currency(accessory.price) %></td>
+              <% accessory_price = Money.new(accessory.price, 'USD') %>
+              <% sub_acc = Money.new(@cart.subtotal(accessory), 'USD') %>
+              <td><%= number_to_currency(accessory_price) %></td>
               <td><%= @cart.count_of(accessory.id) %></td>
-              <td><%= number_to_currency(@cart.subtotal(accessory)) %></td>
+              <td><%= number_to_currency(sub_acc) %></td>
             </tbody>
           </table>
         </div>
