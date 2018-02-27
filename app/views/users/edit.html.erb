@@ -1,7 +1,9 @@
-<% if current_user || current_user.admin? %>
-  <h2>Modify Account</h2>
+<div class="container">
+  <% if current_user || current_user.admin? %>
+    <h2>Modify Account</h2>
 
-  <%= render partial: "address_form" %>
-<% else %>
-  <%= render file: 'public/404' %>
-<% end %>
+    <%= render partial: "address_form" %>
+  <% else %>
+    <%= render file: 'public/404' %>
+  <% end %>
+</div>
