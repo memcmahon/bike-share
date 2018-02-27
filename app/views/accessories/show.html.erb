@@ -1,7 +1,17 @@
 <div class="container trips">
   <div class="panel">
-    <h3><%= @accessory.name %></h3>
-      <li><%= number_to_currency( @accessory.price) %></li>
-      <li><%= @accessory.description %></li>
+    <div class="panel-heading">
+      <h3><%= @accessory.name %></h3><br>
+      <%= image_tag @accessory.avatar.url, class: 'img-responsive' %>
+    </div>
+    <div class="panel-body">
+      <li><%= number_to_currency( @accessory.price) %></li><br>
+      <li><%= @accessory.description %></li><br>
+      <% if @accessory.status == 'Active' %>
+        <%= button_to 'Add to Cart', cart_index_path(accessory_id: @accessory.id) %>
+      <% else %>
+        <li>Item is Retired</li>
+      <% end %>
+    </div>
   </div>
 </div>
