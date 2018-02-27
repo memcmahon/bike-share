@@ -2,24 +2,42 @@
   <div class="panel">
     <div class="panel-heading">
       <h1>Order: <%= @order.id %></h1>
-      <h2>Purchaser Name: <%= @order.user.first_name %> <%= @order.user.last_name %></h2>
-      <h2>Purchaser Address:</h2>
-        <address>
-          <p><%= @order.user.address %></p>
-          <p><%= @order.user.city %>, <%= @order.user.state %> <%= @order.user.zip_code %></p>
-        </address>
-      <h2>Total: <%= @order.total %> </h2>
-      <h2>Status: <%= @order.status %> (Updated at: <%= @order.updated_at %>)</h2> 
-      <h2>Submitted At: <%= @order.created_at %></h2>
+      <table class='table'>
+        <thead>
+          <th>Purchaser Name</th>
+          <th>Purchaser Address</th>
+          <th>Total</th>
+          <th>Status</th>
+          <th>Submitted At</th>
+        </thead>
+        <tbody>
+          <td><%= @order.user.first_name %> <%= @order.user.last_name %></td>
+          <td>
+            <p><%= @order.user.address %></p>
+            <p><%= @order.user.city %>, <%= @order.user.state %> <%= @order.user.zip_code %></p>
+          </td>
+          <td><%= @order.total %></td>
+          <td><%= @order.status %> (Updated at: <%= @order.updated_at %>)</td>
+          <td><%= @order.created_at %></td>
+        </tbody>
+      </table>
     </div>
     <div class="panel-body">
-      <% @order.accessories.each do |accessory| %>
-      <h3><%=link_to accessory.name, accessory_path(accessory) %></h3>
-        <ul>
-          <li><p>quantity: <%= @order.accessory_quantity(accessory.id) %></p></li>
-          <li><p>subtotal: <%= @order.accessory_subtotal(accessory.id) %></p></li>
-        </ul>
-      <% end %>
+      <h2>Accessories</h2>
+      <table class="table">
+        <thead>
+          <th>Accessory Name</th>
+          <th>Accessory Quantity</th>
+          <th>Accessory Total</th>
+        </thead>
+        <% @order.accessories.each do |accessory| %>
+          <tbody>
+            <td><%= link_to accessory.name, accessory_path(accessory) %></td>
+            <td><%= @order.accessory_quantity(accessory.id) %></td>
+            <td><%= @order.accessory_subtotal(accessory.id) %></td>
+          </tbody>
+        <% end %>
+      </table>
     </div>
   </div>
 </div>
