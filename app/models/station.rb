@@ -4,8 +4,8 @@ class Station < ApplicationRecord
                         :city,
                         :installation_date
 
-  has_many :start_trip_stations, class_name: "Trip", foreign_key: "start_station_id"
-  has_many :end_trip_stations, class_name: "Trip", foreign_key: "end_station_id"
+  has_many :start_trip_stations, class_name: "Trip", foreign_key: "start_station_id", dependent: :destroy
+  has_many :end_trip_stations, class_name: "Trip", foreign_key: "end_station_id", dependent: :destroy
 
   scope :sort_by_installation_date , -> { order(installation_date: :asc)}
   before_save :generate_slug
