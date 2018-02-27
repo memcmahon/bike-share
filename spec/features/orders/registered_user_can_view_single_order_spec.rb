@@ -18,9 +18,9 @@ describe "as a registered user" do
 
         click_on "Checkout"
         click_on "Order: 1"
-        
+     
         expect(page).to have_content(@accessory.name)
-        expect(page).to have_content("Subtotal: #{@accessory.price * 2}")
+        expect(page).to have_content("Subtotal: $2,400")
         expect(page).to have_content("Status: Ordered")
         expect(page).to have_content("Submitted At: #{Order.first.created_at}")
       end
