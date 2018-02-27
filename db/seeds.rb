@@ -27,7 +27,7 @@ Accessory.create!(name: "Spokes", description: "Structure!", price: 2100, status
 Accessory.create!(name: "Hanle wrap", description: "Be unique!", price: 2200, status: 0)
 
 
-CSV.foreach('db/csv/weather.csv', OPTIONS) do |row|
+CSV.foreach('db/fixtures/weather.csv', OPTIONS) do |row|
   Condition.create!(date: Date.strptime(row[:date], '%m/%e/%Y'),
                     max_temp_f: row[:max_temperature_f],
                     mean_temp_f: row[:mean_temperature_f],
@@ -40,7 +40,7 @@ CSV.foreach('db/csv/weather.csv', OPTIONS) do |row|
   puts "Created #{Condition.last}"
 end
 
-CSV.foreach('db/csv/station.csv', OPTIONS) do |row|
+CSV.foreach('db/fixtures/station.csv', OPTIONS) do |row|
   Station.create!(id: row[:id],
     name: row[:name],
     dock_count: row[:dock_count],
@@ -49,7 +49,7 @@ CSV.foreach('db/csv/station.csv', OPTIONS) do |row|
   puts "Created #{Station.last}"
 end
 
-CSV.foreach('db/csv/trip.csv', OPTIONS) do |row|
+CSV.foreach('db/fixtures/trip.csv', OPTIONS) do |row|
   Trip.create!(id: row[:id],
                duration: row[:duration],
                start_date: Date.strptime(row[:start_date], '%m/%e/%Y'),
