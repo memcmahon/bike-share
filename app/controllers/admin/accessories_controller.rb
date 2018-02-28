@@ -25,7 +25,7 @@ class Admin::AccessoriesController < Admin::BaseController
   def update
     if @accessory.update!(accessory_params)
       flash[:success] = "You have successfully updated #{@accessory.name}"
-      redirect_to accessories_path
+      redirect_to admin_accessories_path
     else
       flash[:alert] = "Something went wrong. Please try again."
       render :new
