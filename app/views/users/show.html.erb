@@ -27,7 +27,7 @@
         <tbody>
             <% order_total = Money.new(order.total, 'USD') %>
             <th><%= link_to "#{order.created_at}", order_path(order) %></th>
-            <th><%= order_total %></th>
+            <th><%= number_to_currency(order_total, :scale => 2) %></th>
             <th><%= order.status %></th>
         </tbody>
         <% end %>

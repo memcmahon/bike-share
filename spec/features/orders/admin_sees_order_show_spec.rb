@@ -30,9 +30,8 @@ describe "As an admin" do
 
       expect(current_path).to eq(accessory_path(@accessory_2))
     end
-
     it "they see the quantity and item subtotal" do
-      expect(page).to have_content("#{@order_1.accessory_subtotal(@accessory_3.id)}")
+      expect(page).to have_content("$36.00")
       expect(page).to have_content("3")
     end
 

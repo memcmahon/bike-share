@@ -13,7 +13,8 @@
       <h3 class="panel-heading"> <%= link_to accessory.name, accessory_path(accessory) %> </h3>
       <ul class="panel-body">
         <p><%= image_tag accessory.avatar.url, class: 'img-responsive' %></p>
-        <li><%= accessory.price %></li>
+        <% price = Money.new(accessory.price, 'USD') %>
+        <li><%= number_to_currency(price, :scale => 2) %></li>
         <li><%= accessory.description %></li>
         <% if accessory.status == 'Active' %>
           <%= button_to 'Add to Cart', cart_index_path(accessory_id: accessory.id) %>
