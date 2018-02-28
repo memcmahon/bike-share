@@ -22,7 +22,7 @@
           <li>Item is Retired</li>
         <% end %>
       <% if current_user && current_user.admin? %>
-        <div class="buttons">
+        <div>
           <li>
             <%= button_to 'Retire', admin_accessory_path(accessory, accessory: {status: 'Retired'}), method: 'put' %>
           </li>
