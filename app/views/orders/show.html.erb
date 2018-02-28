@@ -3,7 +3,7 @@
     <div class="panel-heading">
       <h1>Order: <%= @order.id %></h1>
       <% order_total = Money.new(@order.total, 'USD') %>
-      <h2>Subtotal: <%= number_to_currency(order_total) %> </h2>
+      <h2>Subtotal: <%= number_to_currency(order_total, :scale => 2) %> </h2>
       <h2>Status: <%= @order.status %> (Updated at: <%= @order.updated_at %>)</h2>
       <h2>Submitted At: <%= @order.created_at %></h2>
     </div>
@@ -16,9 +16,10 @@
         </thead>
         <% @order.accessories.each do |accessory| %>
           <tbody>
+            <% order_subtotal = Money.new(@order.accessory_subtotal(accessory.id), 'USD') %>
             <td><%= accessory.name %></td>
             <td><%= @order.accessory_quantity(accessory.id) %></td>
-            <td><%= @order.accessory_subtotal(accessory.id) %></td>
+            <td><%= number_to_currency(order_subtotal, :scale => 2) %></td>
           </tbody>
         <% end %>
       </table>

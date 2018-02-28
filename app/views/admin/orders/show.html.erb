@@ -16,7 +16,8 @@
             <p><%= @order.user.address %></p>
             <p><%= @order.user.city %>, <%= @order.user.state %> <%= @order.user.zip_code %></p>
           </td>
-          <td><%= @order.total %></td>
+          <% order_total = Money.new(@order.total, 'USD') %>
+          <td><%= number_to_currency(order_total, :scale => 2) %></td>
           <td><%= @order.status %> (Updated at: <%= @order.updated_at %>)</td>
           <td><%= @order.created_at %></td>
         </tbody>
@@ -32,9 +33,10 @@
         </thead>
         <% @order.accessories.each do |accessory| %>
           <tbody>
+            <% total = Money.new(@order.accessory_subtotal(accessory.id), 'USD') %>
             <td><%= link_to accessory.name, accessory_path(accessory) %></td>
             <td><%= @order.accessory_quantity(accessory.id) %></td>
-            <td><%= @order.accessory_subtotal(accessory.id) %></td>
+            <td><%= number_to_currency(total, :scale => 2) %></td>
           </tbody>
         <% end %>
       </table>
