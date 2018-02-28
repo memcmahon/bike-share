@@ -2,7 +2,9 @@
   <div class="panel">
     <div class="panel-heading">
       <h3><%= @accessory.name %></h3><br>
-      <%= image_tag @accessory.avatar.url, class: 'img-responsive' %>
+      <div class="cart-image">
+        <%= image_tag @accessory.avatar.url, class: 'img-responsive' %>
+      </div>
     </div>
     <div class="panel-body">
       <% price = Money.new(@accessory.price, 'USD') %>

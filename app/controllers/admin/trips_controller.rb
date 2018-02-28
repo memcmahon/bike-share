@@ -25,6 +25,7 @@ class Admin::TripsController < Admin::BaseController
 
   def destroy
     Trip.destroy(params[:id])
+    flash[:notice] = "You have deleted a trip"
     redirect_to trips_path
   end
 
