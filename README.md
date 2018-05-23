@@ -4,7 +4,6 @@ Deployed on Heroku: [Alchemists Cyclery](http://alchemists-cyclery.herokuapp.com
 
 This is an application which is designed to analyze the San Francisco bike share database and provide a platform for an online bike-accessory shop. The application is built in Ruby/Rails using a postgresql database and paperclip for image handling. A group project completed over a two week period, this project allowed us to use an Agile workfow, leveraging on Waffle.io
 
-Things you may want to cover:
 
 ## Setup
 
