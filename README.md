@@ -29,7 +29,7 @@ To run the full test suite:
 
 `$ rspec`
 
-To run only a portion of the test suite:
+To run a portion of the test suite:
 
 `$rspec spec/file-path`
 
